@@ -9,7 +9,7 @@ import tailwindSVG from "../public/svg/tailwindcss.svg";
 import npmSVG from "../public/svg/npm.svg";
 import gitSVG from "../public/svg/git.svg";
 
-const SkillBadge = ({ website, svg, name, className }) => {
+const SkillBadge = ({ svg, name, className }) => {
   return (
     <Image
       src={svg}
