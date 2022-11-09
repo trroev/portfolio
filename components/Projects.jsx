@@ -1,7 +1,7 @@
 import { ProjectItem } from "./ProjectItem";
-import memoryGame from "../public/assets/memory-game.png";
-import resumeApp from "../public/assets/resume-app.png";
-import weatherApp from "../public/assets/weather-app.png";
+import memoryImg from "../public/assets/projects/memory-game.png";
+import resumeImg from "../public/assets/projects/resume-app.png";
+import weatherImg from "../public/assets/projects/weather-app.png";
 
 export const Projects = () => {
   return (
@@ -14,21 +14,21 @@ export const Projects = () => {
         <div className="grid md:grid-cols-2 gap-8">
           <ProjectItem
             title="Memory Game"
-            img={memoryGame}
+            img={memoryImg}
             tech="React.js"
-            projectUrl="/memorygame"
+            projectUrl="/memory-game"
           />
           <ProjectItem
             title="Resume Builder"
-            img={resumeApp}
+            img={resumeImg}
             tech="React.js"
-            projectUrl="/resumebuilder"
+            projectUrl="/resume-builder"
           />
           <ProjectItem
             title="Weather App"
-            img={weatherApp}
+            img={weatherImg}
             tech="JavaScript, OpenWeatherAPI"
-            projectUrl="/weatherapp"
+            projectUrl="/weather-app"
           />
         </div>
       </div>
