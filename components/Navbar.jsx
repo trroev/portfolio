@@ -5,7 +5,7 @@ export const Navbar = () => {
   return (
     <div className="fixed w-full h-20 shadow-xl z-[100]">
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-fuchsia-800 via-amber-600 to-red-600"></div>
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-fuchsia-800 via-amber-600 to-red-600 hover:scale-110 ease-in duration-300"></div>
         <div>
           <ul className="hidden md:flex">
             <Link href="/">
