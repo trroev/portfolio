@@ -25,7 +25,7 @@ export const Contact = () => {
                 />
               </div>
               <div>
-                <h2 className="py-2">Trevor Mathiak</h2>
+                <h2 className="py-2 mt-4">Trevor Mathiak</h2>
                 <p>Full Stack Developer</p>
                 <p className="py-4">
                   I&#39;m available for freelance or full-time positions.

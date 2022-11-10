@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import headshot from "../public/trevor_headshot.png";
 
 export const About = () => {
@@ -19,7 +20,9 @@ export const About = () => {
           </p>
           <p className="py-2 text-gray-600">
             Check out some of my latest{" "}
-            <span className="cursor-pointer text-amber-600">projects</span>
+            <Link href="/#projects">
+              <span className="cursor-pointer text-amber-600">projects</span>
+            </Link>
           </p>
         </div>
         <div className="flex items-center justify-center p-4 hover:scale-105 ease-in duration-300">
