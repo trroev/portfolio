@@ -3,10 +3,14 @@ import { useState, useEffect } from "react";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from "react-icons/ai";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 export const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
+  const [navBackground, setNavBackground] = useState("#ecf0f3");
+  const [linkColor, setLinkColor] = useState("#1f2937");
+  const router = useRouter();
 
   const handleNav = () => {
     setNav(!nav);
@@ -23,8 +27,23 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleShadow);
   }, []);
 
+  useEffect(() => {
+    if (
+      router.asPath === "/memory-game" ||
+      router.asPath === "/resume-builder" ||
+      router.asPath === "/weather-app"
+    ) {
+      setNavBackground("transparent");
+      setLinkColor("#ecf0f3");
+    } else {
+      setNavBackground("#ecf0f3");
+      setLinkColor("#1f2937");
+    }
+  }, [router]);
+
   return (
     <div
+      style={{ backgroundColor: `${navBackground}` }}
       className={
         shadow
           ? "fixed w-full h-20 shadow-xl z-[100]"
@@ -36,7 +55,7 @@ export const Navbar = () => {
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-fuchsia-800 via-amber-600 to-red-600 hover:scale-110 ease-in duration-300 cursor-pointer"></div>
         </Link>
         <div>
-          <ul className="hidden md:flex">
+          <ul style={{ color: `${linkColor}` }} className="hidden md:flex">
             <Link href="/">
               <li className="ml-10 text-sm uppercase hover:border-b">Home</li>
             </Link>
