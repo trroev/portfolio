@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import Head from "next/head";
+import favicon from "../public/favicon.ico";
 import { Navbar } from "../components/Navbar";
 
 function MyApp({ Component, pageProps }) {
@@ -15,7 +16,7 @@ function MyApp({ Component, pageProps }) {
           name="keywords"
           content="full stack, web, developer, trevor, mathiak"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={favicon.src} />
       </Head>
       <Navbar />
       <Component {...pageProps} />
