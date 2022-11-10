@@ -32,8 +32,27 @@ const memoryGame = () => {
             tempore, ad illo. Optio odit veniam distinctio sunt pariatur,
             cupiditate provident laborum neque repudiandae?
           </p>
-          <button className="px-8 py-2 mt-4 mr-8">Demo</button>
-          <button className="px-8 py-2 mt-4">Code</button>
+          <a
+            href="https://trroev.github.io/memory-game/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button className="px-8 py-2 mt-4 mr-8 hover:scale-105 ease-in duration-300">
+              Demo
+            </button>
+          </a>
+          <a
+            href="https://github.com/trroev/memory-game"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button
+              className="px-8 py-2 mt-4
+            hover:scale-105 ease-in duration-300"
+            >
+              Code
+            </button>
+          </a>
         </div>
         <div className="col-span-4 md:col-span-1 shadow-xl shadow-gray-400 rounded-xl p-4">
           <div className="p-2">
