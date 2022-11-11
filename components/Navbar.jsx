@@ -52,7 +52,7 @@ export const Navbar = () => {
     >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
         <Link href="/">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-900 via-lime-500 to-emerald-700 hover:scale-110 ease-in duration-300 cursor-pointer"></div>
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-900 via-lime-500 to-emerald-700 hover:scale-110 ease-in duration-300 cursor-pointer" />
         </Link>
         <div>
           <ul style={{ color: `${linkColor}` }} className="hidden md:flex">
@@ -98,7 +98,7 @@ export const Navbar = () => {
         >
           <div>
             <div className="flex w-full items-center justify-between">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-900 via-lime-500 to-emerald-700 hover:scale-110 ease-in duration-300"></div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-900 via-lime-500 to-emerald-700 hover:scale-110 ease-in duration-300" />
               <div
                 onClick={handleNav}
                 className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
