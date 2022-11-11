@@ -12,11 +12,15 @@ export const About = () => {
           </p>
           <h2 className="py-4">Who I Am</h2>
           <p className="py-2 text-gray-600">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
-            neque atque cumque, distinctio cupiditate reprehenderit,
-            exercitationem dicta doloribus natus nisi possimus est sunt quisquam
-            dolor. Voluptatibus tempore, eveniet error officiis id est vel
-            beatae, aliquam, sed nesciunt blanditiis odit earum!
+            I&#39;m a full stack software engineer with a keen interest for web
+            development. I have a proven track record of creating, implementing
+            and maintaining successful web applications, both front and
+            back-end. I am especially fond of working with React, JavaScript and
+            Node.js.
+          </p>
+          <p className="py-2 text-gray-600">
+            I am completely self-taught, and I&#39;m passionate about learning
+            new technologies and anything related to web development.
           </p>
           <p className="py-2 text-gray-600">
             Check out some of my latest{" "}

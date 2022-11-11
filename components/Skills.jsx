@@ -1,4 +1,5 @@
 import Image from "next/image";
+import javascriptSVG from "../public/svg/javascript.svg";
 import typescriptSVG from "../public/svg/typescript.svg";
 import mongoDBSVG from "../public/svg/mongodb.svg";
 import nextSVG from "../public/svg/nextjs.svg";
@@ -15,7 +16,7 @@ const SkillBadge = ({ svg, name, className }) => {
       alt={name}
       className={
         className ||
-        "hover:scale-110 ease-in duration-300 cursor-pointer h-10 w-max md:h-12 lg:h-16"
+        "hover:scale-110 ease-in duration-300 cursor-pointer h-10 m-1 w-max md:h-12 lg:h-16"
       }
     />
   );
@@ -29,7 +30,14 @@ export const Skills = () => {
           Skills
         </p>
         <h2 className="py-4">What I Can Do</h2>
-        <div className="bg-gray-600/40 rounded-lg mb-12 flex w-full self-center flex-wrap items-center justify-center gap-10 p-5 sm:mb-24 sm:w-4/5 sm:px-0 lg:gap-16 xl:w-3/5">
+        <div className="bg-gray-600/40 rounded-lg mb-12 flex w-full self-center flex-wrap items-center justify-center gap-8 p-5 sm:mb-24 sm:w-4/5 sm:px-0 lg:gap-16 xl:w-3/5">
+          <a
+            href="https://www.javascript.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <SkillBadge svg={javascriptSVG} name="JavaScript" />
+          </a>
           <a
             href="https://www.typescriptlang.org/"
             target="_blank"
