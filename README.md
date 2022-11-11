@@ -2,7 +2,7 @@
 
 A React App to test your memory skills!
 
-**Check it out:** [Live Preview](https://trroev.github.io/portfolio/)
+**Check it out:** [trevormathiak.dev](https://trroev.github.io/portfolio/)
 
 ![page preview image](/public/screenshot.png)
 
