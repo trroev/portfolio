@@ -10,7 +10,7 @@ export const Contact = () => {
   return (
     <div id="contact" className="w-full lg:h-screen p-2">
       <div className="max-w-[1240px] mx-auto py-16 w-full">
-        <p className="uppercase text-xl tracking-widest text-amber-600">
+        <p className="uppercase text-xl tracking-widest text-lime-500">
           Contact
         </p>
         <h2 className="py-4">Get In Touch</h2>
@@ -118,7 +118,7 @@ export const Contact = () => {
         <div className="flex justify-center py-12">
           <Link href="/">
             <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
-              <HiOutlineChevronDoubleUp className="text-amber-600" size={30} />
+              <HiOutlineChevronDoubleUp className="text-lime-500" size={30} />
             </div>
           </Link>
         </div>

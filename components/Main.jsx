@@ -9,16 +9,16 @@ export const Main = () => {
         <div>
           <h1 className="py-4 text-gray-700 mt-12">
             Hi, I&#39;m{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-800 via-amber-600 to-red-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-green-900 via-lime-500 to-emerald-700">
               Trevor
             </span>
             , <br /> a full stack{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-800 via-amber-600 to-red-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-green-900 via-lime-500 to-emerald-700">
               developer
             </span>
             <br /> who creates interactive
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-800 via-amber-600 to-red-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-green-900 via-lime-500 to-emerald-700">
               web
             </span>{" "}
             applications.

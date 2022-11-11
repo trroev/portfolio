@@ -34,6 +34,6 @@ html {
   }
 
   button {
-    @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-fuchsia-800 via-amber-600 to-red-600 text-white;
+    @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-green-700 to-emerald-600 text-white;
   }
 }
