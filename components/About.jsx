@@ -7,7 +7,7 @@ export const About = () => {
     <div id="about" className="w-full md:h-screen p-2 flex items-center py-16">
       <div className="max-w-[1240px] m-auto md:grid grid-cols-3 gap-8">
         <div className="col-span-2">
-          <p className="uppercase text-xl tracking-widest text-lime-500">
+          <p className="uppercase text-xl tracking-widest text-orange-600">
             About
           </p>
           <h2 className="py-4">Who I Am</h2>
@@ -21,7 +21,7 @@ export const About = () => {
           <p className="py-2 text-gray-600">
             Check out some of my latest{" "}
             <Link href="/#projects">
-              <span className="cursor-pointer text-lime-500">projects</span>
+              <span className="cursor-pointer text-orange-600">projects</span>
             </Link>
           </p>
         </div>

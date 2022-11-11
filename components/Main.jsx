@@ -1,5 +1,4 @@
 import { AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export const Main = () => {
@@ -9,16 +8,16 @@ export const Main = () => {
         <div>
           <h1 className="py-4 text-gray-700 mt-12">
             Hi, I&#39;m{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-green-900 via-lime-500 to-emerald-700">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-900 to-orange-600">
               Trevor
             </span>
             , <br /> a full stack{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-green-900 via-lime-500 to-emerald-700">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-900 to-orange-600">
               developer
             </span>
             <br /> who creates interactive
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-green-900 via-lime-500 to-emerald-700">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-900 to-orange-600">
               web
             </span>{" "}
             applications.
