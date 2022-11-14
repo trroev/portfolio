@@ -1,12 +1,14 @@
 import Image from "next/image";
 import contactImg from "../public/assets/contact.jpeg";
 import { AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export const Contact = () => {
+  const router = useRouter();
+
   return (
     <div id="contact" className="w-full lg:h-screen p-2">
       <div className="max-w-[1240px] mx-auto py-16 w-full">
@@ -53,15 +55,13 @@ export const Contact = () => {
                       <FaGithub />
                     </div>
                   </a>
-                  <a
-                    href="mailto:tmathiak@gmailcom"
-                    target="_blank"
-                    rel="noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => router.push("mailto:tmathiak@gmail.com")}
+                    className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300 text-[#1f2937]"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                      <AiOutlineMail />
-                    </div>
-                  </a>
+                    <AiOutlineMail />
+                  </button>
                 </div>
               </div>
             </div>

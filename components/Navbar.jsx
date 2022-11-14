@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { useRouter } from "next/router";
 
@@ -163,15 +162,13 @@ export const Navbar = () => {
                     <FaGithub />
                   </div>
                 </a>
-                <a
-                  href="mailto:tmathiak@gmail.com"
-                  target="_blank"
-                  rel="noreferrer"
+                <button
+                  type="button"
+                  onClick={() => router.push("mailto:tmathiak@gmail.com")}
+                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300 text-[#1f2937]"
                 >
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                    <AiOutlineMail />
-                  </div>
-                </a>
+                  <AiOutlineMail />
+                </button>
               </div>
             </div>
           </div>

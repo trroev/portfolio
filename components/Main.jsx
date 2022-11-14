@@ -1,7 +1,10 @@
+import { useRouter } from "next/router";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export const Main = () => {
+  const router = useRouter();
+
   return (
     <div id="home" className="w-full h-screen text-center">
       <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
@@ -44,11 +47,13 @@ export const Main = () => {
                 <FaGithub />
               </div>
             </a>
-            <a href="mailto:tmathiak@gmailcom" target="_blank" rel="noreferrer">
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                <AiOutlineMail />
-              </div>
-            </a>
+            <button
+              type="button"
+              onClick={() => router.push("mailto:tmathiak@gmail.com")}
+              className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300 text-[#1f2937]"
+            >
+              <AiOutlineMail />
+            </button>
           </div>
         </div>
       </div>
