@@ -21,85 +21,69 @@ export const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const formData = {};
+
     Array.from(e.currentTarget.elements).forEach((field) => {
       if (!field.name) return;
       formData[field.name] = field.value;
     });
-    fetch("/api/sendgrid", {
-      method: "post",
-      body: JSON.stringify(formData),
-    });
-    console.log(formData);
+
+    let isValidForm = handleValidation();
+
+    if (isValidForm) {
+      setButtonText("Sending...");
+      const res = await fetch("/api/sendgrid", {
+        method: "post",
+        body: JSON.stringify(formData),
+      });
+
+      const { error } = await res.json();
+      if (error) {
+        setShowSuccessMessage(false);
+        setShowFailureMessage(true);
+        setButtonText("Send Message");
+        setName("");
+        setNumber("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
+        return;
+      }
+      setShowSuccessMessage(true);
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 5000);
+      setShowFailureMessage(false);
+      setButtonText("Send Message");
+      setName("");
+      setNumber("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+  const handleValidation = () => {
+    let tempErrors = {};
+    let isValid = true;
 
-  //   let isValidForm = handleValidation();
+    if (name.length <= 0) {
+      tempErrors["name"] = true;
+      isValid = false;
+    }
+    if (email.length <= 0) {
+      tempErrors["email"] = true;
+      isValid = false;
+    }
+    if (message.length <= 0) {
+      tempErrors["message"] = true;
+      isValid = false;
+    }
 
-  //   if (isValidForm) {
-  //     setButtonText("Sending...");
-  //     const res = await fetch("/api/sendgrid", {
-  //       body: JSON.stringify({
-  //         email: email,
-  //         name: name,
-  //         number: number,
-  //         subject: subject,
-  //         message: message,
-  //       }),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       method: "POST",
-  //     });
-
-  //     const { error } = await res.json();
-  //     if (error) {
-  //       console.log(error);
-  //       setShowSuccessMessage(false);
-  //       setShowFailureMessage(true);
-  //       setButtonText("Send Message");
-  //       setName("");
-  //       setNumber("");
-  //       setEmail("");
-  //       setSubject("");
-  //       setMessage("");
-  //       return;
-  //     }
-  //     setShowSuccessMessage(true);
-  //     setShowFailureMessage(false);
-  //     setButtonText("Send Message");
-  //     setName("");
-  //     setNumber("");
-  //     setEmail("");
-  //     setSubject("");
-  //     setMessage("");
-  //   }
-  //   console.log(name, email, number, subject, message);
-  // };
-
-  // const handleValidation = () => {
-  //   let tempErrors = {};
-  //   let isValid = true;
-
-  //   if (name.length <= 0) {
-  //     tempErrors["name"] = true;
-  //     isValid = false;
-  //   }
-  //   if (email.length <= 0) {
-  //     tempErrors["email"] = true;
-  //     isValid = false;
-  //   }
-  //   if (message.length <= 0) {
-  //     tempErrors["message"] = true;
-  //     isValid = false;
-  //   }
-
-  //   setErrors({ ...tempErrors });
-  //   console.log("errors", errors);
-  //   return isValid;
-  // };
+    setErrors({ ...tempErrors });
+    return isValid;
+  };
 
   return (
     <div id="contact" className="w-full lg:h-screen p-2">
@@ -165,6 +149,7 @@ export const Contact = () => {
                   <div className="flex flex-col">
                     <label htmlFor="name" className="uppercase text-sm py-2">
                       Name
+                      <span className=" text-orange-600 px-1">*</span>
                     </label>
                     <input
                       className="border-2 rounded-lg p-3 flex border-gray-300"
@@ -176,7 +161,9 @@ export const Contact = () => {
                       }}
                     />
                     {errors?.name && (
-                      <p className="text-red-500">Please provide your name</p>
+                      <p className="text-orange-600 uppercase text-sm mt-2">
+                        Please provide your name
+                      </p>
                     )}
                   </div>
                   <div className="flex flex-col">
@@ -197,6 +184,7 @@ export const Contact = () => {
                 <div className="flex flex-col py-2">
                   <label htmlFor="email" className="uppercase text-sm py-2">
                     Email
+                    <span className=" text-orange-600 px-1">*</span>
                   </label>
                   <input
                     className="border-2 rounded-lg p-3 flex border-gray-300"
@@ -208,7 +196,7 @@ export const Contact = () => {
                     }}
                   />
                   {errors?.email && (
-                    <p className="text-red-500">
+                    <p className="text-orange-600 uppercase text-sm mt-2">
                       Please provide your Email address
                     </p>
                   )}
@@ -230,6 +218,7 @@ export const Contact = () => {
                 <div className="flex flex-col py-2">
                   <label htmlFor="message" className="uppercase text-sm py-2">
                     Message
+                    <span className=" text-orange-600 px-1">*</span>
                   </label>
                   <textarea
                     className="border-2 rounded-lg p-3 border-gray-300"
@@ -241,7 +230,9 @@ export const Contact = () => {
                     }}
                   ></textarea>
                   {errors?.message && (
-                    <p className="text-red-500">Please provide a message</p>
+                    <p className="text-orange-600 uppercase text-sm mt-2">
+                      Please provide a message
+                    </p>
                   )}
                 </div>
                 <button className="w-full p-4 text-gray-100 mt-4">
@@ -249,12 +240,12 @@ export const Contact = () => {
                 </button>
                 <div>
                   {showSuccessMessage && (
-                    <p className="text-green-500 font-semibold text-sm my-2">
+                    <p className="text-green-600 uppercase text-sm mt-4">
                       Thank You! Your Message has been delivered
                     </p>
                   )}
                   {showFailureMessage && (
-                    <p className="text-red-500">
+                    <p className="text-orange-600 uppercase text-sm mt-4">
                       Oops! Something went wrong, please try again
                     </p>
                   )}
