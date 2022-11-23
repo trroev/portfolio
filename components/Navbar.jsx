@@ -143,7 +143,7 @@ export const Navbar = () => {
                 </li>
               </Link>
             </ul>
-            <div className="pt-40">
+            <div className="pt-4">
               <p className="uppercase tracking-widest text-orange-600">
                 Let&#39;s Connect
               </p>
