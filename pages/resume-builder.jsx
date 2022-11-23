@@ -26,16 +26,17 @@ const resumeApp = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            voluptatem necessitatibus, animi obcaecati saepe, hic unde eius
-            expedita alias aspernatur minima enim non ipsum inventore sunt
-            tempore, ad illo. Optio odit veniam distinctio sunt pariatur,
-            cupiditate provident laborum neque repudiandae?
+            This was a fun little project for my first foray in to learning
+            React. Using functional components and React Hooks made the code
+            look much cleaner and easier to read and follow in my opinion. It
+            was a struggle for me to figure out how to properly use props to get
+            the user input to render in the resume preview, but once I figured
+            that out, it was smooth sailing.
           </p>
           <a
             href="https://trroev.github.io/resume-app/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <button className="px-8 py-2 mt-4 mr-8 hover:scale-105 ease-in duration-300">
               Demo
@@ -44,7 +45,7 @@ const resumeApp = () => {
           <a
             href="https://github.com/trroev/resume-app"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <button
               className="px-8 py-2 mt-4

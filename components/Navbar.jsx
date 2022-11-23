@@ -149,29 +149,32 @@ export const Navbar = () => {
               </p>
               <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
                 <a
+                  className="text-gray-400 hover:text-gray-900 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
                   href="https://www.linkedin.com/in/trevormathiak/"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  <div className="p-3 cursor-pointer hover:scale-110 ease-in duration-300">
+                  <div>
                     <FaLinkedinIn />
                   </div>
                 </a>
                 <a
+                  className="text-gray-400 hover:text-gray-900 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
                   href="https://github.com/trroev/"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  <div className="p-3 cursor-pointer hover:scale-110 ease-in duration-300">
+                  <div>
                     <FaGithub />
                   </div>
                 </a>
                 <a
+                  className="text-gray-400 hover:text-gray-900 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
                   href="/pdf/Trevor_Mathiak_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="p-3 cursor-pointer hover:scale-110 ease-in duration-300 text-[#1f2937]">
+                  <div>
                     <AiOutlineFileText />
                   </div>
                 </a>

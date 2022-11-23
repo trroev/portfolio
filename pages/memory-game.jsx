@@ -26,16 +26,16 @@ const memoryGame = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            voluptatem necessitatibus, animi obcaecati saepe, hic unde eius
-            expedita alias aspernatur minima enim non ipsum inventore sunt
-            tempore, ad illo. Optio odit veniam distinctio sunt pariatur,
-            cupiditate provident laborum neque repudiandae?
+            This was a fun app to build to get more familiar with hooks,
+            especially useEffect. I learned that it seems a little easier to
+            create css style components as well, rather than one large css file.
+            Using logical comparisons in a prop and also a ternary operator for
+            a jsx className were both new to me as well.
           </p>
           <a
             href="https://trroev.github.io/memory-game/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <button className="px-8 py-2 mt-4 mr-8 hover:scale-105 ease-in duration-300">
               Demo
@@ -44,7 +44,7 @@ const memoryGame = () => {
           <a
             href="https://github.com/trroev/memory-game"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <button
               className="px-8 py-2 mt-4

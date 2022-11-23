@@ -26,16 +26,14 @@ const weatherApp = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            voluptatem necessitatibus, animi obcaecati saepe, hic unde eius
-            expedita alias aspernatur minima enim non ipsum inventore sunt
-            tempore, ad illo. Optio odit veniam distinctio sunt pariatur,
-            cupiditate provident laborum neque repudiandae?
+            This was a simple vanilla JavaScript project to help strengthen my
+            knowledge with implementing APIs. This app uses the OpenWeather API
+            to let a user input any city and get the current weather in return.
           </p>
           <a
             href="https://trroev.github.io/weather-app/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <button className="px-8 py-2 mt-4 mr-8 hover:scale-105 ease-in duration-300">
               Demo
@@ -44,7 +42,7 @@ const weatherApp = () => {
           <a
             href="https://github.com/trroev/weather-app"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <button
               className="px-8 py-2 mt-4
