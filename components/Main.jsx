@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { AiOutlineMail } from "react-icons/ai";
+import { AiOutlineMail, AiOutlineFileText } from "react-icons/ai";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export const Main = () => {
@@ -34,7 +34,7 @@ export const Main = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+              <div className="p-4 cursor-pointer hover:scale-110 ease-in duration-300">
                 <FaLinkedinIn />
               </div>
             </a>
@@ -43,17 +43,13 @@ export const Main = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+              <div className="p-4 cursor-pointer hover:scale-110 ease-in duration-300">
                 <FaGithub />
               </div>
             </a>
-            <button
-              type="button"
-              onClick={() => router.push("mailto:tmathiak@gmail.com")}
-              className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300 text-[#1f2937]"
-            >
-              <AiOutlineMail />
-            </button>
+            <div className="p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+              <AiOutlineFileText />
+            </div>
           </div>
         </div>
       </div>

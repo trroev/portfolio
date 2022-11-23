@@ -1,7 +1,3 @@
-import Image from "next/image";
-import contactImg from "../public/assets/contact.jpeg";
-import { AiOutlineMail } from "react-icons/ai";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 import Link from "next/link";
 import { useRouter } from "next/router";

@@ -104,7 +104,7 @@ export const Navbar = () => {
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-900 via-violet-900 to-orange-600 hover:scale-110 ease-in duration-300" />
               <div
                 onClick={handleNav}
-                className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
+                className="p-3 cursor-pointer hover:scale-110 ease-in duration-300"
               >
                 <AiOutlineClose />
               </div>
@@ -153,7 +153,7 @@ export const Navbar = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                  <div className="p-3 cursor-pointer hover:scale-110 ease-in duration-300">
                     <FaLinkedinIn />
                   </div>
                 </a>
@@ -162,16 +162,13 @@ export const Navbar = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                  <div className="p-3 cursor-pointer hover:scale-110 ease-in duration-300">
                     <FaGithub />
                   </div>
                 </a>
-                <button
-                  type="button"
-                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300 text-[#1f2937]"
-                >
+                <div className="p-3 cursor-pointer hover:scale-110 ease-in duration-300 text-[#1f2937]">
                   <AiOutlineFileText />
-                </button>
+                </div>
               </div>
             </div>
           </div>
