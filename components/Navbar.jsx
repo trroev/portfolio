@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from "react-icons/ai";
+import {
+  AiOutlineMenu,
+  AiOutlineClose,
+  AiOutlineFileText,
+} from "react-icons/ai";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { useRouter } from "next/router";
 
@@ -164,10 +168,9 @@ export const Navbar = () => {
                 </a>
                 <button
                   type="button"
-                  onClick={() => router.push("mailto:tmathiak@gmail.com")}
                   className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300 text-[#1f2937]"
                 >
-                  <AiOutlineMail />
+                  <AiOutlineFileText />
                 </button>
               </div>
             </div>
