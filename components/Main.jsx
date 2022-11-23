@@ -47,9 +47,15 @@ export const Main = () => {
                 <FaGithub />
               </div>
             </a>
-            <div className="p-4 cursor-pointer hover:scale-110 ease-in duration-300">
-              <AiOutlineFileText />
-            </div>
+            <a
+              href="/pdf/Trevor_Mathiak_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                <AiOutlineFileText />
+              </div>
+            </a>
           </div>
         </div>
       </div>

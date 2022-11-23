@@ -166,9 +166,15 @@ export const Navbar = () => {
                     <FaGithub />
                   </div>
                 </a>
-                <div className="p-3 cursor-pointer hover:scale-110 ease-in duration-300 text-[#1f2937]">
-                  <AiOutlineFileText />
-                </div>
+                <a
+                  href="/pdf/Trevor_Mathiak_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="p-3 cursor-pointer hover:scale-110 ease-in duration-300 text-[#1f2937]">
+                    <AiOutlineFileText />
+                  </div>
+                </a>
               </div>
             </div>
           </div>
