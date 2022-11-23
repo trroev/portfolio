@@ -82,7 +82,7 @@ export const Contact = () => {
   };
 
   return (
-    <div id="contact" className="w-full lg:h-screen p-2 mt-10">
+    <div id="contact" className="w-full p-2 mt-10">
       <div className="max-w-[1240px] mx-auto py-16 w-full">
         <p className="uppercase text-xl tracking-widest text-orange-600">
           Contact

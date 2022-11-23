@@ -1,10 +1,7 @@
-import { useRouter } from "next/router";
-import { AiOutlineMail, AiOutlineFileText } from "react-icons/ai";
+import { AiOutlineFileText } from "react-icons/ai";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export const Main = () => {
-  const router = useRouter();
-
   return (
     <div id="home" className="w-full h-screen text-center">
       <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
