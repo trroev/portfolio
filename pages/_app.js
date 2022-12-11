@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import "../styles/globals.css";
 import Head from "next/head";
 import favicon from "../public/favicon.ico";
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Navbar />
       <Component {...pageProps} />
+      <Analytics />
     </>
   );
 }
