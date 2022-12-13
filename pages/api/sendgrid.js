@@ -1,4 +1,6 @@
 const sgMail = require("@sendgrid/mail");
+const EMAIL_ADDRESS_TO = process.env.EMAIL_ADDRESS_TO;
+const EMAIL_ADDRESS_FROM = process.env.EMAIL_ADDRESS_FROM;
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default async function sendEmail(req, res) {
@@ -13,8 +15,8 @@ export default async function sendEmail(req, res) {
   `;
 
   const data = {
-    to: "tmathiak@gmail.com",
-    from: "trevor@trevormathiak.dev",
+    to: EMAIL_ADDRESS_TO,
+    from: EMAIL_ADDRESS_FROM,
     subject: "New Portfolio Message!",
     text: message,
     html: message.replace(/\r\n/g, "<br>"),
@@ -23,7 +25,9 @@ export default async function sendEmail(req, res) {
   try {
     await sgMail.send(data);
   } catch (error) {
-    return res.status(error.statusCode || 500).json({ error: error.message });
+    return res
+      .status(error.statusCode || 500)
+      .json({ error: error.message });
   }
   res.status(200).json({ status: "OK" });
 }
