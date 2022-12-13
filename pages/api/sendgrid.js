@@ -1,6 +1,4 @@
 const sgMail = require("@sendgrid/mail");
-const EMAIL_ADDRESS_TO = process.env.EMAIL_ADDRESS_TO;
-const EMAIL_ADDRESS_FROM = process.env.EMAIL_ADDRESS_FROM;
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default async function sendEmail(req, res) {
@@ -15,8 +13,8 @@ export default async function sendEmail(req, res) {
   `;
 
   const data = {
-    to: EMAIL_ADDRESS_TO,
-    from: EMAIL_ADDRESS_FROM,
+    to: "tmathiak@gmail.com",
+    from: "trevor@trevormathiak.dev",
     subject: "New Portfolio Message!",
     text: message,
     html: message.replace(/\r\n/g, "<br>"),
