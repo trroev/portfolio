@@ -13,8 +13,8 @@ export default async function sendEmail(req, res) {
   `;
 
   const data = {
-    to: "tmathiak@gmail.com",
-    from: "trevor@trevormathiak.dev",
+    to: process.env.TO_EMAIL,
+    from: process.env.FROM_EMAIL,
     subject: "New Portfolio Message!",
     text: message,
     html: message.replace(/\r\n/g, "<br>"),
