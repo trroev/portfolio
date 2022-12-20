@@ -1,7 +1,5 @@
 # PORTFOLIO
 
-A React App to test your memory skills!
-
 **Check it out:** [trevormathiak.dev](https://www.trevormathiak.dev)
 
 ![page preview image](/public/screenshot.png)
