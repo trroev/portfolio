@@ -40,14 +40,7 @@ export const Navbar = () => {
   }, [router]);
 
   return (
-    <div
-      // style={{ backgroundColor: `${navBackground}` }}
-      className={
-        shadow
-          ? "fixed w-full h-20 shadow-xl z-[100]"
-          : "fixed w-full h-20 z-[100]"
-      }
-    >
+    <div className="fixed w-full h-20 z-[100] bg-[#141414] border-b border-white/50">
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
         <Link href="/">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-red-500 hover:scale-110 ease-in duration-300 cursor-pointer" />

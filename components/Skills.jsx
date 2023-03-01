@@ -26,7 +26,7 @@ export const Skills = () => {
   return (
     <div id="skills" className="w-full lg:h-screen p-2">
       <div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
-        <p className="uppercase text-xl tracking-widest text-orange-600">
+        <p className="uppercase text-xl tracking-widest text-red-400">
           Skills
         </p>
         <h2 className="py-4">What I Can Do</h2>
@@ -45,29 +45,57 @@ export const Skills = () => {
           >
             <SkillBadge svg={typescriptSVG} name="TypeScript" />
           </a>
-          <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.mongodb.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <SkillBadge svg={mongoDBSVG} name="MongoDB" />
           </a>
-          <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
+          <a
+            href="https://nextjs.org/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <SkillBadge svg={nextSVG} name="Next.js" />
           </a>
-          <a href="https://nodejs.org/en/" target="_blank" rel="noreferrer">
+          <a
+            href="https://nodejs.org/en/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <SkillBadge svg={nodeSVG} name="Node.js" />
           </a>
-          <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
+          <a
+            href="https://reactjs.org/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <SkillBadge svg={reactSVG} name="React.js" />
           </a>
-          <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
+          <a
+            href="https://tailwindcss.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <SkillBadge
               svg={tailwindSVG}
               name="TailwindCSS"
               className="hover:scale-105 ease-in duration-300 cursor-pointer h-7 w-max lg:h-10"
             />
           </a>
-          <a href="https://www.npmjs.com/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.npmjs.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <SkillBadge svg={npmSVG} name="npm" />
           </a>
-          <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
+          <a
+            href="https://git-scm.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <SkillBadge svg={gitSVG} name="git" />
           </a>
         </div>

@@ -34,6 +34,12 @@ html {
   }
 
   button {
-    @apply shadow-sm shadow-gray-400 rounded-xl uppercase;
+    @apply border border-gray-400 rounded-xl uppercase bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration-300;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
   }
 }

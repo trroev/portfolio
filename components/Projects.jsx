@@ -7,7 +7,7 @@ export const Projects = () => {
   return (
     <div id="projects" className="w-full lg:h-screen p-2 mt-10">
       <div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
-        <p className="uppercase text-xl tracking-widest text-orange-600">
+        <p className="uppercase text-xl tracking-widest text-red-400">
           Projects
         </p>
         <h2 className="py-4">What I&#39;ve Built</h2>

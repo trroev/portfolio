@@ -84,25 +84,28 @@ export const Contact = () => {
   return (
     <div id="contact" className="w-full p-2 mt-10">
       <div className="max-w-[1240px] mx-auto py-16 w-full">
-        <p className="uppercase text-xl tracking-widest text-orange-600">
+        <p className="uppercase text-xl tracking-widest text-red-400">
           Contact
         </p>
         <h2 className="py-4">Get In Touch</h2>
         <p className="p-4">
-          I&#39;m available for freelance or full-time positions. Send me a
-          message and let&#39;s talk.
+          I&#39;m available for freelance or full-time positions. Send
+          me a message and let&#39;s talk.
         </p>
-        <div className="w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4">
+        <div className="w-full h-autoounded-xl lg:p-4">
           <div className="p-4">
             <form onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-4 w-full py-2">
                 <div className="flex flex-col">
-                  <label htmlFor="name" className="uppercase text-sm py-2">
+                  <label
+                    htmlFor="name"
+                    className="uppercase text-sm py-2"
+                  >
                     Name
-                    <span className=" text-orange-600 px-1">*</span>
+                    <span className=" text-red-400 px-1">*</span>
                   </label>
                   <input
-                    className="border-2 rounded-lg p-3 flex border-gray-300"
+                    className="border rounded-lg p-3 flex border-gray-400"
                     type="text"
                     name="name"
                     value={name}
@@ -111,17 +114,20 @@ export const Contact = () => {
                     }}
                   />
                   {errors?.name && (
-                    <p className="text-orange-600 uppercase text-sm mt-2">
+                    <p className="text-red-400 uppercase text-sm mt-2">
                       Please provide your name
                     </p>
                   )}
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="number" className="uppercase text-sm py-2">
+                  <label
+                    htmlFor="number"
+                    className="uppercase text-sm py-2"
+                  >
                     Phone Number
                   </label>
                   <input
-                    className="border-2 rounded-lg p-3 flex border-gray-300"
+                    className="border rounded-lg p-3 flex border-gray-400"
                     type="text"
                     name="number"
                     value={number}
@@ -132,12 +138,15 @@ export const Contact = () => {
                 </div>
               </div>
               <div className="flex flex-col py-2">
-                <label htmlFor="email" className="uppercase text-sm py-2">
+                <label
+                  htmlFor="email"
+                  className="uppercase text-sm py-2"
+                >
                   Email
-                  <span className=" text-orange-600 px-1">*</span>
+                  <span className=" text-red-400 px-1">*</span>
                 </label>
                 <input
-                  className="border-2 rounded-lg p-3 flex border-gray-300"
+                  className="border rounded-lg p-3 flex border-gray-400"
                   type="Email"
                   name="email"
                   value={email}
@@ -146,17 +155,20 @@ export const Contact = () => {
                   }}
                 />
                 {errors?.email && (
-                  <p className="text-orange-600 uppercase text-sm mt-2">
+                  <p className="text-red-400 uppercase text-sm mt-2">
                     Please provide your Email address
                   </p>
                 )}
               </div>
               <div className="flex flex-col py-2">
-                <label htmlFor="subject" className="uppercase text-sm py-2">
+                <label
+                  htmlFor="subject"
+                  className="uppercase text-sm py-2"
+                >
                   Subject
                 </label>
                 <input
-                  className="border-2 rounded-lg p-3 flex border-gray-300"
+                  className="border rounded-lg p-3 flex border-gray-400"
                   type="text"
                   name="subject"
                   value={subject}
@@ -166,12 +178,15 @@ export const Contact = () => {
                 />
               </div>
               <div className="flex flex-col py-2">
-                <label htmlFor="message" className="uppercase text-sm py-2">
+                <label
+                  htmlFor="message"
+                  className="uppercase text-sm py-2"
+                >
                   Message
-                  <span className=" text-orange-600 px-1">*</span>
+                  <span className=" text-red-400 px-1">*</span>
                 </label>
                 <textarea
-                  className="border-2 rounded-lg p-3 border-gray-300"
+                  className="border rounded-lg p-3 border-gray-400"
                   rows="10"
                   name="message"
                   value={message}
@@ -180,12 +195,12 @@ export const Contact = () => {
                   }}
                 ></textarea>
                 {errors?.message && (
-                  <p className="text-orange-600 uppercase text-sm mt-2">
+                  <p className="text-red-400 uppercase text-sm mt-2">
                     Please provide a message
                   </p>
                 )}
               </div>
-              <button className="w-full p-4 text-gray-100 mt-4">
+              <button className="w-full p-4 mt-4">
                 {buttonText}
               </button>
               <div>
@@ -195,7 +210,7 @@ export const Contact = () => {
                   </p>
                 )}
                 {showFailureMessage && (
-                  <p className="text-orange-600 uppercase text-sm mt-4">
+                  <p className="text-red-400 uppercase text-sm mt-4">
                     Oops! Something went wrong, please try again
                   </p>
                 )}
@@ -205,8 +220,11 @@ export const Contact = () => {
         </div>
         <div className="flex justify-center py-12">
           <Link href="/">
-            <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
-              <HiOutlineChevronDoubleUp className="text-orange-600" size={30} />
+            <div className="rounded-full shadow-md shadow-gray-600 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+              <HiOutlineChevronDoubleUp
+                className="text-red-400"
+                size={30}
+              />
             </div>
           </Link>
         </div>
