@@ -9,7 +9,7 @@ html {
 
 @layer base {
   body {
-    @apply bg-[#ecf0f3] text-[#1f2937] tracking-wide;
+    @apply bg-[#141414] text-[rgb(255,255,255)] tracking-wide;
   }
 
   h1,
@@ -34,6 +34,6 @@ html {
   }
 
   button {
-    @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-orange-600 text-white;
+    @apply shadow-sm shadow-gray-400 rounded-xl uppercase;
   }
 }

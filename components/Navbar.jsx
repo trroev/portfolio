@@ -11,8 +11,7 @@ import { useRouter } from "next/router";
 export const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
-  const [navBackground, setNavBackground] = useState("#ecf0f3");
-  const [linkColor, setLinkColor] = useState("#1f2937");
+  const [navBackground, setNavBackground] = useState("");
   const router = useRouter();
 
   const handleNav = () => {
@@ -37,16 +36,12 @@ export const Navbar = () => {
       router.asPath === "/weather-app"
     ) {
       setNavBackground("transparent");
-      setLinkColor("#ecf0f3");
-    } else {
-      setNavBackground("#ecf0f3");
-      setLinkColor("#1f2937");
     }
   }, [router]);
 
   return (
     <div
-      style={{ backgroundColor: `${navBackground}` }}
+      // style={{ backgroundColor: `${navBackground}` }}
       className={
         shadow
           ? "fixed w-full h-20 shadow-xl z-[100]"
@@ -55,18 +50,24 @@ export const Navbar = () => {
     >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
         <Link href="/">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-900 via-violet-900 to-orange-600 hover:scale-110 ease-in duration-300 cursor-pointer" />
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-red-500 hover:scale-110 ease-in duration-300 cursor-pointer" />
         </Link>
         <div>
-          <ul style={{ color: `${linkColor}` }} className="hidden md:flex">
+          <ul className="hidden md:flex">
             <Link href="/">
-              <li className="ml-10 text-sm uppercase hover:border-b">Home</li>
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                Home
+              </li>
             </Link>
             <Link href="/#about">
-              <li className="ml-10 text-sm uppercase hover:border-b">About</li>
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                About
+              </li>
             </Link>
             <Link href="/#skills">
-              <li className="ml-10 text-sm uppercase hover:border-b">Skills</li>
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                Skills
+              </li>
             </Link>
             <Link href="/#projects">
               <li className="ml-10 text-sm uppercase hover:border-b">
@@ -81,7 +82,7 @@ export const Navbar = () => {
           </ul>
           <div
             onClick={handleNav}
-            className="px-4 md:hidden cursor-pointer hover:scale-105 ease-in duration-300"
+            className="px-4 md:hidden cursor-pointer hover:text-red-400 hover:scale-110 ease-in duration-300"
           >
             <AiOutlineMenu size={25} />
           </div>
@@ -89,19 +90,21 @@ export const Navbar = () => {
       </div>
       <div
         className={
-          nav ? "md:hidden fixed left-0 top-0 w-full h-screen bg-black/70" : ""
+          nav
+            ? "md:hidden fixed left-0 top-0 w-full h-screen bg-[#141414]/80"
+            : ""
         }
       >
         <div
           className={
             nav
-              ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500"
+              ? "fixed left-0 top-0 w-[100%] md:w-[45%] h-screen bg-[#141414] p-10 ease-in duration-500"
               : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
           }
         >
           <div>
             <div className="flex w-full items-center justify-between">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-900 via-violet-900 to-orange-600 hover:scale-110 ease-in duration-300" />
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-red-500 hover:scale-110 ease-in duration-300" />
               <div
                 onClick={handleNav}
                 className="p-3 cursor-pointer hover:scale-110 ease-in duration-300"
@@ -109,7 +112,7 @@ export const Navbar = () => {
                 <AiOutlineClose />
               </div>
             </div>
-            <div className="border-b border-gray-300 my-4 uppercase text-sm tracking-widest text-gray-600 mt-12">
+            <div className="border-b my-4 uppercase text-sm tracking-widest mt-12">
               <p className="w-[85%] md:w-[90%] py-4">
                 Let&#39;s build something together
               </p>
@@ -118,38 +121,53 @@ export const Navbar = () => {
           <div className="py-4 flex flex-col">
             <ul className="uppercase">
               <Link href="/">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
+                >
                   Home
                 </li>
               </Link>
               <Link href="/#about">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
+                >
                   About
                 </li>
               </Link>
               <Link href="/#skills">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
+                >
                   Skills
                 </li>
               </Link>
               <Link href="/#projects">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
+                >
                   Projects
                 </li>
               </Link>
               <Link href="/#contact">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
+                >
                   Contact
                 </li>
               </Link>
             </ul>
-            <div className="pt-4">
-              <p className="uppercase tracking-widest text-orange-600">
+            <div className="border-t my-4 pt-4">
+              <p className="uppercase tracking-widest">
                 Let&#39;s Connect
               </p>
               <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
                 <a
-                  className="text-gray-400 hover:text-gray-900 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+                  className="hover:text-red-400 p-3 cursor-pointer hover:scale-125 ease-in duration-300"
                   href="https://www.linkedin.com/in/trevormathiak/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -159,7 +177,7 @@ export const Navbar = () => {
                   </div>
                 </a>
                 <a
-                  className="text-gray-400 hover:text-gray-900 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+                  className="hover:text-red-400 p-3 cursor-pointer hover:scale-125 ease-in duration-300"
                   href="https://github.com/trroev/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -169,7 +187,7 @@ export const Navbar = () => {
                   </div>
                 </a>
                 <a
-                  className="text-gray-400 hover:text-gray-900 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+                  className="hover:text-red-400 p-3 cursor-pointer hover:scale-125 ease-in duration-300"
                   href="/pdf/Trevor_Mathiak_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
