@@ -13,6 +13,7 @@ export const Footer = () => {
           href="https://www.linkedin.com/in/trevormathiak/"
           target="_blank"
           rel="noreferrer"
+          aria-label="Trevor Mathiak LinkedIn page"
         >
           <div className="w-5 h-5">
             <FaLinkedinIn />
@@ -24,6 +25,7 @@ export const Footer = () => {
           href="https://github.com/trroev/"
           target="_blank"
           rel="noreferrer"
+          aria-label="Trevor Mathiak Github page"
         >
           <div className="w-5 h-5">
             <FaGithub />
@@ -35,6 +37,7 @@ export const Footer = () => {
           href="/pdf/Trevor_Mathiak_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Trevor Mathiak resume"
         >
           <div className="w-5 h-5">
             <AiOutlineFileText />

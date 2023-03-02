@@ -22,6 +22,7 @@ export const Main = () => {
               href="https://www.linkedin.com/in/trevormathiak/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Trevor Mathiak LinkedIn page"
             >
               <div>
                 <FaLinkedinIn />
@@ -32,6 +33,7 @@ export const Main = () => {
               href="https://github.com/trroev/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Trevor Mathiak Github page"
             >
               <div>
                 <FaGithub />
@@ -42,6 +44,7 @@ export const Main = () => {
               href="/pdf/Trevor_Mathiak_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Trevor Mathiak resume"
             >
               <div>
                 <AiOutlineFileText />
