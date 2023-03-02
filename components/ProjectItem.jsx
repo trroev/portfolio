@@ -15,8 +15,8 @@ export const ProjectItem = ({ title, img, tech, projectUrl }) => {
         </h3>
         <p className="pb-4 pt-2 text-white text-center">{tech}</p>
         <Link href={projectUrl}>
-          <p className="py-4 text-center rounded-lg bg-white text-[#141414] font-bold text-lg cursor-pointer hover:bg-white/75 ease-in duration-300">
-            More Info
+          <p className="py-4 text-center rounded-lg bg-white text-[#141414] font-bold text-md cursor-pointer hover:bg-white/75 ease-in duration-300">
+            Project Information
           </p>
         </Link>
       </div>
