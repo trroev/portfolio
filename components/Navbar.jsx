@@ -42,36 +42,26 @@ export const Navbar = () => {
   return (
     <div className="fixed w-full h-20 z-[100] bg-[#141414] border-b border-white/50">
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
-        <Link href="/">
+        <Link href="/" aria-label="Link to home page">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-200 to-red-600 hover:scale-110 ease-in duration-300 cursor-pointer" />
         </Link>
         <div>
           <ul className="hidden md:flex">
-            <Link href="/">
-              <li className="ml-10 text-sm uppercase hover:border-b">
-                Home
-              </li>
-            </Link>
-            <Link href="/#about">
-              <li className="ml-10 text-sm uppercase hover:border-b">
-                About
-              </li>
-            </Link>
-            <Link href="/#skills">
-              <li className="ml-10 text-sm uppercase hover:border-b">
-                Skills
-              </li>
-            </Link>
-            <Link href="/#projects">
-              <li className="ml-10 text-sm uppercase hover:border-b">
-                Projects
-              </li>
-            </Link>
-            <Link href="/#contact">
-              <li className="ml-10 text-sm uppercase hover:border-b">
-                Contact
-              </li>
-            </Link>
+            <li className="ml-10 text-sm uppercase hover:border-b">
+              <Link href="/">Home</Link>
+            </li>
+            <li className="ml-10 text-sm uppercase hover:border-b">
+              <Link href="/#about">About</Link>
+            </li>
+            <li className="ml-10 text-sm uppercase hover:border-b">
+              <Link href="/#skills">Skills</Link>
+            </li>
+            <li className="ml-10 text-sm uppercase hover:border-b">
+              <Link href="/#projects">Projects</Link>
+            </li>
+            <li className="ml-10 text-sm uppercase hover:border-b">
+              <Link href="/#contact">Contact</Link>
+            </li>
           </ul>
           <div
             onClick={handleNav}
@@ -113,46 +103,36 @@ export const Navbar = () => {
           </div>
           <div className="py-4 flex flex-col">
             <ul className="uppercase">
-              <Link href="/">
-                <li
-                  onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
-                >
-                  Home
-                </li>
-              </Link>
-              <Link href="/#about">
-                <li
-                  onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
-                >
-                  About
-                </li>
-              </Link>
-              <Link href="/#skills">
-                <li
-                  onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
-                >
-                  Skills
-                </li>
-              </Link>
-              <Link href="/#projects">
-                <li
-                  onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
-                >
-                  Projects
-                </li>
-              </Link>
-              <Link href="/#contact">
-                <li
-                  onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
-                >
-                  Contact
-                </li>
-              </Link>
+              <li
+                onClick={() => setNav(false)}
+                className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
+              >
+                <Link href="/">Home</Link>
+              </li>
+              <li
+                onClick={() => setNav(false)}
+                className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
+              >
+                <Link href="/#about">About</Link>
+              </li>
+              <li
+                onClick={() => setNav(false)}
+                className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
+              >
+                <Link href="/#skills">Skills</Link>
+              </li>
+              <li
+                onClick={() => setNav(false)}
+                className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
+              >
+                <Link href="/#projects">Projects</Link>
+              </li>
+              <li
+                onClick={() => setNav(false)}
+                className="py-4 text-sm hover:text-red-400 hover:ease-in duration-300"
+              >
+                <Link href="/#contact">Contact</Link>
+              </li>
             </ul>
             <div className="border-t my-4 pt-4">
               <p className="uppercase tracking-widest">

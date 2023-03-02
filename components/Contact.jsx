@@ -107,7 +107,7 @@ export const Contact = () => {
                   <input
                     className="border rounded-lg p-3 flex border-gray-400"
                     type="text"
-                    name="name"
+                    id="name"
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
@@ -129,7 +129,7 @@ export const Contact = () => {
                   <input
                     className="border rounded-lg p-3 flex border-gray-400"
                     type="text"
-                    name="number"
+                    id="number"
                     value={number}
                     onChange={(e) => {
                       setNumber(e.target.value);
@@ -148,7 +148,7 @@ export const Contact = () => {
                 <input
                   className="border rounded-lg p-3 flex border-gray-400"
                   type="Email"
-                  name="email"
+                  id="email"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -170,7 +170,7 @@ export const Contact = () => {
                 <input
                   className="border rounded-lg p-3 flex border-gray-400"
                   type="text"
-                  name="subject"
+                  id="subject"
                   value={subject}
                   onChange={(e) => {
                     setSubject(e.target.value);
@@ -188,7 +188,7 @@ export const Contact = () => {
                 <textarea
                   className="border rounded-lg p-3 border-gray-400"
                   rows="10"
-                  name="message"
+                  id="message"
                   value={message}
                   onChange={(e) => {
                     setMessage(e.target.value);
