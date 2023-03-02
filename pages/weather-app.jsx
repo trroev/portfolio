@@ -16,7 +16,7 @@ const weatherApp = () => {
           src={weatherImg}
           alt="/"
         />
-        <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-4">
+        <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 p-4">
           <h2 className="py-2">Weather App</h2>
           <h3>React.js</h3>
         </div>
@@ -26,9 +26,10 @@ const weatherApp = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            This was a simple vanilla JavaScript project to help strengthen my
-            knowledge with implementing APIs. This app uses the OpenWeather API
-            to let a user input any city and get the current weather in return.
+            This was a simple vanilla JavaScript project to help
+            strengthen my knowledge with implementing APIs. This app
+            uses the OpenWeather API to let a user input any city and
+            get the current weather in return.
           </p>
           <a
             href="https://trroev.github.io/weather-app/"
@@ -52,19 +53,19 @@ const weatherApp = () => {
             </button>
           </a>
         </div>
-        <div className="col-span-4 md:col-span-2 shadow-xl shadow-gray-400 rounded-xl p-4">
+        <div className="col-span-4 md:col-span-2 rounded-xl p-4 border">
           <div className="p-2">
             <p className="text-center font-bold pb-2">Technologies</p>
             <div className="grid grid-cols-2 md:grid-cols-1">
-              <p className="text-gray-600 py-2 flex items-center">
+              <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
                 JavaScript
               </p>
-              <p className="text-gray-600 py-2 flex items-center">
+              <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
                 OpenWeatherAPI
               </p>
-              <p className="text-gray-600 py-2 flex items-center">
+              <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
                 npm
               </p>

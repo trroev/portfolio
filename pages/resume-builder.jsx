@@ -16,7 +16,7 @@ const resumeApp = () => {
           src={resumeImg}
           alt="/"
         />
-        <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-4">
+        <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 p-4">
           <h2 className="py-2">Resume Builder</h2>
           <h3>React.js</h3>
         </div>
@@ -26,12 +26,13 @@ const resumeApp = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            This was a fun little project for my first foray in to learning
-            React. Using functional components and React Hooks made the code
-            look much cleaner and easier to read and follow in my opinion. It
-            was a struggle for me to figure out how to properly use props to get
-            the user input to render in the resume preview, but once I figured
-            that out, it was smooth sailing.
+            This was a fun little project for my first foray in to
+            learning React. Using functional components and React
+            Hooks made the code look much cleaner and easier to read
+            and follow in my opinion. It was a struggle for me to
+            figure out how to properly use props to get the user input
+            to render in the resume preview, but once I figured that
+            out, it was smooth sailing.
           </p>
           <a
             href="https://trroev.github.io/resume-app/"
@@ -55,19 +56,19 @@ const resumeApp = () => {
             </button>
           </a>
         </div>
-        <div className="col-span-4 md:col-span-2 shadow-xl shadow-gray-400 rounded-xl p-4">
+        <div className="col-span-4 md:col-span-2 rounded-xl p-4 border">
           <div className="p-2">
             <p className="text-center font-bold pb-2">Technologies</p>
             <div className="grid grid-cols-2 md:grid-cols-1">
-              <p className="text-gray-600 py-2 flex items-center">
+              <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
                 React.js
               </p>
-              <p className="text-gray-600 py-2 flex items-center">
+              <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
                 Git
               </p>
-              <p className="text-gray-600 py-2 flex items-center">
+              <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
                 npm
               </p>

@@ -26,11 +26,12 @@ const memoryGame = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            This was a fun app to build to get more familiar with hooks,
-            especially useEffect. I learned that it seems a little easier to
-            create css style components as well, rather than one large css file.
-            Using logical comparisons in a prop and also a ternary operator for
-            a jsx className were both new to me as well.
+            This was a fun app to build to get more familiar with
+            hooks, especially useEffect. I learned that it seems a
+            little easier to create css style components as well,
+            rather than one large css file. Using logical comparisons
+            in a prop and also a ternary operator for a jsx className
+            were both new to me as well.
           </p>
           <a
             href="https://trroev.github.io/memory-game/"
@@ -54,19 +55,19 @@ const memoryGame = () => {
             </button>
           </a>
         </div>
-        <div className="col-span-4 md:col-span-2 shadow-xl shadow-gray-400 rounded-xl p-4">
+        <div className="col-span-4 md:col-span-2 rounded-xl p-4 border">
           <div className="p-2">
             <p className="text-center font-bold pb-2">Technologies</p>
             <div className="grid grid-cols-2 md:grid-cols-1">
-              <p className="text-gray-600 py-2 flex items-center">
+              <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
                 React.js
               </p>
-              <p className="text-gray-600 py-2 flex items-center">
+              <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
                 Git
               </p>
-              <p className="text-gray-600 py-2 flex items-center">
+              <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
                 npm
               </p>

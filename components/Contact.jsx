@@ -220,7 +220,7 @@ export const Contact = () => {
         </div>
         <div className="flex justify-center py-12">
           <Link href="/">
-            <div className="rounded-full shadow-md shadow-gray-600 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+            <div className="rounded-full p-4 cursor-pointer hover:scale-110 ease-in duration-300 border border-white/50">
               <HiOutlineChevronDoubleUp
                 className="text-red-400"
                 size={30}

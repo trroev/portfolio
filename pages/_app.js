@@ -1,8 +1,14 @@
 import { Analytics } from "@vercel/analytics/react";
 import "../styles/globals.css";
+import { Work_Sans } from "next/font/google";
 import Head from "next/head";
 import favicon from "../public/favicon.ico";
 import { Navbar } from "../components/Navbar";
+
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  variable: "--font-workSans",
+});
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -19,9 +25,11 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="icon" href={favicon.src} />
       </Head>
-      <Navbar />
-      <Component {...pageProps} />
-      <Analytics />
+      <main className={`${workSans.variable} font-sans`}>
+        <Navbar />
+        <Component {...pageProps} />
+        <Analytics />
+      </main>
     </>
   );
 }
