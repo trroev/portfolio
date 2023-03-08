@@ -163,7 +163,7 @@ export const Navbar = () => {
                 </a>
                 <a
                   className="hover:text-red-400 p-3 cursor-pointer hover:scale-125 ease-in duration-300"
-                  href="/pdf/trevor_mathiak_resume.pdf"
+                  href="/pdf/Trevor_Mathiak_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Trevor Mathiak resume"
