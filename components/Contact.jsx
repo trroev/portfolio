@@ -92,7 +92,7 @@ export const Contact = () => {
           I&#39;m available for freelance or full-time positions. Send
           me a message and let&#39;s talk.
         </p>
-        <div className="w-full h-autoounded-xl lg:p-4">
+        <div className="w-full h-auto rounded-xl lg:p-4">
           <div className="p-4">
             <form onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-4 w-full py-2">
