@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import headshot from "../public/trevor_headshot.png";
 
 export const About = () => {
   return (
@@ -42,9 +40,6 @@ export const About = () => {
             </p>
           </div>
         </div>
-        {/* <div className="flex items-center justify-center p-4 hover:scale-105 ease-in duration-300">
-          <Image src={headshot} alt="headshot of Trevor Mathiak" />
-        </div> */}
       </div>
     </div>
   );
