@@ -9,7 +9,13 @@ import tailwindSVG from "../public/svg/tailwindcss.svg";
 import npmSVG from "../public/svg/npm.svg";
 import gitSVG from "../public/svg/git.svg";
 
-const SkillBadge = ({ svg, name, className }) => {
+type SkillBadgeProps = {
+  svg: string;
+  name: string;
+  className?: string;
+};
+
+const SkillBadge = ({ svg, name, className }: SkillBadgeProps) => {
   return (
     <Image
       src={svg}

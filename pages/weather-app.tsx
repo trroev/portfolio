@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import weatherImg from "../public/assets/projects/weather-app.png";
 import { RiRadioButtonFill } from "react-icons/ri";
 

@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import memoryImg from "../public/assets/projects/memory-game.png";
+import resumeImg from "../public/assets/projects/resume-app.png";
 import { RiRadioButtonFill } from "react-icons/ri";
 
-const memoryGame = () => {
+const resumeApp = () => {
   return (
     <div className="w-full">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
@@ -13,11 +12,11 @@ const memoryGame = () => {
           className="absolute z-1"
           layout="fill"
           objectFit="cover"
-          src={memoryImg}
+          src={resumeImg}
           alt="/"
         />
-        <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-4">
-          <h2 className="py-2">Memory Game</h2>
+        <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 p-4">
+          <h2 className="py-2">Resume Builder</h2>
           <h3>React.js</h3>
         </div>
       </div>
@@ -26,15 +25,16 @@ const memoryGame = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            This was a fun app to build to get more familiar with
-            hooks, especially useEffect. I learned that it seems a
-            little easier to create css style components as well,
-            rather than one large css file. Using logical comparisons
-            in a prop and also a ternary operator for a jsx className
-            were both new to me as well.
+            This was a fun little project for my first foray in to
+            learning React. Using functional components and React
+            Hooks made the code look much cleaner and easier to read
+            and follow in my opinion. It was a struggle for me to
+            figure out how to properly use props to get the user input
+            to render in the resume preview, but once I figured that
+            out, it was smooth sailing.
           </p>
           <a
-            href="https://trroev.github.io/memory-game/"
+            href="https://trroev.github.io/resume-app/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -43,7 +43,7 @@ const memoryGame = () => {
             </button>
           </a>
           <a
-            href="https://github.com/trroev/memory-game"
+            href="https://github.com/trroev/resume-app"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -82,4 +82,4 @@ const memoryGame = () => {
   );
 };
 
-export default memoryGame;
+export default resumeApp;

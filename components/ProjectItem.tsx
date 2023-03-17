@@ -1,7 +1,19 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
-export const ProjectItem = ({ title, img, tech, projectUrl }) => {
+type ProjectItemProps = {
+  title: string;
+  img: StaticImageData;
+  tech: string;
+  projectUrl: string;
+};
+
+export const ProjectItem = ({
+  title,
+  img,
+  tech,
+  projectUrl,
+}: ProjectItemProps) => {
   return (
     <div className="relative flex items-center justify-center h-auto w-full rounded-xl p-4 group">
       <Image

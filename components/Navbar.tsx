@@ -9,25 +9,14 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { useRouter } from "next/router";
 
 export const Navbar = () => {
-  const [nav, setNav] = useState(false);
-  const [shadow, setShadow] = useState(false);
-  const [navBackground, setNavBackground] = useState("");
+  const [nav, setNav] = useState<boolean>(false);
+  const [navBackground, setNavBackground] =
+    useState<string>("#141414");
   const router = useRouter();
 
   const handleNav = () => {
     setNav(!nav);
   };
-
-  useEffect(() => {
-    const handleShadow = () => {
-      if (window.scrollY >= 90) {
-        setShadow(true);
-      } else {
-        setShadow(false);
-      }
-    };
-    window.addEventListener("scroll", handleShadow);
-  }, []);
 
   useEffect(() => {
     if (
@@ -36,11 +25,16 @@ export const Navbar = () => {
       router.asPath === "/weather-app"
     ) {
       setNavBackground("transparent");
+    } else {
+      setNavBackground("#141414");
     }
   }, [router]);
 
   return (
-    <div className="fixed w-full h-20 z-[100] bg-[#141414] border-b border-white/50">
+    <div
+      style={{ backgroundColor: `${navBackground}` }}
+      className="fixed w-full h-20 z-[100] border-b border-white/50"
+    >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
         <Link href="/" aria-label="Link to home page">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-200 to-red-600 hover:scale-110 ease-in duration-300 cursor-pointer" />
