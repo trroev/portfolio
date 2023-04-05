@@ -4,35 +4,14 @@ import type { AppProps } from "next/app";
 import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
 import { Navbar } from "../components/Navbar";
-import Error from "next/error";
-import Script from "next/script";
-import * as gtag from "../utils/ga";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
   variable: "--font-workSans",
 });
 
-function MyApp({
-  Component,
-  pageProps,
-  err,
-}: AppProps & { err: Error }) {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -71,26 +50,8 @@ function MyApp({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}
-      />
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.GA_MEASUREMENT_ID}', {
-              page_path: window.location.pathname,
-              send_page_view: false,
-            });
-          `,
-        }}
-      />
       <main className={`${workSans.variable} font-sans`}>
+        <GoogleAnalytics />
         <Navbar />
         <Component {...pageProps} />
         <Analytics />
