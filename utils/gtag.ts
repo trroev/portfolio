@@ -1,4 +1,5 @@
-export const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID;
+export const GA_MEASUREMENT_ID = process.env
+  .GA_MEASUREMENT_ID as string;
 
 export const pageview = (url: URL): void => {
   window.gtag("config", GA_MEASUREMENT_ID, {
