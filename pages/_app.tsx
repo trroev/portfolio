@@ -4,14 +4,30 @@ import type { AppProps } from "next/app";
 import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
 import { Navbar } from "../components/Navbar";
-import GoogleAnalytics from "../components/GoogleAnalytics";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import * as gtag from "../utils/gtag";
+
+const isProd = process.env.NODE_ENV === "production";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
   variable: "--font-workSans",
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      if (isProd) gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <>
       <Head>
@@ -51,7 +67,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <main className={`${workSans.variable} font-sans`}>
-        <GoogleAnalytics />
         <Navbar />
         <Component {...pageProps} />
         <Analytics />
