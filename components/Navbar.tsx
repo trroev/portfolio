@@ -20,6 +20,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     if (
+      router.asPath === "/guided-growth" ||
       router.asPath === "/memory-game" ||
       router.asPath === "/resume-builder" ||
       router.asPath === "/weather-app"

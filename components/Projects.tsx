@@ -1,4 +1,5 @@
 import { ProjectItem } from "./ProjectItem";
+import guidedGrowthImg from "../public/assets/projects/screenshot.webp";
 import memoryImg from "../public/assets/projects/memory-game.png";
 import resumeImg from "../public/assets/projects/resume-app.png";
 import weatherImg from "../public/assets/projects/weather-app.png";
@@ -12,6 +13,12 @@ export const Projects = () => {
         </p>
         <h2 className="py-4">What I&#39;ve Built</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ProjectItem
+            title="Guided Growth with Rachael"
+            img={guidedGrowthImg}
+            tech="Next.js, TailwindCSS, SendGrid, Formik"
+            projectUrl="/guided-growth"
+          />
           <ProjectItem
             title="Memory Game"
             img={memoryImg}

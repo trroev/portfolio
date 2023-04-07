@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import weatherImg from "../public/assets/projects/weather-app.png";
+import guidedGrowthImg from "../public/assets/projects/screenshot.webp";
 import { RiRadioButtonFill } from "react-icons/ri";
 
-const weatherApp = () => {
+const memoryGame = () => {
   return (
     <div className="w-full">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
@@ -12,11 +12,11 @@ const weatherApp = () => {
           className="absolute z-1"
           fill
           style={{ objectFit: "cover" }}
-          src={weatherImg}
+          src={guidedGrowthImg}
           alt="/"
         />
-        <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 p-4">
-          <h2 className="py-2">Weather App</h2>
+        <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-4">
+          <h2 className="py-2">Memory Game</h2>
           <h3>React.js</h3>
         </div>
       </div>
@@ -25,13 +25,17 @@ const weatherApp = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            This was a simple vanilla JavaScript project to help
-            strengthen my knowledge with implementing APIs. This app
-            uses the OpenWeather API to let a user input any city and
-            get the current weather in return.
+            One of my first freelance projects. I built this website
+            using Next.js with TypeScript and TailwindCSS. I also
+            utilized Formik to make the contact form, and the SendGrid
+            email API to handle the contact form submission. This was
+            my first time working with a client, and it was a good
+            experience to get feedback in real time. While building, I
+            learned that converting images to the .webp format is best
+            practice.
           </p>
           <a
-            href="https://trroev.github.io/weather-app/"
+            href="https://trroev.github.io/memory-game/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -40,7 +44,7 @@ const weatherApp = () => {
             </button>
           </a>
           <a
-            href="https://github.com/trroev/weather-app"
+            href="https://github.com/trroev/memory-game"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -58,15 +62,23 @@ const weatherApp = () => {
             <div className="grid grid-cols-2 md:grid-cols-1">
               <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                JavaScript
+                TypeScript
               </p>
               <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                OpenWeatherAPI
+                Next.js
               </p>
               <p className="py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                npm
+                TailwindCSS
+              </p>
+              <p className="py-2 flex items-center">
+                <RiRadioButtonFill className="pr-1" />
+                SendGrid
+              </p>
+              <p className="py-2 flex items-center">
+                <RiRadioButtonFill className="pr-1" />
+                Formik
               </p>
             </div>
           </div>
@@ -79,4 +91,4 @@ const weatherApp = () => {
   );
 };
 
-export default weatherApp;
+export default memoryGame;
