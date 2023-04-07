@@ -35,7 +35,7 @@ const memoryGame = () => {
             practice.
           </p>
           <a
-            href="https://trroev.github.io/memory-game/"
+            href="https://www.rachaelmathiak.com"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -44,7 +44,7 @@ const memoryGame = () => {
             </button>
           </a>
           <a
-            href="https://github.com/trroev/memory-game"
+            href="https://github.com/trroev/guided-growth-with-rachael"
             target="_blank"
             rel="noopener noreferrer"
           >
