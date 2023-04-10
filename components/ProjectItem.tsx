@@ -4,6 +4,7 @@ import Link from "next/link";
 type ProjectItemProps = {
   title: string;
   img: StaticImageData;
+  alt: string;
   tech: string;
   projectUrl: string;
 };
@@ -11,6 +12,7 @@ type ProjectItemProps = {
 export const ProjectItem = ({
   title,
   img,
+  alt,
   tech,
   projectUrl,
 }: ProjectItemProps) => {
@@ -19,7 +21,8 @@ export const ProjectItem = ({
       <Image
         className="rounded-xl group-hover:opacity-10"
         src={img}
-        alt="/"
+        alt={alt}
+        placeholder="blur"
       />
       <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
         <h3 className="text-2xl tracking-wider text-center">

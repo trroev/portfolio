@@ -13,7 +13,8 @@ const weatherApp = () => {
           fill
           style={{ objectFit: "cover" }}
           src={weatherImg}
-          alt="/"
+          alt="Screenshot for weather app"
+          placeholder="blur"
         />
         <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 p-4">
           <h2 className="py-2">Weather App</h2>

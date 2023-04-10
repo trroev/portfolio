@@ -16,24 +16,28 @@ export const Projects = () => {
           <ProjectItem
             title="Guided Growth with Rachael"
             img={guidedGrowthImg}
+            alt="Screenshot of landing page for rachaelmathiak.com"
             tech="Next.js, TailwindCSS, SendGrid, Formik"
             projectUrl="/guided-growth"
           />
           <ProjectItem
             title="Memory Game"
             img={memoryImg}
+            alt="Screenshot for memory game app"
             tech="React.js"
             projectUrl="/memory-game"
           />
           <ProjectItem
             title="Resume Builder"
             img={resumeImg}
+            alt="Screenshot for resume builder app"
             tech="React.js"
             projectUrl="/resume-builder"
           />
           <ProjectItem
             title="Weather App"
             img={weatherImg}
+            alt="Screenshot for weather app"
             tech="JavaScript, OpenWeatherAPI"
             projectUrl="/weather-app"
           />

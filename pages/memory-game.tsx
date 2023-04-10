@@ -13,7 +13,8 @@ const memoryGame = () => {
           fill
           style={{ objectFit: "cover" }}
           src={memoryImg}
-          alt="/"
+          alt="Screenshot for memory game app"
+          placeholder="blur"
         />
         <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-4">
           <h2 className="py-2">Memory Game</h2>
