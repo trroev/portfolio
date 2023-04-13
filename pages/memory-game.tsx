@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import memoryImg from "../public/assets/projects/memory-game.png";
-import { RiRadioButtonFill } from "react-icons/ri";
+import { Icons } from "../components/Icons";
 
 const memoryGame = () => {
   return (
@@ -60,15 +60,27 @@ const memoryGame = () => {
             <p className="text-center font-bold pb-2">Technologies</p>
             <div className="grid grid-cols-2 md:grid-cols-1">
               <p className="py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
                 React.js
               </p>
               <p className="py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
                 Git
               </p>
               <p className="py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
                 npm
               </p>
             </div>

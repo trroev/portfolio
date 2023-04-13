@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import weatherImg from "../public/assets/projects/weather-app.png";
-import { RiRadioButtonFill } from "react-icons/ri";
+import { Icons } from "../components/Icons";
 
 const weatherApp = () => {
   return (
@@ -58,15 +58,27 @@ const weatherApp = () => {
             <p className="text-center font-bold pb-2">Technologies</p>
             <div className="grid grid-cols-2 md:grid-cols-1">
               <p className="py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
                 JavaScript
               </p>
               <p className="py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
                 OpenWeatherAPI
               </p>
               <p className="py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
                 npm
               </p>
             </div>

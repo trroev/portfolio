@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Icons } from "./icons";
+import { Icons } from "./Icons";
 import { useRouter } from "next/router";
 
 export const Navbar = () => {

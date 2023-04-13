@@ -1,4 +1,5 @@
 import {
+  Box,
   ChevronsUp,
   Github,
   Linkedin,
@@ -11,6 +12,7 @@ import {
 export type Icon = LucideIcon;
 
 export const Icons = {
+  box: Box,
   close: X,
   doubleUp: ChevronsUp,
   gitHub: Github,
