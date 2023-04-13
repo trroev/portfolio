@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import {
-  AiOutlineMenu,
-  AiOutlineClose,
-  AiOutlineFileText,
-} from "react-icons/ai";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { Icons } from "./icons";
 import { useRouter } from "next/router";
 
 export const Navbar = () => {
@@ -62,7 +57,7 @@ export const Navbar = () => {
             onClick={handleNav}
             className="px-4 md:hidden cursor-pointer hover:text-red-400 hover:scale-110 ease-in duration-300"
           >
-            <AiOutlineMenu size={25} />
+            <Icons.menu strokeWidth={1.5} />
           </div>
         </div>
       </div>
@@ -85,9 +80,9 @@ export const Navbar = () => {
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-200 to-red-600 hover:scale-110 ease-in duration-300" />
               <div
                 onClick={handleNav}
-                className="p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+                className="p-3 cursor-pointer hover:text-red-400 hover:scale-110 ease-in duration-300"
               >
-                <AiOutlineClose />
+                <Icons.close strokeWidth={1.5} />
               </div>
             </div>
             <div className="border-b my-4 uppercase text-sm tracking-widest mt-12">
@@ -142,7 +137,7 @@ export const Navbar = () => {
                   aria-label="Trevor Mathiak LinkedIn page"
                 >
                   <div>
-                    <FaLinkedinIn />
+                    <Icons.linkedIn strokeWidth={1.5} />
                   </div>
                 </a>
                 <a
@@ -153,7 +148,7 @@ export const Navbar = () => {
                   aria-label="Trevor Mathiak Github page"
                 >
                   <div>
-                    <FaGithub />
+                    <Icons.gitHub strokeWidth={1.5} />
                   </div>
                 </a>
                 <a
@@ -164,7 +159,7 @@ export const Navbar = () => {
                   aria-label="Trevor Mathiak resume"
                 >
                   <div>
-                    <AiOutlineFileText />
+                    <Icons.resume strokeWidth={1.5} />
                   </div>
                 </a>
               </div>

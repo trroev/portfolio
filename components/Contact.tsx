@@ -1,4 +1,4 @@
-import { HiOutlineChevronDoubleUp } from "react-icons/hi";
+import { Icons } from "./icons";
 import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
@@ -185,9 +185,10 @@ export const Contact = () => {
         <div className="flex justify-center py-12">
           <Link href="/" aria-label="return to the top of the page">
             <div className="rounded-full p-4 cursor-pointer hover:scale-110 ease-in duration-300 border border-white/50">
-              <HiOutlineChevronDoubleUp
+              <Icons.doubleUp
                 className="text-red-400"
                 size={30}
+                strokeWidth={1.5}
               />
             </div>
           </Link>

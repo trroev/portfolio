@@ -1,5 +1,4 @@
-import { AiOutlineFileText } from "react-icons/ai";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { Icons } from "./icons";
 
 export const Main = () => {
   return (
@@ -25,7 +24,7 @@ export const Main = () => {
               aria-label="Trevor Mathiak LinkedIn page"
             >
               <div>
-                <FaLinkedinIn />
+                <Icons.linkedIn strokeWidth={1.5} />
               </div>
             </a>
             <a
@@ -36,7 +35,7 @@ export const Main = () => {
               aria-label="Trevor Mathiak Github page"
             >
               <div>
-                <FaGithub />
+                <Icons.gitHub strokeWidth={1.5} />
               </div>
             </a>
             <a
@@ -47,7 +46,7 @@ export const Main = () => {
               aria-label="Trevor Mathiak resume"
             >
               <div>
-                <AiOutlineFileText />
+                <Icons.resume strokeWidth={1.5} />
               </div>
             </a>
           </div>

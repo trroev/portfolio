@@ -1,5 +1,4 @@
-import { AiOutlineFileText } from "react-icons/ai";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { Icons } from "./icons";
 
 export const Footer = () => {
   return (
@@ -16,7 +15,7 @@ export const Footer = () => {
           aria-label="Trevor Mathiak LinkedIn page"
         >
           <div className="w-5 h-5">
-            <FaLinkedinIn />
+            <Icons.linkedIn strokeWidth={1.5} />
           </div>
           <span className="sr-only">Linkedin page</span>
         </a>
@@ -28,7 +27,7 @@ export const Footer = () => {
           aria-label="Trevor Mathiak Github page"
         >
           <div className="w-5 h-5">
-            <FaGithub />
+            <Icons.gitHub strokeWidth={1.5} />
           </div>
           <span className="sr-only">Github page</span>
         </a>
@@ -40,7 +39,7 @@ export const Footer = () => {
           aria-label="Trevor Mathiak resume"
         >
           <div className="w-5 h-5">
-            <AiOutlineFileText />
+            <Icons.resume strokeWidth={1.5} />
           </div>
           <span className="sr-only">Resume</span>
         </a>
