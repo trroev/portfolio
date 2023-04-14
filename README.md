@@ -11,6 +11,7 @@
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
 - [TailwindCSS](https://tailwindcss.com/)
+- [Lucide](https://lucide.dev/)
 
 ## Getting Started:
 

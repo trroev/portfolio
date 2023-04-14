@@ -33,7 +33,7 @@ export const About = () => {
             <p className="py-2">
               Check out some of my latest{" "}
               <Link href="/#projects">
-                <span className="cursor-pointer text-red-400">
+                <span className="cursor-pointer text-red-400 hover:underline">
                   projects
                 </span>
               </Link>

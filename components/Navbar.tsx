@@ -40,9 +40,9 @@ export const Navbar = () => {
   }, [router]);
 
   return (
-    <div
+    <header
       style={{ backgroundColor: `${navBackground}` }}
-      className="fixed w-full h-20 z-[100] border-b border-white/50"
+      className="fixed w-full h-20 z-[100]  border-b border-slate-300"
     >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
         <Link href="/" aria-label="Link to home page">
@@ -161,6 +161,6 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
