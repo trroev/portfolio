@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import resumeImg from "../public/assets/projects/resume-app.png";
+import resumeImg from "../public/assets/projects/resume-app.webp";
 import { Icons } from "../components/Icons";
 
 const resumeApp = () => {

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import weatherImg from "../public/assets/projects/weather-app.png";
+import weatherImg from "../public/assets/projects/weather-app.webp";
 import { Icons } from "../components/Icons";
 
 const weatherApp = () => {

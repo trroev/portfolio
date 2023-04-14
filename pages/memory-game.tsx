@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import memoryImg from "../public/assets/projects/memory-game.png";
+import memoryImg from "../public/assets/projects/memory-game.webp";
 import { Icons } from "../components/Icons";
 
 const memoryGame = () => {
