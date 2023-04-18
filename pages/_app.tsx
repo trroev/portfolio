@@ -77,28 +77,21 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/apple-touch-icon.png"
+          href={siteConfig.icons.apple}
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
+        <link rel="icon" href={siteConfig.icons.favicon} />
+        <link rel="shortcut icon" href={siteConfig.icons.shortcut} />
+        <link rel="manifest" href={siteConfig.manifest} />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content="white"
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content="black"
         />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link
-          rel="mask-icon"
-          href="/safari-pinned-tab.svg"
-          color="#5bbad5"
-        />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
       </Head>
       <main className={`${workSans.variable} font-sans`}>
         <Navbar />

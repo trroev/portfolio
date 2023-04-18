@@ -12,6 +12,12 @@ interface SiteConfig {
     image: string;
     type: string;
   };
+  icons: {
+    favicon: string;
+    shortcut: string;
+    apple: string;
+  };
+  manifest: string;
 }
 
 export const siteConfig: SiteConfig = {
@@ -31,4 +37,10 @@ export const siteConfig: SiteConfig = {
     image: "https://trevormathiak.dev/screenshot.jpg",
     type: "website",
   },
+  icons: {
+    favicon: "/favicon/favicon.ico",
+    shortcut: "/favicon/favicon-16x16.png",
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
