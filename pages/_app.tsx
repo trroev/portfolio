@@ -64,7 +64,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <meta property="og:image:height" content="630" />
         <meta
           property="og:image:alt"
-          content="Trevor Mathiak | Full Stack Developer"
+          content={siteConfig.openGraph.title}
         />
         <meta
           property="og:type"
