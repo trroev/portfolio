@@ -57,6 +57,10 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
           content={siteConfig.openGraph.site_name}
         />
         <meta
+          property="og:image:secure_url"
+          content={siteConfig.openGraph.image}
+        />
+        <meta
           property="og:image"
           content={siteConfig.openGraph.image}
         />
