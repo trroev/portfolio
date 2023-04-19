@@ -18,8 +18,7 @@ const links: LinkType[] = [
 
 export const Navbar = () => {
   const [nav, setNav] = useState<boolean>(false);
-  const [navBackground, setNavBackground] =
-    useState<string>("#141414");
+  const [navBackground, setNavBackground] = useState<string>("");
   const router = useRouter();
 
   const handleNav = () => {
@@ -35,14 +34,14 @@ export const Navbar = () => {
     ) {
       setNavBackground("transparent");
     } else {
-      setNavBackground("#141414");
+      setNavBackground("");
     }
   }, [router]);
 
   return (
     <header
       style={{ backgroundColor: `${navBackground}` }}
-      className="fixed w-full h-20 z-[100]  border-b border-slate-300"
+      className="fixed w-full h-20 z-[100]  border-b border-slate-300 backdrop-blur"
     >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
         <Link href="/" aria-label="Link to home page">
