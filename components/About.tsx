@@ -4,7 +4,7 @@ export const About = () => {
   return (
     <div
       id="about"
-      className="w-full md:h-screen p-2 flex items-center py-16"
+      className="w-full h-screen px-2 py-16 flex items-center"
     >
       <div className="max-w-[1240px] m-auto">
         <div>

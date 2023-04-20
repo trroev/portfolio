@@ -18,31 +18,13 @@ const links: LinkType[] = [
 
 export const Navbar = () => {
   const [nav, setNav] = useState<boolean>(false);
-  const [navBackground, setNavBackground] = useState<string>("");
-  const router = useRouter();
 
   const handleNav = () => {
     setNav(!nav);
   };
 
-  useEffect(() => {
-    if (
-      router.asPath === "/guided-growth" ||
-      router.asPath === "/memory-game" ||
-      router.asPath === "/resume-builder" ||
-      router.asPath === "/weather-app"
-    ) {
-      setNavBackground("transparent");
-    } else {
-      setNavBackground("");
-    }
-  }, [router]);
-
   return (
-    <header
-      style={{ backgroundColor: `${navBackground}` }}
-      className="fixed w-full h-20 z-[100]  border-b border-slate-300 backdrop-blur"
-    >
+    <header className="sticky top-0 w-full h-20 z-[100] bg-[#141414]/75 border-b border-slate-300 backdrop-blur">
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
         <Link href="/" aria-label="Link to home page">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-200 to-red-600 hover:scale-110 ease-in duration-300 cursor-pointer" />
@@ -121,7 +103,7 @@ export const Navbar = () => {
               <p className="uppercase tracking-widest">
                 Let&#39;s Connect
               </p>
-              <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
+              <div className="flex items-center justify-between my-4 w-full sm:justify-around">
                 <a
                   className="hover:text-red-400 p-3 cursor-pointer hover:scale-125 ease-in duration-300"
                   href="https://www.linkedin.com/in/trevormathiak/"

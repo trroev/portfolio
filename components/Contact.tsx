@@ -96,8 +96,8 @@ export const Contact = () => {
   };
 
   return (
-    <div id="contact" className="w-full p-2 mt-10">
-      <div className="max-w-[1240px] mx-auto py-16 w-full">
+    <div id="contact" className="w-full px-2 py-20">
+      <div className="max-w-[1240px] mx-auto w-full">
         <p className="uppercase text-xl tracking-widest text-red-400">
           Contact
         </p>

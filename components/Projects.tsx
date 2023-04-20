@@ -6,7 +6,7 @@ import weatherImg from "../public/assets/projects/weather-app.webp";
 
 export const Projects = () => {
   return (
-    <div id="projects" className="w-full lg:h-screen p-2 mt-10">
+    <div id="projects" className="w-full px-2 py-20">
       <div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
         <p className="uppercase text-xl tracking-widest text-red-400">
           Projects
