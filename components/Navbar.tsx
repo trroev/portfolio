@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Icons } from "./Icons";
-import { useRouter } from "next/router";
 
 interface LinkType {
   text: string;
