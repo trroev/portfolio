@@ -64,7 +64,7 @@ export const Navbar = () => {
           }
         >
           <div>
-            <div className="flex w-full items-center justify-between">
+            <div className="flex w-full items-center justify-between pb-4 border-b">
               <Link href="/" aria-label="Link to home page">
                 <div
                   className="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-200 to-red-600 hover:scale-110 ease-in duration-300"
@@ -77,11 +77,6 @@ export const Navbar = () => {
               >
                 <Icons.close strokeWidth={1.5} />
               </div>
-            </div>
-            <div className="border-b my-4 uppercase text-sm tracking-widest mt-12">
-              <p className="w-[85%] md:w-[90%] py-4">
-                Let&#39;s build something together
-              </p>
             </div>
           </div>
           <div className="py-4 flex flex-col">

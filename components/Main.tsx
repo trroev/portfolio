@@ -13,7 +13,7 @@ export const Main = () => {
             web applications.
           </h1>
           <p className="uppercase text-sm tracking-widest m-6">
-            Let&#39;s build something together
+            Crafting Creative Solutions Through Collaboration
           </p>
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">
             <a
