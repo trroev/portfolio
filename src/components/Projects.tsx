@@ -1,8 +1,8 @@
 import { ProjectItem } from "./ProjectItem";
-import guidedGrowthImg from "../public/assets/projects/screenshot.webp";
-import memoryImg from "../public/assets/projects/memory-game.webp";
-import resumeImg from "../public/assets/projects/resume-app.webp";
-import weatherImg from "../public/assets/projects/weather-app.webp";
+import guidedGrowthImg from "../../public/assets/projects/screenshot.webp";
+import memoryImg from "../../public/assets/projects/memory-game.webp";
+import resumeImg from "../../public/assets/projects/resume-app.webp";
+import weatherImg from "../../public/assets/projects/weather-app.webp";
 
 export const Projects = () => {
   return (

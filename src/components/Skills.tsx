@@ -1,13 +1,13 @@
 import Image from "next/image";
-import javascriptSVG from "../public/svg/javascript.svg";
-import typescriptSVG from "../public/svg/typescript.svg";
-import mongoDBSVG from "../public/svg/mongodb.svg";
-import nextSVG from "../public/svg/nextjs.svg";
-import nodeSVG from "../public/svg/nodejs.svg";
-import reactSVG from "../public/svg/react.svg";
-import tailwindSVG from "../public/svg/tailwindcss.svg";
-import npmSVG from "../public/svg/npm.svg";
-import gitSVG from "../public/svg/git.svg";
+import javascriptSVG from "../../public/svg/javascript.svg";
+import typescriptSVG from "../../public/svg/typescript.svg";
+import mongoDBSVG from "../../public/svg/mongodb.svg";
+import nextSVG from "../../public/svg/nextjs.svg";
+import nodeSVG from "../../public/svg/nodejs.svg";
+import reactSVG from "../../public/svg/react.svg";
+import tailwindSVG from "../../public/svg/tailwindcss.svg";
+import npmSVG from "../../public/svg/npm.svg";
+import gitSVG from "../../public/svg/git.svg";
 
 type SkillBadgeProps = {
   svg: string;
