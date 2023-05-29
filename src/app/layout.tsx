@@ -1,38 +1,24 @@
-import "../styles/globals.css";
 import { Work_Sans } from "next/font/google";
-import type { AppProps } from "next/app";
 import { Analytics } from "@vercel/analytics/react";
-import Head from "next/head";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+
+import "./globals.css";
 
 import { Navbar } from "../components/Navbar";
 import { siteConfig } from "../config";
-import * as gtag from "../utils/gtag";
-
-const isProd = process.env.NODE_ENV === "production";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
   variable: "--font-workSans",
 });
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      if (isProd) gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <>
-      <Head>
+    <html lang="en">
+      {/* <Head>
         <title>{siteConfig.title}</title>
         <meta
           name="description"
@@ -92,14 +78,12 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
           media="(prefers-color-scheme: dark)"
           content="black"
         />
-      </Head>
-      <main className={`${workSans.variable} font-sans`}>
+      </Head> */}
+      <body className={`${workSans.variable} font-sans`}>
         <Navbar />
-        <Component {...pageProps} />
+        <main>{children}</main>
         <Analytics />
-      </main>
-    </>
+      </body>
+    </html>
   );
 }
-
-export default MyApp;

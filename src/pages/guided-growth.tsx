@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import guidedGrowthImg from "../public/assets/projects/screenshot.webp";
+import guidedGrowthImg from "../../public/assets/projects/screenshot.webp";
 import { Icons } from "../components/Icons";
 
-const memoryGame = () => {
+const guidedGrowth = () => {
   return (
     <div className="w-full">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
@@ -114,4 +114,4 @@ const memoryGame = () => {
   );
 };
 
-export default memoryGame;
+export default guidedGrowth;
