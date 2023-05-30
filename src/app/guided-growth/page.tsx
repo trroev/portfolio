@@ -1,24 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import memoryImg from "../public/assets/projects/memory-game.webp";
-import { Icons } from "../components/Icons";
+import guidedGrowthImg from "../../../public/assets/projects/screenshot.webp";
+import { Icons } from "@/components/Icons";
 
-const memoryGame = () => {
+const guidedGrowth = () => {
   return (
     <div className="w-full">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
-        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/80 z-10" />
+        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-[#141414]/80 z-10" />
         <Image
           className="absolute z-1"
           fill
           style={{ objectFit: "cover" }}
-          src={memoryImg}
-          alt="Screenshot for memory game app"
+          src={guidedGrowthImg}
+          alt="Screenshot for landing page of rachaelmathiak.com"
           placeholder="blur"
         />
         <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-4">
-          <h2 className="py-2">Memory Game</h2>
-          <h3>React.js</h3>
+          <h2 className="py-2">Guided Growth with Rachael</h2>
+          <h3>Next.js</h3>
         </div>
       </div>
       <div className="max-w-[1240px] mx-auto p-2 grid md:grid-cols-5 gap-8 pt-8">
@@ -26,15 +26,17 @@ const memoryGame = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            This was a fun app to build to get more familiar with
-            hooks, especially useEffect. I learned that it seems a
-            little easier to create css style components as well,
-            rather than one large css file. Using logical comparisons
-            in a prop and also a ternary operator for a jsx className
-            were both new to me as well.
+            One of my first freelance projects. I built this website
+            using Next.js with TypeScript and TailwindCSS. I also
+            utilized Formik to make the contact form, and the SendGrid
+            email API to handle the contact form submission. This was
+            my first time working with a client, and it was a good
+            experience to get feedback in real time. While building, I
+            learned that converting images to the .webp format is best
+            practice.
           </p>
           <a
-            href="https://trroev.github.io/memory-game/"
+            href="https://www.rachaelmathiak.com"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -43,7 +45,7 @@ const memoryGame = () => {
             </button>
           </a>
           <a
-            href="https://github.com/trroev/memory-game"
+            href="https://github.com/trroev/guided-growth-with-rachael"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -57,7 +59,9 @@ const memoryGame = () => {
         </div>
         <div className="col-span-4 md:col-span-2 rounded-xl p-4 border">
           <div className="p-2">
-            <p className="text-center font-bold pb-2">Technologies</p>
+            <p className="text-center font-semibold pb-2">
+              Technologies
+            </p>
             <div className="grid grid-cols-2 md:grid-cols-1">
               <p className="py-2 flex items-center">
                 <Icons.box
@@ -65,7 +69,7 @@ const memoryGame = () => {
                   size={20}
                   className="pr-1"
                 />
-                React.js
+                TypeScript
               </p>
               <p className="py-2 flex items-center">
                 <Icons.box
@@ -73,7 +77,7 @@ const memoryGame = () => {
                   size={20}
                   className="pr-1"
                 />
-                Git
+                Next.js
               </p>
               <p className="py-2 flex items-center">
                 <Icons.box
@@ -81,7 +85,23 @@ const memoryGame = () => {
                   size={20}
                   className="pr-1"
                 />
-                npm
+                TailwindCSS
+              </p>
+              <p className="py-2 flex items-center">
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
+                SendGrid
+              </p>
+              <p className="py-2 flex items-center">
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
+                Formik
               </p>
             </div>
           </div>
@@ -94,4 +114,4 @@ const memoryGame = () => {
   );
 };
 
-export default memoryGame;
+export default guidedGrowth;

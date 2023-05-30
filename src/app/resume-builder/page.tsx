@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import weatherImg from "../public/assets/projects/weather-app.webp";
-import { Icons } from "../components/Icons";
+import resumeImg from "../../../public/assets/projects/resume-app.webp";
+import { Icons } from "@/components/Icons";
 
-const weatherApp = () => {
+const resumeApp = () => {
   return (
     <div className="w-full">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
@@ -12,12 +12,12 @@ const weatherApp = () => {
           className="absolute z-1"
           fill
           style={{ objectFit: "cover" }}
-          src={weatherImg}
-          alt="Screenshot for weather app"
+          src={resumeImg}
+          alt="Screenshot for resume builder app"
           placeholder="blur"
         />
         <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 p-4">
-          <h2 className="py-2">Weather App</h2>
+          <h2 className="py-2">Resume Builder</h2>
           <h3>React.js</h3>
         </div>
       </div>
@@ -26,13 +26,16 @@ const weatherApp = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            This was a simple vanilla JavaScript project to help
-            strengthen my knowledge with implementing APIs. This app
-            uses the OpenWeather API to let a user input any city and
-            get the current weather in return.
+            This was a fun little project for my first foray in to
+            learning React. Using functional components and React
+            Hooks made the code look much cleaner and easier to read
+            and follow in my opinion. It was a struggle for me to
+            figure out how to properly use props to get the user input
+            to render in the resume preview, but once I figured that
+            out, it was smooth sailing.
           </p>
           <a
-            href="https://trroev.github.io/weather-app/"
+            href="https://trroev.github.io/resume-app/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -41,7 +44,7 @@ const weatherApp = () => {
             </button>
           </a>
           <a
-            href="https://github.com/trroev/weather-app"
+            href="https://github.com/trroev/resume-app"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -63,7 +66,7 @@ const weatherApp = () => {
                   size={20}
                   className="pr-1"
                 />
-                JavaScript
+                React.js
               </p>
               <p className="py-2 flex items-center">
                 <Icons.box
@@ -71,7 +74,7 @@ const weatherApp = () => {
                   size={20}
                   className="pr-1"
                 />
-                OpenWeatherAPI
+                Git
               </p>
               <p className="py-2 flex items-center">
                 <Icons.box
@@ -92,4 +95,4 @@ const weatherApp = () => {
   );
 };
 
-export default weatherApp;
+export default resumeApp;
