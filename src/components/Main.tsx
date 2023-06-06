@@ -5,7 +5,7 @@ export const Main = () => {
     <div id="home" className="w-full h-screen text-center">
       <div className="max-w-[1240px] w-full mx-auto p-2 py-16 flex justify-center items-center">
         <div>
-          <h1 className="py-4 mt-12">
+          <h1 className="font-cal text-3xl sm:text-5xl md:text-6xl lg:text-7xl py-4 mt-12">
             Hi, I&#39;m <span className="text-red-400">Trevor</span>,{" "}
             <br /> a full stack developer
             <br /> who creates interactive

@@ -1,32 +1,14 @@
-interface SiteConfig {
-  title: string;
-  description: string;
-  author: string;
-  keywords: string;
-  url: string;
-  openGraph: {
-    title: string;
-    description: string;
-    url: string;
-    site_name: string;
-    image: string;
-    type: string;
-  };
-  icons: {
-    favicon: string;
-    shortcut: string;
-    apple: string;
-  };
-  manifest: string;
-}
+import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
   title: "Trevor Mathiak | Full Stack Developer",
   description:
     "Portfolio website of full stack developer Trevor Mathiak",
   author: "Trevor Mathiak",
-  keywords:
-    "full stack, web, developer, Trevor, Mathiak, Next.js, React, TailwindCSS, Vercel",
+  website: "https://trevormathiak.dev",
+  keywords: [
+    "full stack, web, developer, Trevor Mathiak, Next.js, React, TailwindCSS, Vercel",
+  ],
   url: "https://trevormathiak.dev",
   openGraph: {
     title: "Trevor Mathiak | Full Stack Developer",
@@ -34,13 +16,15 @@ export const siteConfig: SiteConfig = {
       "Portfolio website of full stack developer Trevor Mathiak",
     url: "https://trevormathiak.dev",
     site_name: "Trevor Mathiak | Full Stack Developer",
-    image: "https://trevormathiak.dev/screenshot.jpg",
+    images: "https://trevormathiak.dev/screenshot.jpg",
     type: "website",
+    locale: "en_US",
   },
   icons: {
-    favicon: "/favicon/favicon.ico",
+    icon: "/favicon/favicon.ico",
     shortcut: "/favicon/favicon-16x16.png",
     apple: "/favicon/apple-touch-icon.png",
   },
+  links: {},
   manifest: "/site.webmanifest",
 };

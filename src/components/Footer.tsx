@@ -6,7 +6,7 @@ export const Footer = () => {
       <span className="px-3 text-sm sm:text-center">
         &copy; 2022 Trevor Mathiak
       </span>
-      <div className="flex mt-4 space-x-10 justify-around md:mt-0">
+      <div className="flex mt-4 space-x-10 px-3 justify-around md:mt-0">
         <a
           className="hover:text-red-400 cursor-pointer hover:scale-110 ease-in duration-300"
           href="https://www.linkedin.com/in/trevormathiak/"
