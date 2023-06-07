@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
-import { Navbar } from "../components/Navbar";
+import Navbar from "@/components/Navbar";
 import { siteConfig } from "@/config/site";
 
 const fontSans = FontSans({
