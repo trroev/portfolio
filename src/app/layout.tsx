@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { siteConfig } from "@/config/site";
+import { navConfig } from "@/config/nav";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -57,7 +58,7 @@ export default function RootLayout({
       <body
         className={`flex flex-col min-h-screen font-sans antialiased ${fontSans.variable} ${calSans.variable}`}
       >
-        <Navbar />
+        <Navbar items={navConfig.navLinks} />
         <main>{children}</main>
         <Analytics />
       </body>

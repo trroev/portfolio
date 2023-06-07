@@ -6,6 +6,7 @@ import { FC, useState } from "react";
 import { Icons } from "./Icons";
 import { NavLink } from "@/types";
 import { siteConfig } from "@/config/site";
+import MobileNav from "./MobileNav";
 
 interface NavbarProps {
   items?: NavLink[];
@@ -50,6 +51,7 @@ const Navbar: FC<NavbarProps> = ({ items }) => {
         >
           {nav ? <Icons.close /> : <Icons.menu />}
         </button>
+        {nav && <MobileNav items={items} onClose={handleNav} />}
       </div>
     </header>
   );
