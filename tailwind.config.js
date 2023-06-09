@@ -20,5 +20,5 @@ module.exports = {
       cal: ["var(--cal-sans)", ...fontFamily.sans],
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
