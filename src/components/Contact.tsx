@@ -72,6 +72,7 @@ export const Contact = () => {
             setMessageState("");
           }, 5000);
         } else {
+          setButtonText("Send Message");
           setMessageState(res.data.message);
           setTimeout(() => {
             setMessageState("");
@@ -79,6 +80,7 @@ export const Contact = () => {
         }
       })
       .catch((err) => {
+        setButtonText("Send Message");
         setMessageState(String(err.message));
         setTimeout(() => {
           setMessageState("");
@@ -100,10 +102,10 @@ export const Contact = () => {
   return (
     <div id="contact" className="w-full px-2 py-20">
       <div className="max-w-[1240px] mx-auto w-full">
-        <p className="uppercase text-xl tracking-widest text-red-400">
+        <p className="font-cal uppercase text-xl tracking-widest text-red-400">
           Contact
         </p>
-        <h2 className="py-4">Get In Touch</h2>
+        <h2 className="font-cal py-4">Get In Touch</h2>
         <p className="p-4">
           I&#39;m available for freelance or full-time positions. Send
           me a message and let&#39;s talk.
@@ -167,7 +169,7 @@ export const Contact = () => {
                 error={!!errors.message}
                 errorMessage={!!errors.message ? errors.message : ""}
               />
-              <button className="w-full p-4 mt-4">
+              <button className="w-full p-4 mt-4 border rounded-lg border-gray-400 bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration 300">
                 {buttonText}
               </button>
               <div>

@@ -32,10 +32,10 @@ export const Skills = () => {
   return (
     <div id="skills" className="w-full px-2 py-20">
       <div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
-        <p className="uppercase text-xl tracking-widest text-red-400">
+        <p className="font-cal uppercase text-xl tracking-widest text-red-400">
           Skills
         </p>
-        <h2 className="py-4">What I Can Do</h2>
+        <h2 className="font-cal py-4">What I Can Do</h2>
         <div className="bg-gray-600/40 rounded-lg mb-12 flex w-full self-center flex-wrap items-center justify-center gap-8 p-5 sm:mb-24 sm:w-4/5 sm:px-0 lg:gap-16 xl:w-3/5">
           <a
             href="https://www.javascript.com/"

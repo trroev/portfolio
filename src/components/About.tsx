@@ -8,10 +8,10 @@ export const About = () => {
     >
       <div className="max-w-[1240px] m-auto">
         <div>
-          <p className="uppercase text-xl tracking-widest text-red-400">
+          <p className="font-cal uppercase text-xl tracking-widest text-red-400">
             About
           </p>
-          <h2 className="py-4">Who I Am</h2>
+          <h2 className="font-cal py-4">Who I Am</h2>
           <div className="text-justify px-4">
             <p className="py-2">
               As a self-taught full-stack software engineer, I have

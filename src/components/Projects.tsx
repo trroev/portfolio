@@ -8,10 +8,10 @@ export const Projects = () => {
   return (
     <div id="projects" className="w-full px-2 py-20">
       <div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
-        <p className="uppercase text-xl tracking-widest text-red-400">
+        <p className="font-cal uppercase text-xl tracking-widest text-red-400">
           Projects
         </p>
-        <h2 className="py-4">What I&#39;ve Built</h2>
+        <h2 className="font-cal py-4">What I&#39;ve Built</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ProjectItem
             title="Guided Growth with Rachael"
