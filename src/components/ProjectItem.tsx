@@ -17,7 +17,7 @@ export const ProjectItem = ({
   projectUrl,
 }: ProjectItemProps) => {
   return (
-    <div className="relative flex items-center justify-center h-auto w-full rounded-xl p-4 group">
+    <div className="relative flex items-center justify-center h-full w-full rounded-xl p-4 group">
       <Image
         className="rounded-xl group-hover:opacity-10"
         src={img}

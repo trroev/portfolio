@@ -1,24 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import memoryImg from "../../../public/assets/projects/memory-game.webp";
+import jamStatsImg from "../../../public/assets/projects/jamstats_splash.jpg";
 import { Icons } from "@/components/Icons";
 
-export default function memoryGamePage() {
+export default function jamStatsPage() {
   return (
     <div className="w-full">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
-        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/80 z-10" />
+        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-[#141414]/80 z-10" />
         <Image
           className="absolute z-1"
           fill
           style={{ objectFit: "cover" }}
-          src={memoryImg}
-          alt="Screenshot for memory game app"
+          src={jamStatsImg}
+          alt="Screenshot for landing page of rachaelmathiak.com"
           placeholder="blur"
         />
         <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-4">
-          <h2 className="py-2">Memory Game</h2>
-          <h3>React.js</h3>
+          <h2 className="py-2">JamStats: A Music Exploration App</h2>
+          <h3>Next.js</h3>
         </div>
       </div>
       <div className="max-w-[1240px] mx-auto p-2 grid md:grid-cols-5 gap-8 pt-8">
@@ -26,15 +26,16 @@ export default function memoryGamePage() {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            This was a fun app to build to get more familiar with
-            hooks, especially useEffect. I learned that it seems a
-            little easier to create css style components as well,
-            rather than one large css file. Using logical comparisons
-            in a prop and also a ternary operator for a jsx className
-            were both new to me as well.
+            This app uses Next-Auth to allow a user to login using
+            their Spotify account. Once logged in, the user can see
+            some of their data, such as their favorite artists and
+            tracks from different time ranges, as well as their
+            favorite podcasts. OpenAI then uses this data to recommend
+            5 different bands to the user that are not included in the
+            user&#39;s data.
           </p>
           <a
-            href="https://trroev.github.io/memory-game/"
+            href="https://jam-stats.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -43,7 +44,7 @@ export default function memoryGamePage() {
             </button>
           </a>
           <a
-            href="https://github.com/trroev/memory-game"
+            href="https://github.com/trroev/jam-stats"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -57,7 +58,9 @@ export default function memoryGamePage() {
         </div>
         <div className="col-span-4 md:col-span-2 rounded-xl p-4 border">
           <div className="p-2">
-            <p className="text-center font-bold pb-2">Technologies</p>
+            <p className="text-center font-semibold pb-2">
+              Technologies
+            </p>
             <div className="grid grid-cols-2 md:grid-cols-1">
               <p className="py-2 flex items-center">
                 <Icons.box
@@ -65,7 +68,7 @@ export default function memoryGamePage() {
                   size={20}
                   className="pr-1"
                 />
-                React.js
+                TypeScript
               </p>
               <p className="py-2 flex items-center">
                 <Icons.box
@@ -73,7 +76,7 @@ export default function memoryGamePage() {
                   size={20}
                   className="pr-1"
                 />
-                Git
+                Next.js
               </p>
               <p className="py-2 flex items-center">
                 <Icons.box
@@ -81,7 +84,39 @@ export default function memoryGamePage() {
                   size={20}
                   className="pr-1"
                 />
-                npm
+                TailwindCSS
+              </p>
+              <p className="py-2 flex items-center">
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
+                Next-Auth
+              </p>
+              <p className="py-2 flex items-center">
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
+                Framer Motion
+              </p>
+              <p className="py-2 flex items-center">
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
+                Spotify Developer API
+              </p>
+              <p className="py-2 flex items-center">
+                <Icons.box
+                  strokeWidth={1.5}
+                  size={20}
+                  className="pr-1"
+                />
+                OpenAI API
               </p>
             </div>
           </div>

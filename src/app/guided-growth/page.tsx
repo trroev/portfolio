@@ -3,7 +3,7 @@ import Link from "next/link";
 import guidedGrowthImg from "../../../public/assets/projects/screenshot.webp";
 import { Icons } from "@/components/Icons";
 
-const guidedGrowth = () => {
+export default function guidedGrowthPage() {
   return (
     <div className="w-full">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
@@ -112,6 +112,4 @@ const guidedGrowth = () => {
       </div>
     </div>
   );
-};
-
-export default guidedGrowth;
+}

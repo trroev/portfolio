@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import weatherImg from "../../../public/assets/projects/weather-app.webp";
+import weatherImg from "../../../public/assets/projects/weather_watch.jpg";
 import { Icons } from "@/components/Icons";
 
-const weatherApp = () => {
+export default function weatherWatchPage() {
   return (
     <div className="w-full">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
@@ -90,6 +90,4 @@ const weatherApp = () => {
       </div>
     </div>
   );
-};
-
-export default weatherApp;
+}

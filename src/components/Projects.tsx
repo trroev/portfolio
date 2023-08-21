@@ -1,8 +1,9 @@
 import { ProjectItem } from "./ProjectItem";
+import jamStatsImg from "../../public/assets/projects/jamstats_splash.jpg";
 import guidedGrowthImg from "../../public/assets/projects/screenshot.webp";
 import memoryImg from "../../public/assets/projects/memory-game.webp";
-import resumeImg from "../../public/assets/projects/resume-app.webp";
-import weatherImg from "../../public/assets/projects/weather-app.webp";
+import resumeImg from "../../public/assets/projects/resume_builder.jpg";
+import weatherImg from "../../public/assets/projects/weather_watch.jpg";
 
 export const Projects = () => {
   return (
@@ -13,6 +14,13 @@ export const Projects = () => {
         </p>
         <h2 className="font-cal py-4">What I&#39;ve Built</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ProjectItem
+            title="JamStats"
+            img={jamStatsImg}
+            alt="Screenshot of landing page for https://jam-stats.vercel.app/"
+            tech="Next.js, TailwindCSS, Next-Auth, Framer Motion"
+            projectUrl="/jam-stats"
+          />
           <ProjectItem
             title="Guided Growth with Rachael"
             img={guidedGrowthImg}

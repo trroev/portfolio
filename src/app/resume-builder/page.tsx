@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import resumeImg from "../../../public/assets/projects/resume-app.webp";
+import resumeImg from "../../../public/assets/projects/resume_builder.jpg";
 import { Icons } from "@/components/Icons";
 
-const resumeApp = () => {
+export default function resumeBuilderPage() {
   return (
     <div className="w-full">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
@@ -93,6 +93,4 @@ const resumeApp = () => {
       </div>
     </div>
   );
-};
-
-export default resumeApp;
+}
