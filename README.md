@@ -2,7 +2,7 @@
 
 **Check it out:** [trevormathiak.dev](https://www.trevormathiak.dev)
 
-![page preview image](/public/screenshot.jpg)
+![page preview image](/public/portfolio_splash.jpg)
 
 ## How It's Made:
 
