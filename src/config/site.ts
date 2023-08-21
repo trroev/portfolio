@@ -16,7 +16,7 @@ export const siteConfig: SiteConfig = {
       "Portfolio website of full stack developer Trevor Mathiak",
     url: "https://trevormathiak.dev",
     site_name: "Trevor Mathiak | Full Stack Developer",
-    images: "https://trevormathiak.dev/screenshot.jpg",
+    images: "https://trevormathiak.dev/portfolio_splash.jpg",
     type: "website",
     locale: "en_US",
   },
