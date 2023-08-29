@@ -28,7 +28,9 @@ const MobileNav: FC<MobileNavProps> = ({ items, onClose }) => {
           onClick={handleLinkClick}
         >
           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-200 to-red-600 cursor-pointer" />
-          <span className="font-medium">{siteConfig.title}</span>
+          <span className="hidden sm:inline-block font-medium">
+            {siteConfig.title}
+          </span>
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">
           {items?.map((item, index) => (

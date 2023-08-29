@@ -13,7 +13,9 @@ export const Footer = () => {
             className="flex items-center space-x-2 mb-6 sm:mb-0"
           >
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-yellow-200 to-red-600 cursor-pointer" />
-            <span className="font-medium">{siteConfig.title}</span>
+            <span className="hidden sm:inline-block font-medium">
+              {siteConfig.title}
+            </span>
           </Link>
           <div className="flex flex-wrap items-center mb-6 text-sm sm:mb-0">
             <a
