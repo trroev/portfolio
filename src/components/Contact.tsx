@@ -5,99 +5,37 @@ import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
 import { validate } from "../utils/validate";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "./Input";
 import { TextArea } from "./TextArea";
+import { FormSchema, type Form } from "@/app/models/Form";
 
-interface InputValues {
-  name: string;
-  number: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+// interface InputValues {
+//   name: string;
+//   number: string;
+//   email: string;
+//   subject: string;
+//   message: string;
+// }
 
-interface InputErrors extends Partial<InputValues> {}
+// interface InputErrors extends Partial<InputValues> {}
 
-export const Contact = () => {
-  const [values, setValues] = useState({
-    name: "",
-    number: "",
-    email: "",
-    subject: "",
-    message: "",
+export default function Contact() {
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    formState: { errors, isValid },
+  } = useForm<Form>({
+    resolver: zodResolver(FormSchema),
   });
-  const [errors, setErrors] = useState<InputErrors>({});
-  const [success, setSuccess] = useState<boolean>(false);
-  const [messageState, setMessageState] = useState<string>("");
-  const [buttonText, setButtonText] =
-    useState<string>("Send Message");
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
-    e.preventDefault();
-
-    const errors = validate(values);
-    if (
-      errors !== null &&
-      errors !== undefined &&
-      Object.keys(errors).length > 0
-    ) {
-      return setErrors(errors);
-    }
-    setErrors({});
-    setButtonText("Sending...");
-
-    axios
-      .post("/api/sendgrid", {
-        name: values.name,
-        number: values.number,
-        email: values.email,
-        subject: values.subject,
-        message: values.message,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          setValues({
-            name: "",
-            number: "",
-            email: "",
-            subject: "",
-            message: "",
-          });
-          setSuccess(true);
-          setButtonText("Send Message");
-          setMessageState(res.data.message);
-          setTimeout(() => {
-            setMessageState("");
-          }, 5000);
-        } else {
-          setButtonText("Send Message");
-          setMessageState(res.data.message);
-          setTimeout(() => {
-            setMessageState("");
-          }, 5000);
-        }
-      })
-      .catch((err) => {
-        setButtonText("Send Message");
-        setMessageState(String(err.message));
-        setTimeout(() => {
-          setMessageState("");
-        }, 5000);
-      });
+  const onSubmit: SubmitHandler<Form> = (values) => {
+    console.log(values);
   };
 
-  const handleChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setValues((prevInput) => ({
-      ...prevInput,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  console.log(isValid);
 
   return (
     <div id="contact" className="w-full px-2 py-20">
@@ -112,7 +50,75 @@ export const Contact = () => {
         </p>
         <div className="w-full h-auto rounded-xl lg:p-4">
           <div className="p-4">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="grid w-full max-w-small items-center gap-1.5">
+                <label
+                  htmlFor="name"
+                  className="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  {...register("name")}
+                  placeholder="Jane Doe"
+                  className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
+                />
+                <label
+                  htmlFor="phone"
+                  className="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  id="phone"
+                  {...register("phone")}
+                  placeholder="3333333333"
+                  className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
+                />
+                <label
+                  htmlFor="email"
+                  className="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Email
+                </label>
+                <input
+                  type="text"
+                  id="email"
+                  {...register("email")}
+                  placeholder="janedoe@gmail.com"
+                  className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
+                />
+                <label
+                  htmlFor="subject"
+                  className="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  {...register("subject")}
+                  placeholder="Subject"
+                  className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
+                />
+                <label
+                  htmlFor="message"
+                  className="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  {...register("message")}
+                  placeholder="Type your message here."
+                  className="flex min-h-[80px] w-full rounded-md border px-3 py-2 text-sm"
+                />
+              </div>
+            </form>
+            {/* <form onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-4 w-full py-2">
                 <div className="flex flex-col">
                   <Input
@@ -183,7 +189,7 @@ export const Contact = () => {
                   )}
                 </p>
               </div>
-            </form>
+            </form> */}
           </div>
         </div>
         <div className="flex justify-center py-12">
@@ -200,4 +206,4 @@ export const Contact = () => {
       </div>
     </div>
   );
-};
+}

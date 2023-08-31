@@ -25,3 +25,5 @@ export const FormSchema = z.object({
     .string({ required_error: "Please provide a message" })
     .trim(),
 });
+
+export type Form = z.infer<typeof FormSchema>;
