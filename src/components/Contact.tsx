@@ -25,7 +25,7 @@ export default function Contact() {
   const {
     register,
     handleSubmit,
-    trigger,
+    reset,
     formState: { errors, isValid },
   } = useForm<Form>({
     resolver: zodResolver(FormSchema),
@@ -33,6 +33,7 @@ export default function Contact() {
 
   const onSubmit: SubmitHandler<Form> = (values) => {
     console.log(values);
+    reset();
   };
 
   console.log(isValid);
@@ -65,6 +66,11 @@ export default function Contact() {
                   placeholder="Jane Doe"
                   className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
                 />
+                {errors.name && (
+                  <p className="text-red-400 text-sm mt-1 mb-2">
+                    {errors.name?.message}
+                  </p>
+                )}
                 <label
                   htmlFor="phone"
                   className="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -78,6 +84,11 @@ export default function Contact() {
                   placeholder="3333333333"
                   className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
                 />
+                {errors.phone && (
+                  <p className="text-red-400 text-sm mt-1 mb-2">
+                    {errors.phone?.message}
+                  </p>
+                )}
                 <label
                   htmlFor="email"
                   className="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -91,6 +102,11 @@ export default function Contact() {
                   placeholder="janedoe@gmail.com"
                   className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
                 />
+                {errors.email && (
+                  <p className="text-red-400 text-sm mt-1 mb-2">
+                    {errors.email?.message}
+                  </p>
+                )}
                 <label
                   htmlFor="subject"
                   className="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -116,7 +132,18 @@ export default function Contact() {
                   placeholder="Type your message here."
                   className="flex min-h-[80px] w-full rounded-md border px-3 py-2 text-sm"
                 />
+                {errors.message && (
+                  <p className="text-red-400 text-sm mt-1 mb-2">
+                    {errors.message?.message}
+                  </p>
+                )}
               </div>
+              <button
+                type="submit"
+                className="w-full p-4 mt-8 border rounded-lg border-gray-400 bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration 300"
+              >
+                Submit
+              </button>
             </form>
             {/* <form onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-4 w-full py-2">
