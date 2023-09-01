@@ -53,8 +53,11 @@ export default function Contact() {
           I&#39;m available for freelance or full-time positions. Send
           me a message and let&#39;s talk.
         </p>
-        <div className="max-w-2xl mx-auto w-full h-auto p-2 lg:p-4">
-          <form onSubmit={handleSubmit(processForm)}>
+        <div className="flex w-full justify-center p-10 items-center">
+          <form
+            onSubmit={handleSubmit(processForm)}
+            className="w-11/12 sm:w-2/3 space-y-6"
+          >
             <FormField
               label="Name"
               id="name"
@@ -96,7 +99,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={pending}
-              className="w-full p-4 mt-6 rounded-lg border border-gray-400 bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration 300"
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium text-slate-950 bg-slate-50 h-10 px-4 py-2 hover:bg-slate-50/70 ease-in duration 300"
             >
               {pending ? "Submitting..." : "Submit"}
             </button>

@@ -23,13 +23,14 @@ const FormField: React.FC<FormFieldProps> = ({
     id: id,
     ...register(id),
     placeholder: placeholder,
-    className: "flex rounded-md border border-gray-400 p-3 text-sm",
+    className:
+      "flex min-h-10 w-full rounded-md bg-slate-950 border border-slate-50/25 px-3 py-2 text-sm",
   };
   return (
-    <div className="flex flex-col py-2">
+    <div className="space-y-2">
       <label
         htmlFor={id}
-        className="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="text-sm font-medium leading-nonepeer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
         {label}
       </label>
