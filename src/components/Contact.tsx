@@ -49,6 +49,7 @@ export default function Contact() {
               register={register}
               placeholder="Jane Doe"
               error={errors.name?.message}
+              required={true}
             />
             <FormField
               label="Phone Number"
@@ -63,6 +64,7 @@ export default function Contact() {
               register={register}
               placeholder="jane.doe@gmail.com"
               error={errors.email?.message}
+              required={true}
             />
             <FormField
               label="Subject"
@@ -79,6 +81,7 @@ export default function Contact() {
               error={errors.message?.message}
               type="textarea"
               rows={6}
+              required={true}
             />
 
             <button

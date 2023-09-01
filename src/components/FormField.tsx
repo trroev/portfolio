@@ -8,6 +8,7 @@ interface FormFieldProps {
   error: string | undefined;
   type?: "text" | "textarea";
   rows?: number;
+  required?: boolean;
 }
 
 const FormField: React.FC<FormFieldProps> = ({
@@ -18,6 +19,7 @@ const FormField: React.FC<FormFieldProps> = ({
   error,
   type = "text",
   rows = 4,
+  required,
 }) => {
   const fieldProps = {
     id: id,
@@ -33,6 +35,7 @@ const FormField: React.FC<FormFieldProps> = ({
         className="text-sm font-medium leading-nonepeer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
         {label}
+        {required && <span className="text-red-400">*</span>}
       </label>
       {type === "textarea" ? (
         <textarea {...fieldProps} rows={rows} />
