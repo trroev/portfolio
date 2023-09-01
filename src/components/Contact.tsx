@@ -2,26 +2,11 @@
 
 import { Icons } from "./Icons";
 import Link from "next/link";
-import { useState } from "react";
-import axios from "axios";
-import { validate } from "../utils/validate";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "./Input";
-import { TextArea } from "./TextArea";
 import { FormSchema, type Form } from "@/app/models/Form";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { FormField } from "./FormField";
-
-// interface InputValues {
-//   name: string;
-//   number: string;
-//   email: string;
-//   subject: string;
-//   message: string;
-// }
-
-// interface InputErrors extends Partial<InputValues> {}
 
 export default function Contact() {
   const { pending } = useFormStatus();
