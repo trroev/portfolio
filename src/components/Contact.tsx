@@ -53,57 +53,54 @@ export default function Contact() {
           I&#39;m available for freelance or full-time positions. Send
           me a message and let&#39;s talk.
         </p>
-        <div className="w-full h-auto rounded-xl lg:p-4">
-          <div className="flex justify-center">
-            <form onSubmit={handleSubmit(processForm)}>
-              {/* <div> */}
-              <FormField
-                label="Name"
-                id="name"
-                register={register}
-                placeholder="Jane Doe"
-                error={errors.name?.message}
-              />
-              <FormField
-                label="Phone Number"
-                id="phone"
-                register={register}
-                placeholder="3333333333"
-                error={errors.phone?.message}
-              />
-              <FormField
-                label="Email"
-                id="email"
-                register={register}
-                placeholder="jane.doe@gmail.com"
-                error={errors.email?.message}
-              />
-              <FormField
-                label="Subject"
-                id="subject"
-                register={register}
-                placeholder="Subject"
-                error={errors.subject?.message}
-              />
-              <FormField
-                label="Message"
-                id="message"
-                register={register}
-                placeholder="Type your message here."
-                error={errors.message?.message}
-                type="textarea"
-                rows={6}
-              />
-              {/* </div> */}
-              <button
-                type="submit"
-                disabled={pending}
-                className="w-full max-w-xl p-4 mt-6 rounded-lg border border-gray-400 bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration 300"
-              >
-                {pending ? "Submitting..." : "Submit"}
-              </button>
-            </form>
-          </div>
+        <div className="max-w-2xl mx-auto w-full h-auto p-2 lg:p-4">
+          <form onSubmit={handleSubmit(processForm)}>
+            <FormField
+              label="Name"
+              id="name"
+              register={register}
+              placeholder="Jane Doe"
+              error={errors.name?.message}
+            />
+            <FormField
+              label="Phone Number"
+              id="phone"
+              register={register}
+              placeholder="3333333333"
+              error={errors.phone?.message}
+            />
+            <FormField
+              label="Email"
+              id="email"
+              register={register}
+              placeholder="jane.doe@gmail.com"
+              error={errors.email?.message}
+            />
+            <FormField
+              label="Subject"
+              id="subject"
+              register={register}
+              placeholder="Subject"
+              error={errors.subject?.message}
+            />
+            <FormField
+              label="Message"
+              id="message"
+              register={register}
+              placeholder="Type your message here."
+              error={errors.message?.message}
+              type="textarea"
+              rows={6}
+            />
+
+            <button
+              type="submit"
+              disabled={pending}
+              className="w-full p-4 mt-6 rounded-lg border border-gray-400 bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration 300"
+            >
+              {pending ? "Submitting..." : "Submit"}
+            </button>
+          </form>
         </div>
         <div className="flex justify-center py-12">
           <Link href="/" aria-label="return to the top of the page">
