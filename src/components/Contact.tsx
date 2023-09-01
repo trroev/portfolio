@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "./Input";
 import { TextArea } from "./TextArea";
 import { FormSchema, type Form } from "@/app/models/Form";
+import { experimental_useFormStatus as useFormStatus } from "react-dom";
 
 // interface InputValues {
 //   name: string;
@@ -22,6 +23,8 @@ import { FormSchema, type Form } from "@/app/models/Form";
 // interface InputErrors extends Partial<InputValues> {}
 
 export default function Contact() {
+  const { pending } = useFormStatus();
+
   const {
     register,
     handleSubmit,
@@ -31,7 +34,7 @@ export default function Contact() {
     resolver: zodResolver(FormSchema),
   });
 
-  const onSubmit: SubmitHandler<Form> = (values) => {
+  const processForm: SubmitHandler<Form> = (values) => {
     console.log(values);
     reset();
   };
@@ -50,9 +53,12 @@ export default function Contact() {
           me a message and let&#39;s talk.
         </p>
         <div className="w-full h-auto rounded-xl lg:p-4">
-          <div className="p-4">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid w-full max-w-small items-center gap-1.5">
+          <div className="flex justify-center p-4">
+            <form
+              onSubmit={handleSubmit(processForm)}
+              className="grid w-full max-w-xl items-center gap-1.5"
+            >
+              <div>
                 <label
                   htmlFor="name"
                   className="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -64,10 +70,10 @@ export default function Contact() {
                   id="name"
                   {...register("name")}
                   placeholder="Jane Doe"
-                  className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
+                  className="flex h-10 w-full rounded-md border border-gray-400 px-3 py-2 text-sm"
                 />
                 {errors.name && (
-                  <p className="text-red-400 text-sm mt-1 mb-2">
+                  <p className="text-red-400 text-xs mt-1 mb-2 sm:text-sm">
                     {errors.name?.message}
                   </p>
                 )}
@@ -82,10 +88,10 @@ export default function Contact() {
                   id="phone"
                   {...register("phone")}
                   placeholder="3333333333"
-                  className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
+                  className="flex h-10 w-full rounded-md border border-gray-400 px-3 py-2 text-sm"
                 />
                 {errors.phone && (
-                  <p className="text-red-400 text-sm mt-1 mb-2">
+                  <p className="text-red-400 text-xs mt-1 mb-2 sm:text-sm">
                     {errors.phone?.message}
                   </p>
                 )}
@@ -100,10 +106,10 @@ export default function Contact() {
                   id="email"
                   {...register("email")}
                   placeholder="janedoe@gmail.com"
-                  className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
+                  className="flex h-10 w-full rounded-md border border-gray-400 px-3 py-2 text-sm"
                 />
                 {errors.email && (
-                  <p className="text-red-400 text-sm mt-1 mb-2">
+                  <p className="text-red-400 text-xs mt-1 mb-2 sm:text-sm">
                     {errors.email?.message}
                   </p>
                 )}
@@ -118,7 +124,7 @@ export default function Contact() {
                   id="subject"
                   {...register("subject")}
                   placeholder="Subject"
-                  className="flex h-10 w-full rounded-md border px-3 py-2 text-sm"
+                  className="flex h-10 w-full rounded-md border border-gray-400 px-3 py-2 text-sm"
                 />
                 <label
                   htmlFor="message"
@@ -130,19 +136,20 @@ export default function Contact() {
                   id="message"
                   {...register("message")}
                   placeholder="Type your message here."
-                  className="flex min-h-[80px] w-full rounded-md border px-3 py-2 text-sm"
+                  className="flex min-h-[80px] w-full rounded-md border border-gray-400 px-3 py-2 text-sm"
                 />
                 {errors.message && (
-                  <p className="text-red-400 text-sm mt-1 mb-2">
+                  <p className="text-red-400 text-xs mt-1 mb-2 sm:text-sm">
                     {errors.message?.message}
                   </p>
                 )}
               </div>
               <button
                 type="submit"
-                className="w-full p-4 mt-8 border rounded-lg border-gray-400 bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration 300"
+                disabled={pending}
+                className="w-full p-4 mt-8 rounded-lg border border-gray-400 bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration 300"
               >
-                Submit
+                {pending ? "Submitting..." : "Submit"}
               </button>
             </form>
             {/* <form onSubmit={handleSubmit}>
