@@ -129,7 +129,7 @@ export default function Contact() {
             >
               {pending ? "Submitting..." : "Submit"}
             </button>
-            <p className="text-green-600 text-xs mt-1 mb-2 sm:text-sm">
+            <p className="text-green-500 text-xs mt-1 mb-2 sm:text-sm">
               {success !== false ? (
                 resultMessage
               ) : (
