@@ -7,25 +7,63 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormSchema, type Form } from "@/app/models/Form";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { FormField } from "./FormField";
+import { useState } from "react";
 
 export default function Contact() {
   const { pending } = useFormStatus();
+  const [resultMessage, setResultMessage] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<Form>({
     resolver: zodResolver(FormSchema),
   });
 
-  const processForm: SubmitHandler<Form> = (values) => {
-    console.log(values);
-    reset();
-  };
+  const processForm: SubmitHandler<Form> = async (values) => {
+    try {
+      const res = await fetch("/api/sendgrid", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
-  console.log(isValid);
+      const result = await res.json();
+
+      if (result.status === "success") {
+        setSuccess(true);
+        setResultMessage(
+          result.message ||
+            "Your message was sent. I'll be in contact shortly."
+        );
+        setTimeout(() => {
+          setResultMessage("");
+        }, 5000);
+      } else {
+        setResultMessage(
+          result.message ||
+            "An error occured while submitting the form."
+        );
+        setTimeout(() => {
+          setResultMessage("");
+        }, 5000);
+      }
+      reset();
+    } catch (error) {
+      console.error(error);
+      setResultMessage(
+        "An error occurred while submitting the form."
+      );
+      setTimeout(() => {
+        setResultMessage("");
+      }, 5000);
+    }
+  };
 
   return (
     <div id="contact" className="w-full px-2 py-20">
@@ -91,6 +129,15 @@ export default function Contact() {
             >
               {pending ? "Submitting..." : "Submit"}
             </button>
+            <p className="text-green-600 text-xs mt-1 mb-2 sm:text-sm">
+              {success !== false ? (
+                resultMessage
+              ) : (
+                <span className="text-red-400 text-xs mt-1 mb-2 sm:textsm">
+                  {resultMessage}
+                </span>
+              )}
+            </p>
           </form>
         </div>
         <div className="flex justify-center py-12">

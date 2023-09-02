@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
   const msg = `
     Name: ${body.name}\r\n
-    Number: ${body.number}\r\n
+    Number: ${body.phone}\r\n
     Email: ${body.email}\r\n
     Subject: ${body.subject}\r\n
     Message: ${body.message}
