@@ -2,101 +2,67 @@
 
 import { Icons } from "./Icons";
 import Link from "next/link";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormSchema, type Form } from "@/app/models/Form";
+import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { FormField } from "./FormField";
 import { useState } from "react";
-import axios from "axios";
-import { validate } from "../utils/validate";
-import { Input } from "./Input";
-import { TextArea } from "./TextArea";
 
-interface InputValues {
-  name: string;
-  number: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+export default function Contact() {
+  const { pending } = useFormStatus();
+  const [resultMessage, setResultMessage] = useState("");
+  const [success, setSuccess] = useState(false);
 
-interface InputErrors extends Partial<InputValues> {}
-
-export const Contact = () => {
-  const [values, setValues] = useState({
-    name: "",
-    number: "",
-    email: "",
-    subject: "",
-    message: "",
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<Form>({
+    resolver: zodResolver(FormSchema),
   });
-  const [errors, setErrors] = useState<InputErrors>({});
-  const [success, setSuccess] = useState<boolean>(false);
-  const [messageState, setMessageState] = useState<string>("");
-  const [buttonText, setButtonText] =
-    useState<string>("Send Message");
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
-    e.preventDefault();
-
-    const errors = validate(values);
-    if (
-      errors !== null &&
-      errors !== undefined &&
-      Object.keys(errors).length > 0
-    ) {
-      return setErrors(errors);
-    }
-    setErrors({});
-    setButtonText("Sending...");
-
-    axios
-      .post("/api/sendgrid", {
-        name: values.name,
-        number: values.number,
-        email: values.email,
-        subject: values.subject,
-        message: values.message,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          setValues({
-            name: "",
-            number: "",
-            email: "",
-            subject: "",
-            message: "",
-          });
-          setSuccess(true);
-          setButtonText("Send Message");
-          setMessageState(res.data.message);
-          setTimeout(() => {
-            setMessageState("");
-          }, 5000);
-        } else {
-          setButtonText("Send Message");
-          setMessageState(res.data.message);
-          setTimeout(() => {
-            setMessageState("");
-          }, 5000);
-        }
-      })
-      .catch((err) => {
-        setButtonText("Send Message");
-        setMessageState(String(err.message));
-        setTimeout(() => {
-          setMessageState("");
-        }, 5000);
+  const processForm: SubmitHandler<Form> = async (values) => {
+    try {
+      const res = await fetch("/api/sendgrid", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
       });
-  };
 
-  const handleChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setValues((prevInput) => ({
-      ...prevInput,
-      [e.target.name]: e.target.value,
-    }));
+      const result = await res.json();
+
+      if (result.status === "success") {
+        setSuccess(true);
+        setResultMessage(
+          result.message ||
+            "Your message was sent. I'll be in contact shortly."
+        );
+        setTimeout(() => {
+          setResultMessage("");
+        }, 5000);
+      } else {
+        setResultMessage(
+          result.message ||
+            "An error occured while submitting the form."
+        );
+        setTimeout(() => {
+          setResultMessage("");
+        }, 5000);
+      }
+      reset();
+    } catch (error) {
+      console.error(error);
+      setResultMessage(
+        "An error occurred while submitting the form."
+      );
+      setTimeout(() => {
+        setResultMessage("");
+      }, 5000);
+    }
   };
 
   return (
@@ -110,81 +76,69 @@ export const Contact = () => {
           I&#39;m available for freelance or full-time positions. Send
           me a message and let&#39;s talk.
         </p>
-        <div className="w-full h-auto rounded-xl lg:p-4">
-          <div className="p-4">
-            <form onSubmit={handleSubmit}>
-              <div className="grid md:grid-cols-2 gap-4 w-full py-2">
-                <div className="flex flex-col">
-                  <Input
-                    value={values.name}
-                    onChange={handleChange}
-                    id="name"
-                    name="name"
-                    label="Name"
-                    placeholder="Jane Doe"
-                    error={!!errors.name}
-                    errorMessage={!!errors.name ? errors.name : ""}
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <Input
-                    value={values.number}
-                    onChange={handleChange}
-                    id="number"
-                    name="number"
-                    label="Phone Number"
-                    placeholder="333-333-3333"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col py-2">
-                <Input
-                  value={values.email}
-                  onChange={handleChange}
-                  id="email"
-                  name="email"
-                  label="Email"
-                  placeholder="janedoe@gmail.com"
-                  error={!!errors.email}
-                  errorMessage={!!errors.email ? errors.email : ""}
-                />
-              </div>
-              <div className="flex flex-col py-2">
-                <Input
-                  value={values.subject}
-                  onChange={handleChange}
-                  id="subject"
-                  name="subject"
-                  label="Subject"
-                  placeholder="Message Subject"
-                />
-              </div>
-              <TextArea
-                value={values.message}
-                onChange={handleChange}
-                id="message"
-                name="message"
-                label="Message"
-                placeholder="Your message here..."
-                error={!!errors.message}
-                errorMessage={!!errors.message ? errors.message : ""}
-              />
-              <button className="w-full p-4 mt-4 border rounded-lg border-gray-400 bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration 300">
-                {buttonText}
-              </button>
-              <div>
-                <p className="text-green-600 uppercase text-sm mt-4">
-                  {success !== false ? (
-                    messageState
-                  ) : (
-                    <span className="text-red-400 uppercase text-sm mt-4">
-                      {messageState}
-                    </span>
-                  )}
-                </p>
-              </div>
-            </form>
-          </div>
+        <div className="flex w-full justify-center p-10 items-center">
+          <form
+            onSubmit={handleSubmit(processForm)}
+            className="w-11/12 sm:w-2/3 space-y-6"
+          >
+            <FormField
+              label="Name"
+              id="name"
+              register={register}
+              placeholder="Jane Doe"
+              error={errors.name?.message}
+              required={true}
+            />
+            <FormField
+              label="Phone Number"
+              id="phone"
+              register={register}
+              placeholder="3333333333"
+              error={errors.phone?.message}
+            />
+            <FormField
+              label="Email"
+              id="email"
+              register={register}
+              placeholder="jane.doe@gmail.com"
+              error={errors.email?.message}
+              required={true}
+            />
+            <FormField
+              label="Subject"
+              id="subject"
+              register={register}
+              placeholder="Subject"
+              error={errors.subject?.message}
+            />
+            <FormField
+              label="Message"
+              id="message"
+              register={register}
+              placeholder="Type your message here."
+              error={errors.message?.message}
+              type="textarea"
+              rows={6}
+              required={true}
+            />
+
+            <button
+              type="submit"
+              disabled={pending}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium text-slate-950 bg-slate-50 h-10 px-4 py-2 hover:bg-slate-50/70 ease-in duration 300"
+            >
+              {pending ? "Submitting..." : "Submit"}
+            </button>
+            <p className="text-green-600 text-xs mt-1 mb-2 sm:text-sm">
+              {success !== false ? (
+                resultMessage
+              ) : (
+                <span className="text-red-400 text-xs mt-1 mb-2 sm:textsm">
+                  {resultMessage}
+                </span>
+              )}
+            </p>
+          </form>
         </div>
         <div className="flex justify-center py-12">
           <Link href="/" aria-label="return to the top of the page">
@@ -200,4 +154,4 @@ export const Contact = () => {
       </div>
     </div>
   );
-};
+}
