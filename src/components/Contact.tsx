@@ -125,7 +125,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={pending}
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium text-slate-950 bg-slate-50 h-10 px-4 py-2 hover:bg-slate-50/70 ease-in duration 300"
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium text-slate-950 bg-slate-50 h-10 px-4 py-2 hover:bg-slate-50/70 ease-in duration-300"
             >
               {pending ? "Submitting..." : "Submit"}
             </button>
