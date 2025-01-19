@@ -1,10 +1,10 @@
+import { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/react'
 
 import './globals.css'
 
-import { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import { navConfig } from '@/config/nav'
 import { siteConfig } from '@/config/site'
