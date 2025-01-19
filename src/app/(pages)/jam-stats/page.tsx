@@ -2,18 +2,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icons } from '@/components/Icons'
 
-import jamStatsImg from '../../../public/assets/projects/jamstats_splash.jpg'
-
 export default function jamStatsPage() {
   return (
     <div className="w-full">
       <div className="relative h-[30vh] w-screen lg:h-[40vh]">
         <div className="absolute left-0 top-0 z-10 h-[30vh] w-full bg-[#141414]/80 lg:h-[40vh]" />
         <Image
+          blurDataURL="/assets/projects/jamstats_splash.jpg"
           className="z-1 absolute"
           fill
           style={{ objectFit: 'cover' }}
-          src={jamStatsImg}
+          src="/assets/projects/jamstats_splash.webp"
           alt="Screenshot for landing page of rachaelmathiak.com"
           placeholder="blur"
         />

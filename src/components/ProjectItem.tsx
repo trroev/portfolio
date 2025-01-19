@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 type ProjectItemProps = {
   title: string
-  img: StaticImageData
+  img: string | StaticImageData
   alt: string
   tech: string
   projectUrl: string
@@ -23,6 +23,9 @@ export const ProjectItem = ({
         src={img}
         alt={alt}
         placeholder="blur"
+        width={400}
+        height={400}
+        blurDataURL={img as string}
       />
       <div className="absolute left-[50%] top-[50%] hidden translate-x-[-50%] translate-y-[-50%] group-hover:block">
         <h3 className="text-center text-2xl tracking-wider">{title}</h3>
