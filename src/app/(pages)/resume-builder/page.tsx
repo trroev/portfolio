@@ -2,18 +2,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icons } from '@/components/Icons'
 
-import resumeImg from '../../../public/assets/projects/resume_builder.jpg'
-
 export default function resumeBuilderPage() {
   return (
     <div className="w-full">
       <div className="relative h-[30vh] w-screen lg:h-[40vh]">
         <div className="absolute left-0 top-0 z-10 h-[30vh] w-full bg-black/80 lg:h-[40vh]" />
         <Image
+          blurDataURL="/assets/projects/resume_builder.webp"
           className="z-1 absolute"
           fill
           style={{ objectFit: 'cover' }}
-          src={resumeImg}
+          src="/assets/projects/resume_builder.webp"
           alt="Screenshot for resume builder app"
           placeholder="blur"
         />

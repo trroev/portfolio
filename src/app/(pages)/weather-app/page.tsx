@@ -2,23 +2,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icons } from '@/components/Icons'
 
-import memoryImg from '../../../public/assets/projects/memory-game.webp'
-
-export default function memoryGamePage() {
+export default function weatherWatchPage() {
   return (
     <div className="w-full">
       <div className="relative h-[30vh] w-screen lg:h-[40vh]">
         <div className="absolute left-0 top-0 z-10 h-[30vh] w-full bg-black/80 lg:h-[40vh]" />
         <Image
+          blurDataURL="/assets/projects/weather_watch.webp"
           className="z-1 absolute"
           fill
           style={{ objectFit: 'cover' }}
-          src={memoryImg}
-          alt="Screenshot for memory game app"
+          src="/assets/projects/weather_watch.webp"
+          alt="Screenshot for weather app"
           placeholder="blur"
         />
-        <div className="absolute left-[50%] right-[50%] top-[70%] z-10 w-full max-w-[1240px] translate-x-[-50%] translate-y-[-50%] p-4 text-white">
-          <h2 className="py-2">Memory Game</h2>
+        <div className="absolute left-[50%] right-[50%] top-[70%] z-10 w-full max-w-[1240px] translate-x-[-50%] translate-y-[-50%] p-4">
+          <h2 className="py-2">Weather App</h2>
           <h3>React.js</h3>
         </div>
       </div>
@@ -27,14 +26,12 @@ export default function memoryGamePage() {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            This was a fun app to build to get more familiar with hooks,
-            especially useEffect. I learned that it seems a little easier to
-            create css style components as well, rather than one large css file.
-            Using logical comparisons in a prop and also a ternary operator for
-            a jsx className were both new to me as well.
+            This was a simple vanilla JavaScript project to help strengthen my
+            knowledge with implementing APIs. This app uses the OpenWeather API
+            to let a user input any city and get the current weather in return.
           </p>
           <a
-            href="https://trroev.github.io/memory-game/"
+            href="https://trroev.github.io/weather-app/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -43,7 +40,7 @@ export default function memoryGamePage() {
             </button>
           </a>
           <a
-            href="https://github.com/trroev/memory-game"
+            href="https://github.com/trroev/weather-app"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -58,11 +55,11 @@ export default function memoryGamePage() {
             <div className="grid grid-cols-2 md:grid-cols-1">
               <p className="flex items-center py-2">
                 <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
-                React.js
+                JavaScript
               </p>
               <p className="flex items-center py-2">
                 <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
-                Git
+                OpenWeatherAPI
               </p>
               <p className="flex items-center py-2">
                 <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
