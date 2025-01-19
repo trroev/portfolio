@@ -1,4 +1,3 @@
-import type { Icon as LucideIcon } from 'lucide-react'
 import {
   Box,
   ChevronsUp,
@@ -8,8 +7,6 @@ import {
   Newspaper,
   X,
 } from 'lucide-react'
-
-export type Icon = LucideIcon
 
 export const Icons = {
   box: Box,
