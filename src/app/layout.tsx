@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { siteConfig } from "@/config/site";
 import { navConfig } from "@/config/nav";
+import { Metadata } from "next";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -17,7 +18,7 @@ const calSans = localFont({
   variable: "--cal-sans",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: siteConfig.title,
     template: `%s | ${siteConfig.title}`,
@@ -46,6 +47,7 @@ export const metadata = {
     apple: siteConfig.icons.apple,
   },
   manifest: siteConfig.manifest,
+  metadataBase: new URL(siteConfig.url),
 };
 
 export default function RootLayout({
