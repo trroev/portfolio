@@ -1,14 +1,14 @@
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegister } from 'react-hook-form'
 
 interface FormFieldProps {
-  label: string;
-  id: string;
-  register: UseFormRegister<any>;
-  placeholder: string;
-  error: string | undefined;
-  type?: "text" | "textarea";
-  rows?: number;
-  required?: boolean;
+  label: string
+  id: string
+  register: UseFormRegister<any>
+  placeholder: string
+  error: string | undefined
+  type?: 'text' | 'textarea'
+  rows?: number
+  required?: boolean
 }
 
 const FormField: React.FC<FormFieldProps> = ({
@@ -17,7 +17,7 @@ const FormField: React.FC<FormFieldProps> = ({
   register,
   placeholder,
   error,
-  type = "text",
+  type = 'text',
   rows = 4,
   required,
 }) => {
@@ -26,29 +26,27 @@ const FormField: React.FC<FormFieldProps> = ({
     ...register(id),
     placeholder: placeholder,
     className:
-      "flex min-h-10 w-full rounded-md bg-slate-950 border border-slate-50/25 px-3 py-2 text-sm",
-  };
+      'flex min-h-10 w-full rounded-md bg-slate-950 border border-slate-50/25 px-3 py-2 text-sm',
+  }
   return (
     <div className="space-y-2">
       <label
         htmlFor={id}
-        className="text-sm font-medium leading-nonepeer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="leading-nonepeer-disabled:cursor-not-allowed text-sm font-medium peer-disabled:opacity-70"
       >
         {label}
         {required && <span className="text-red-400">*</span>}
       </label>
-      {type === "textarea" ? (
+      {type === 'textarea' ? (
         <textarea {...fieldProps} rows={rows} />
       ) : (
         <input type={type} {...fieldProps} />
       )}
       {error && (
-        <p className="text-red-400 text-xs mt-1 mb-2 sm:text-sm">
-          {error}
-        </p>
+        <p className="mb-2 mt-1 text-xs text-red-400 sm:text-sm">{error}</p>
       )}
     </div>
-  );
-};
+  )
+}
 
-export { FormField };
+export { FormField }

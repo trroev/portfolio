@@ -25,7 +25,7 @@ jobs:
 
         with:
           node-version: 20.11.1
-          cache: "pnpm"
+          cache: 'pnpm'
 
       - name: Pull Vercel Environment Information
         run: |

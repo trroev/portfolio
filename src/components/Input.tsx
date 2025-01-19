@@ -1,11 +1,10 @@
-interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  id: string;
-  name: string;
-  label: string;
-  placeholder: string;
-  error?: boolean;
-  errorMessage?: string;
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  id: string
+  name: string
+  label: string
+  placeholder: string
+  error?: boolean
+  errorMessage?: string
 }
 
 export const Input = ({
@@ -14,30 +13,28 @@ export const Input = ({
   label,
   placeholder,
   error = false,
-  errorMessage = "",
+  errorMessage = '',
   ...props
 }: InputProps) => {
   return (
     <>
-      <label htmlFor={id} className="uppercase text-sm py-2">
+      <label htmlFor={id} className="py-2 text-sm uppercase">
         {label}
-        {(label === "Name" || label === "Email") && (
-          <span className="text-red-400 px-1">*</span>
+        {(label === 'Name' || label === 'Email') && (
+          <span className="px-1 text-red-400">*</span>
         )}
       </label>
       <input
         {...props}
-        className="border rounded-lg p-3 flex border-gray-400"
+        className="flex rounded-lg border border-gray-400 p-3"
         type="text"
         id={id}
         name={name}
         placeholder={placeholder}
       />
       {error && (
-        <p className="text-red-400 uppercase text-sm mt-2">
-          {errorMessage}
-        </p>
+        <p className="mt-2 text-sm uppercase text-red-400">{errorMessage}</p>
       )}
     </>
-  );
-};
+  )
+}

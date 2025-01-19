@@ -1,19 +1,19 @@
-import { ProjectItem } from "./ProjectItem";
-import jamStatsImg from "../../public/assets/projects/jamstats_splash.jpg";
-import guidedGrowthImg from "../../public/assets/projects/screenshot.webp";
-import memoryImg from "../../public/assets/projects/memory-game.webp";
-import resumeImg from "../../public/assets/projects/resume_builder.jpg";
-import weatherImg from "../../public/assets/projects/weather_watch.jpg";
+import jamStatsImg from '../../public/assets/projects/jamstats_splash.jpg'
+import memoryImg from '../../public/assets/projects/memory-game.webp'
+import resumeImg from '../../public/assets/projects/resume_builder.jpg'
+import guidedGrowthImg from '../../public/assets/projects/screenshot.webp'
+import weatherImg from '../../public/assets/projects/weather_watch.jpg'
+import { ProjectItem } from './ProjectItem'
 
 export const Projects = () => {
   return (
     <div id="projects" className="w-full px-2 py-20">
-      <div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
-        <p className="font-cal uppercase text-xl tracking-widest text-red-400">
+      <div className="mx-auto flex h-full max-w-[1240px] flex-col justify-center">
+        <p className="font-cal text-xl uppercase tracking-widest text-red-400">
           Projects
         </p>
-        <h2 className="font-cal py-4">What I&#39;ve Built</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h2 className="py-4 font-cal">What I&#39;ve Built</h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <ProjectItem
             title="JamStats"
             img={jamStatsImg}
@@ -52,5 +52,5 @@ export const Projects = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

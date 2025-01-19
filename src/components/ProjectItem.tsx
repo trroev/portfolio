@@ -1,13 +1,13 @@
-import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
+import Image, { StaticImageData } from 'next/image'
+import Link from 'next/link'
 
 type ProjectItemProps = {
-  title: string;
-  img: StaticImageData;
-  alt: string;
-  tech: string;
-  projectUrl: string;
-};
+  title: string
+  img: StaticImageData
+  alt: string
+  tech: string
+  projectUrl: string
+}
 
 export const ProjectItem = ({
   title,
@@ -17,24 +17,22 @@ export const ProjectItem = ({
   projectUrl,
 }: ProjectItemProps) => {
   return (
-    <div className="relative flex items-center justify-center h-full w-full rounded-xl p-4 group">
+    <div className="group relative flex h-full w-full items-center justify-center rounded-xl p-4">
       <Image
         className="rounded-xl group-hover:opacity-10"
         src={img}
         alt={alt}
         placeholder="blur"
       />
-      <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-        <h3 className="text-2xl tracking-wider text-center">
-          {title}
-        </h3>
-        <p className="pb-4 pt-2 text-white text-center">{tech}</p>
+      <div className="absolute left-[50%] top-[50%] hidden translate-x-[-50%] translate-y-[-50%] group-hover:block">
+        <h3 className="text-center text-2xl tracking-wider">{title}</h3>
+        <p className="pb-4 pt-2 text-center text-white">{tech}</p>
         <Link href={projectUrl}>
-          <p className="py-4 text-center rounded-lg bg-white text-[#141414] font-bold text-md cursor-pointer hover:bg-white/75 ease-in duration-300">
+          <p className="text-md cursor-pointer rounded-lg bg-white py-4 text-center font-bold text-[#141414] duration-300 ease-in hover:bg-white/75">
             Project Information
           </p>
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}

@@ -1,22 +1,23 @@
-import { Inter as FontSans } from "next/font/google";
-import localFont from "next/font/local";
-import { Analytics } from "@vercel/analytics/react";
+import { Inter as FontSans } from 'next/font/google'
+import localFont from 'next/font/local'
+import { Analytics } from '@vercel/analytics/react'
 
-import "./globals.css";
-import Navbar from "@/components/Navbar";
-import { siteConfig } from "@/config/site";
-import { navConfig } from "@/config/nav";
-import { Metadata } from "next";
+import './globals.css'
+
+import { Metadata } from 'next'
+import Navbar from '@/components/Navbar'
+import { navConfig } from '@/config/nav'
+import { siteConfig } from '@/config/site'
 
 const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
 
 const calSans = localFont({
-  src: "../assets/fonts/CalSans-SemiBold.woff2",
-  variable: "--cal-sans",
-});
+  src: '../assets/fonts/CalSans-SemiBold.woff2',
+  variable: '--cal-sans',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -48,22 +49,22 @@ export const metadata: Metadata = {
   },
   manifest: siteConfig.manifest,
   metadataBase: new URL(siteConfig.url),
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
       <body
-        className={`flex flex-col min-h-screen font-sans antialiased ${fontSans.variable} ${calSans.variable}`}
+        className={`flex min-h-screen flex-col font-sans antialiased ${fontSans.variable} ${calSans.variable}`}
       >
         <Navbar items={navConfig.navLinks} />
         <main>{children}</main>
         <Analytics />
       </body>
     </html>
-  );
+  )
 }

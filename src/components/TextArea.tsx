@@ -1,12 +1,11 @@
-interface TextAreaProps
-  extends React.InputHTMLAttributes<HTMLTextAreaElement> {
-  id: string;
-  name: string;
-  label: string;
-  placeholder: string;
-  type?: string;
-  error?: boolean;
-  errorMessage?: string;
+interface TextAreaProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
+  id: string
+  name: string
+  label: string
+  placeholder: string
+  type?: string
+  error?: boolean
+  errorMessage?: string
 }
 
 export const TextArea = ({
@@ -20,23 +19,21 @@ export const TextArea = ({
 }: TextAreaProps) => {
   return (
     <div className="flex flex-col py-2">
-      <label htmlFor={id} className="uppercase text-sm py-2">
+      <label htmlFor={id} className="py-2 text-sm uppercase">
         {label}
-        <span className=" text-red-400 px-1">*</span>
+        <span className="px-1 text-red-400">*</span>
       </label>
       <textarea
         {...props}
-        className="border rounded-lg p-3 border-gray-400"
+        className="rounded-lg border border-gray-400 p-3"
         rows={10}
         id={id}
         name={name}
         placeholder={placeholder}
       ></textarea>
       {error && (
-        <p className="text-red-400 uppercase text-sm mt-2">
-          {errorMessage}
-        </p>
+        <p className="mt-2 text-sm uppercase text-red-400">{errorMessage}</p>
       )}
     </div>
-  );
-};
+  )
+}

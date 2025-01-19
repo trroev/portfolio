@@ -1,3 +1,4 @@
+import type { Icon as LucideIcon } from 'lucide-react'
 import {
   Box,
   ChevronsUp,
@@ -6,10 +7,9 @@ import {
   Menu,
   Newspaper,
   X,
-  type Icon as LucideIcon,
-} from "lucide-react";
+} from 'lucide-react'
 
-export type Icon = LucideIcon;
+export type Icon = LucideIcon
 
 export const Icons = {
   box: Box,
@@ -19,4 +19,4 @@ export const Icons = {
   linkedIn: Linkedin,
   menu: Menu,
   resume: Newspaper,
-};
+}
