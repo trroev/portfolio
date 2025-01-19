@@ -5,12 +5,10 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormSchema, type Form } from "@/app/models/Form";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { FormField } from "./FormField";
 import { useState } from "react";
 
 export default function Contact() {
-  const { pending } = useFormStatus();
   const [resultMessage, setResultMessage] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -18,7 +16,7 @@ export default function Contact() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<Form>({
     resolver: zodResolver(FormSchema),
   });
@@ -124,10 +122,10 @@ export default function Contact() {
 
             <button
               type="submit"
-              disabled={pending}
+              disabled={isSubmitting}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium text-slate-950 bg-slate-50 h-10 px-4 py-2 hover:bg-slate-50/70 ease-in duration-300"
             >
-              {pending ? "Submitting..." : "Submit"}
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
             <p className="text-green-500 text-xs mt-1 mb-2 sm:text-sm">
               {success !== false ? (
