@@ -1,14 +1,15 @@
 'use client'
 
-import { FC, useState } from 'react'
+import type { FC } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { NavLink } from '@/types'
+import { type NavLink } from '@/types'
 
 import { Icons } from './Icons'
 import MobileNav from './MobileNav'
 
-interface NavbarProps {
+type NavbarProps = {
   items?: NavLink[]
 }
 

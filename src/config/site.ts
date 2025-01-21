@@ -1,4 +1,4 @@
-import { SiteConfig } from '@/types'
+import { type SiteConfig } from '@/types'
 
 export const siteConfig: SiteConfig = {
   title: 'Trevor Mathiak | Full Stack Developer',

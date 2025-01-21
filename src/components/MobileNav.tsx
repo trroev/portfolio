@@ -1,10 +1,10 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
 import { useLockBody } from '@/hooks/lock-body'
-import { NavLink } from '@/types'
+import { type NavLink } from '@/types'
 
-interface MobileNavProps {
+type MobileNavProps = {
   items?: NavLink[]
   onClose?: () => void
 }

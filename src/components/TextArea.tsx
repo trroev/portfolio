@@ -1,4 +1,4 @@
-interface TextAreaProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
+type TextAreaProps = {
   id: string
   name: string
   label: string
@@ -6,7 +6,7 @@ interface TextAreaProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   type?: string
   error?: boolean
   errorMessage?: string
-}
+} & React.InputHTMLAttributes<HTMLTextAreaElement>
 
 export const TextArea = ({
   id,

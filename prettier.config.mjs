@@ -35,7 +35,7 @@ const config = {
   semi: false,
   singleQuote: true,
   tabWidth: 2,
-  tailwindConfig: fileURLToPath(new URL('tailwind.config.js', import.meta.url)),
+  tailwindConfig: fileURLToPath(new URL('tailwind.config.ts', import.meta.url)),
   trailingComma: 'all',
   useTabs: false,
 }

@@ -1,11 +1,11 @@
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+type InputProps = {
   id: string
   name: string
   label: string
   placeholder: string
   error?: boolean
   errorMessage?: string
-}
+} & React.InputHTMLAttributes<HTMLInputElement>
 
 export const Input = ({
   id,

@@ -17,6 +17,7 @@ const config: Config = {
       cal: ['var(--cal-sans)', ...defaultTheme.fontFamily.sans],
     },
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require('tailwindcss-animate')],
 }
 

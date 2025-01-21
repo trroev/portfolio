@@ -1,14 +1,20 @@
 'use client'
 
 import type { Form } from '@/app/models/Form'
+import type { SubmitHandler } from 'react-hook-form'
 import { useState } from 'react'
 import Link from 'next/link'
 import { FormSchema } from '@/app/models/Form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 import { FormField } from './FormField'
 import { Icons } from './Icons'
+
+type Result = {
+  status: string
+  message: string
+}
 
 export default function Contact() {
   const [resultMessage, setResultMessage] = useState('')
@@ -33,7 +39,7 @@ export default function Contact() {
         body: JSON.stringify(values),
       })
 
-      const result = await res.json()
+      const result: Result = (await res.json()) as Result
 
       if (result.status === 'success') {
         setSuccess(true)
@@ -127,7 +133,7 @@ export default function Contact() {
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
             <p className="mb-2 mt-1 text-xs text-green-500 sm:text-sm">
-              {success !== false ? (
+              {success ? (
                 resultMessage
               ) : (
                 <span className="sm:textsm mb-2 mt-1 text-xs text-red-400">

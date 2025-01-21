@@ -1,3 +1,4 @@
+import type { StaticImageData } from 'next/image'
 import Image from 'next/image'
 
 import gitSVG from '../../public/svg/git.svg'
@@ -11,7 +12,7 @@ import tailwindSVG from '../../public/svg/tailwindcss.svg'
 import typescriptSVG from '../../public/svg/typescript.svg'
 
 type SkillBadgeProps = {
-  svg: string
+  svg: StaticImageData
   name: string
   className?: string
 }
@@ -22,7 +23,7 @@ const SkillBadge = ({ svg, name, className }: SkillBadgeProps) => {
       src={svg}
       alt={name}
       className={
-        className ||
+        className ??
         'm-1 h-10 w-max cursor-pointer duration-300 ease-in hover:scale-110 md:h-12 lg:h-16'
       }
     />
@@ -43,39 +44,45 @@ export const Skills = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <SkillBadge svg={javascriptSVG} name="JavaScript" />
+            <SkillBadge
+              svg={javascriptSVG as StaticImageData}
+              name="JavaScript"
+            />
           </a>
           <a
             href="https://www.typescriptlang.org/"
             target="_blank"
             rel="noreferrer"
           >
-            <SkillBadge svg={typescriptSVG} name="TypeScript" />
+            <SkillBadge
+              svg={typescriptSVG as StaticImageData}
+              name="TypeScript"
+            />
           </a>
           <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
-            <SkillBadge svg={mongoDBSVG} name="MongoDB" />
+            <SkillBadge svg={mongoDBSVG as StaticImageData} name="MongoDB" />
           </a>
           <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
-            <SkillBadge svg={nextSVG} name="Next.js" />
+            <SkillBadge svg={nextSVG as StaticImageData} name="Next.js" />
           </a>
           <a href="https://nodejs.org/en/" target="_blank" rel="noreferrer">
-            <SkillBadge svg={nodeSVG} name="Node.js" />
+            <SkillBadge svg={nodeSVG as StaticImageData} name="Node.js" />
           </a>
           <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
-            <SkillBadge svg={reactSVG} name="React.js" />
+            <SkillBadge svg={reactSVG as StaticImageData} name="React.js" />
           </a>
           <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
             <SkillBadge
-              svg={tailwindSVG}
+              svg={tailwindSVG as StaticImageData}
               name="TailwindCSS"
               className="h-7 w-max cursor-pointer duration-300 ease-in hover:scale-105 lg:h-10"
             />
           </a>
           <a href="https://www.npmjs.com/" target="_blank" rel="noreferrer">
-            <SkillBadge svg={npmSVG} name="npm" />
+            <SkillBadge svg={npmSVG as StaticImageData} name="npm" />
           </a>
           <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
-            <SkillBadge svg={gitSVG} name="git" />
+            <SkillBadge svg={gitSVG as StaticImageData} name="git" />
           </a>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { OpenGraphType } from 'next/dist/lib/metadata/types/opengraph-types'
+import { type OpenGraphType } from 'next/dist/lib/metadata/types/opengraph-types'
 
 export type NavLink = {
   title: string
@@ -30,6 +30,6 @@ export type SiteConfig = {
     shortcut: string
     apple: string
   }
-  links: any
+  links: string[]
   manifest: string
 }
