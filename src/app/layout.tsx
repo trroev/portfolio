@@ -1,7 +1,6 @@
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
-import { Inter as FontSans } from 'next/font/google'
-import localFont from 'next/font/local'
+
 import type { ReactNode } from 'react'
 
 import './globals.css'
@@ -10,16 +9,6 @@ import Navbar from '@/components/Navbar'
 import { navConfig } from '@/config/nav'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/utils/cn'
-
-const fontSans = FontSans({
-  subsets: ['latin'],
-  variable: '--font-sans',
-})
-
-const calSans = localFont({
-  src: '../assets/fonts/CalSans-SemiBold.woff2',
-  variable: '--cal-sans',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -63,8 +52,6 @@ export default function RootLayout({
       <body
         className={cn(
           'flex min-h-screen flex-col bg-background font-sans text-foreground antialiased',
-          fontSans.variable,
-          calSans.variable,
         )}
       >
         <Navbar items={navConfig.navLinks} />

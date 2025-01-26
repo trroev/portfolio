@@ -1,14 +1,13 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
 
 @theme {
   --color-background: oklch(0 0 0);
   --color-foreground: oklch(100 0 0);
 
   --font-*: initial;
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-cal: var(--cal-sans), ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: Geist, sans-serif;
+  --font-mono: Geist Mono, monospace;
 }
 
 @utility container {
