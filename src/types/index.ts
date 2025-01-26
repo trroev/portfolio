@@ -1,4 +1,4 @@
-import { type OpenGraphType } from 'next/dist/lib/metadata/types/opengraph-types'
+import type { OpenGraphType } from 'next/dist/lib/metadata/types/opengraph-types'
 
 export type NavLink = {
   title: string

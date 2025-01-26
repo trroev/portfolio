@@ -1,4 +1,4 @@
-import { type NavConfig } from '@/types'
+import type { NavConfig } from '@/types'
 
 export const navConfig: NavConfig = {
   navLinks: [
