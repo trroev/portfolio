@@ -1,7 +1,7 @@
-import { type Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
+import type { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import localFont from 'next/font/local'
-import { Analytics } from '@vercel/analytics/react'
 
 import './globals.css'
 

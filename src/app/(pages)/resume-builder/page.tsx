@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+
 import { Icons } from '@/components/Icons'
 
 export default function resumeBuilderPage() {

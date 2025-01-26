@@ -1,4 +1,4 @@
-import { type SiteConfig } from '@/types'
+import type { SiteConfig } from '@/types'
 
 export const siteConfig: SiteConfig = {
   title: 'Trevor Mathiak | Full Stack Developer',
@@ -23,6 +23,6 @@ export const siteConfig: SiteConfig = {
     shortcut: '/favicon/favicon-16x16.png',
     apple: '/favicon/apple-touch-icon.png',
   },
-  links: {},
+  links: [],
   manifest: '/site.webmanifest',
 }

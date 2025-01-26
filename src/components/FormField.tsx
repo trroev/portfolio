@@ -1,9 +1,9 @@
-import { type UseFormRegister } from 'react-hook-form'
+import type { UseFormRegister } from 'react-hook-form'
 
 type FormFieldProps = {
   label: string
   id: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   register: UseFormRegister<any>
   placeholder: string
   error: string | undefined

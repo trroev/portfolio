@@ -1,6 +1,6 @@
 import type { MailDataRequired } from '@sendgrid/mail'
-import { NextResponse } from 'next/server'
 import sgMail from '@sendgrid/mail'
+import { NextResponse } from 'next/server'
 
 type ResponseData = {
   status?: string
