@@ -27,7 +27,7 @@ const MobileNav: FC<MobileNavProps> = ({ items, onClose }) => {
           className="flex items-center space-x-4"
           onClick={handleLinkClick}
         >
-          <div className="h-10 w-10 cursor-pointer rounded-full bg-gradient-to-br from-yellow-200 to-red-600" />
+          <div className="h-10 w-10 cursor-pointer rounded-full bg-linear-to-br from-yellow-200 to-red-600" />
           <span className="hidden font-medium sm:inline-block">
             {siteConfig.title}
           </span>

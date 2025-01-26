@@ -22,14 +22,14 @@ const Navbar: FC<NavbarProps> = ({ items }) => {
   }
 
   return (
-    <header className="container sticky top-0 z-40 bg-slate-950/80 backdrop-blur-sm">
+    <header className="container sticky top-0 z-40 bg-slate-950/80 backdrop-blur-xs">
       <div className="flex h-20 items-center justify-between border-b border-b-slate-200 py-6">
         <Link
           href="/"
           aria-label="Link to home page"
           className="items-center space-x-2 md:flex"
         >
-          <div className="h-12 w-12 cursor-pointer rounded-full bg-gradient-to-br from-yellow-200 to-red-600" />
+          <div className="h-12 w-12 cursor-pointer rounded-full bg-linear-to-br from-yellow-200 to-red-600" />
           <span className="hidden font-bold md:inline-block">
             {siteConfig.title}
           </span>

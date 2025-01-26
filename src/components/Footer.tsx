@@ -10,7 +10,7 @@ export const Footer = () => {
       <div className="mx-auto border-t border-t-slate-200 p-4 md:px-6 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link href="/" className="mb-6 flex items-center space-x-2 sm:mb-0">
-            <div className="h-8 w-8 cursor-pointer rounded-full bg-gradient-to-br from-yellow-200 to-red-600 sm:h-10 sm:w-10" />
+            <div className="h-8 w-8 cursor-pointer rounded-full bg-linear-to-br from-yellow-200 to-red-600 sm:h-10 sm:w-10" />
             <span className="hidden font-medium sm:inline-block">
               {siteConfig.title}
             </span>
