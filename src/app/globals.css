@@ -1,13 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-html {
-  --scroll-behavior: smooth !important;
-  scroll-behavior: smooth !important;
+@theme {
+  --font-*: initial;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-cal: var(--cal-sans), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
 @layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
     @apply bg-slate-950 tracking-wide text-slate-50;
   }
@@ -32,10 +58,6 @@ html {
   li {
     @apply cursor-pointer;
   }
-
-  /* button {
-    @apply border border-gray-400 rounded-xl uppercase bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration-300;
-  } */
 }
 
 @media (prefers-color-scheme: dark) {
