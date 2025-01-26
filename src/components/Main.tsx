@@ -1,4 +1,6 @@
-import { Icons } from './Icons'
+import { GitHubIcon } from '@/icons/GitHub'
+import { LinkedInIcon } from '@/icons/LinkedIn'
+import { ResumeIcon } from '@/icons/Resume'
 
 export const Main = () => {
   return (
@@ -17,37 +19,34 @@ export const Main = () => {
           </p>
           <div className="m-auto flex max-w-[330px] items-center justify-between py-4">
             <a
-              className="cursor-pointer p-4 duration-300 ease-in hover:scale-110 hover:text-primary"
+              className="size-6 cursor-pointer text-foreground duration-300 ease-in hover:scale-110 hover:text-primary"
               href="https://www.linkedin.com/in/trevormathiak/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Trevor Mathiak LinkedIn page"
             >
-              <div>
-                <Icons.linkedIn strokeWidth={1.5} />
-              </div>
+              <LinkedInIcon />
+              <span className="sr-only">Linkedin page</span>
             </a>
             <a
-              className="cursor-pointer p-4 duration-300 ease-in hover:scale-110 hover:text-primary"
+              className="size-6 cursor-pointer text-foreground duration-300 ease-in hover:scale-110 hover:text-primary"
               href="https://github.com/trroev/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Trevor Mathiak Github page"
             >
-              <div>
-                <Icons.gitHub strokeWidth={1.5} />
-              </div>
+              <GitHubIcon />
+              <span className="sr-only">Github page</span>
             </a>
             <a
-              className="cursor-pointer p-4 duration-300 ease-in hover:scale-110 hover:text-primary"
+              className="size-6 cursor-pointer text-foreground duration-300 ease-in hover:scale-110 hover:text-primary"
               href="/pdf/Trevor_Mathiak_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Trevor Mathiak resume"
             >
-              <div>
-                <Icons.resume strokeWidth={1.5} />
-              </div>
+              <ResumeIcon />
+              <span className="sr-only">Resume</span>
             </a>
           </div>
         </div>

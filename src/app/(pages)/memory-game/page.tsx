@@ -1,23 +1,22 @@
+import { BoxIcon } from '@/icons/Box'
 import Image from 'next/image'
 import Link from 'next/link'
-
-import { Icons } from '@/components/Icons'
 
 export default function memoryGamePage() {
   return (
     <div className="w-full">
       <div className="relative h-[30vh] w-screen lg:h-[40vh]">
-        <div className="absolute left-0 top-0 z-10 h-[30vh] w-full bg-black/80 lg:h-[40vh]" />
+        <div className="absolute top-0 left-0 z-10 h-[30vh] w-full bg-black/80 lg:h-[40vh]" />
         <Image
           blurDataURL="/assets/projects/memory-game.jpg"
-          className="z-1 absolute"
+          className="absolute z-1"
           fill
           style={{ objectFit: 'cover' }}
           src="/assets/projects/memory-game.webp"
           alt="Screenshot for memory game app"
           placeholder="blur"
         />
-        <div className="absolute left-[50%] right-[50%] top-[70%] z-10 w-full max-w-[1240px] translate-x-[-50%] translate-y-[-50%] p-4 text-white">
+        <div className="absolute top-[70%] right-[50%] left-[50%] z-10 w-full max-w-[1240px] translate-x-[-50%] translate-y-[-50%] p-4 text-white">
           <h2 className="py-2">Memory Game</h2>
           <h3>React.js</h3>
         </div>
@@ -38,7 +37,7 @@ export default function memoryGamePage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="mr-8 mt-4 px-8 py-2 duration-300 ease-in hover:scale-105">
+            <button className="mt-4 mr-8 px-8 py-2 duration-300 ease-in hover:scale-105">
               Demo
             </button>
           </a>
@@ -56,18 +55,18 @@ export default function memoryGamePage() {
           <div className="p-2">
             <p className="pb-2 text-center font-bold">Technologies</p>
             <div className="grid grid-cols-2 md:grid-cols-1">
-              <p className="flex items-center py-2">
-                <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
-                React.js
-              </p>
-              <p className="flex items-center py-2">
-                <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
-                Git
-              </p>
-              <p className="flex items-center py-2">
-                <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
-                npm
-              </p>
+              <div className="flex items-center gap-x-1 py-2">
+                <BoxIcon className="size-5" />
+                <p>React.js</p>
+              </div>
+              <div className="flex items-center gap-x-1 py-2">
+                <BoxIcon className="size-5" />
+                <p>Git</p>
+              </div>
+              <div className="flex items-center gap-x-1 py-2">
+                <BoxIcon className="size-5" />
+                <p>npm</p>
+              </div>
             </div>
           </div>
         </div>

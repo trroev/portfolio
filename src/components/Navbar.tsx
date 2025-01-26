@@ -7,7 +7,8 @@ import { useState } from 'react'
 import { siteConfig } from '@/config/site'
 import type { NavLink } from '@/types'
 
-import { Icons } from './Icons'
+import { MenuIcon } from '@/icons/Menu'
+import { XIcon } from '@/icons/X'
 import MobileNav from './MobileNav'
 
 type NavbarProps = {
@@ -40,7 +41,7 @@ const Navbar: FC<NavbarProps> = ({ items }) => {
               <Link
                 key={index}
                 href={item.href}
-                className="flex items-center text-lg font-medium text-slate-50/70 transition-colors hover:text-slate-100 sm:text-sm"
+                className="flex items-center font-medium text-lg text-slate-50/70 transition-colors hover:text-slate-100 sm:text-sm"
               >
                 {item.title}
               </Link>
@@ -51,7 +52,7 @@ const Navbar: FC<NavbarProps> = ({ items }) => {
           className="flex items-center space-x-2 duration-300 hover:scale-110 md:hidden"
           onClick={handleNav}
         >
-          {nav ? <Icons.close /> : <Icons.menu />}
+          {nav ? <XIcon /> : <MenuIcon />}
         </button>
         {nav && <MobileNav items={items} onClose={handleNav} />}
       </div>

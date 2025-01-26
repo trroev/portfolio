@@ -1,23 +1,23 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Icons } from '@/components/Icons'
+import { BoxIcon } from '@/icons/Box'
 
 export default function guidedGrowthPage() {
   return (
     <div className="w-full">
       <div className="relative h-[30vh] w-screen lg:h-[40vh]">
-        <div className="absolute left-0 top-0 z-10 h-[30vh] w-full bg-[#141414]/80 lg:h-[40vh]" />
+        <div className="absolute top-0 left-0 z-10 h-[30vh] w-full bg-[#141414]/80 lg:h-[40vh]" />
         <Image
           blurDataURL="/assets/projects/screenshot.jpg"
-          className="z-1 absolute"
+          className="absolute z-1"
           fill
           style={{ objectFit: 'cover' }}
           src="/assets/projects/screenshot.webp"
           alt="Screenshot for landing page of rachaelmathiak.com"
           placeholder="blur"
         />
-        <div className="absolute left-[50%] right-[50%] top-[70%] z-10 w-full max-w-[1240px] translate-x-[-50%] translate-y-[-50%] p-4 text-white">
+        <div className="absolute top-[70%] right-[50%] left-[50%] z-10 w-full max-w-[1240px] translate-x-[-50%] translate-y-[-50%] p-4 text-white">
           <h2 className="py-2">Guided Growth with Rachael</h2>
           <h3>Next.js</h3>
         </div>
@@ -40,7 +40,7 @@ export default function guidedGrowthPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="mr-8 mt-4 px-8 py-2 duration-300 ease-in hover:scale-105">
+            <button className="mt-4 mr-8 px-8 py-2 duration-300 ease-in hover:scale-105">
               Demo
             </button>
           </a>
@@ -58,26 +58,26 @@ export default function guidedGrowthPage() {
           <div className="p-2">
             <p className="pb-2 text-center font-semibold">Technologies</p>
             <div className="grid grid-cols-2 md:grid-cols-1">
-              <p className="flex items-center py-2">
-                <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
-                TypeScript
-              </p>
-              <p className="flex items-center py-2">
-                <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
-                Next.js
-              </p>
-              <p className="flex items-center py-2">
-                <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
-                TailwindCSS
-              </p>
-              <p className="flex items-center py-2">
-                <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
-                SendGrid
-              </p>
-              <p className="flex items-center py-2">
-                <Icons.box strokeWidth={1.5} size={20} className="pr-1" />
-                Formik
-              </p>
+              <div className="flex items-center gap-x-1 py-2">
+                <BoxIcon className="size-5" />
+                <p>TypeScript</p>
+              </div>
+              <div className="flex items-center gap-x-1 py-2">
+                <BoxIcon className="size-5" />
+                <p>Next.js</p>
+              </div>
+              <div className="flex items-center gap-x-1 py-2">
+                <BoxIcon className="size-5" />
+                <p>Tailwind CSS</p>
+              </div>
+              <div className="flex items-center gap-x-1 py-2">
+                <BoxIcon className="size-5" />
+                <p>SendGrid</p>
+              </div>
+              <div className="flex items-center gap-x-1 py-2">
+                <BoxIcon className="size-5" />
+                <p>Formik</p>
+              </div>
             </div>
           </div>
         </div>
