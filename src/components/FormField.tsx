@@ -33,10 +33,10 @@ const FormField: React.FC<FormFieldProps> = ({
     <div className="space-y-2">
       <label
         htmlFor={id}
-        className="leading-nonepeer-disabled:cursor-not-allowed text-sm font-medium peer-disabled:opacity-70"
+        className="leading-nonepeer-disabled:cursor-not-allowed font-medium text-sm peer-disabled:opacity-70"
       >
         {label}
-        {required && <span className="text-red-400">*</span>}
+        {required && <span className="text-primary">*</span>}
       </label>
       {type === 'textarea' ? (
         <textarea {...fieldProps} rows={rows} />
@@ -44,7 +44,7 @@ const FormField: React.FC<FormFieldProps> = ({
         <input type={type} {...fieldProps} />
       )}
       {error && (
-        <p className="mb-2 mt-1 text-xs text-red-400 sm:text-sm">{error}</p>
+        <p className="mt-1 mb-2 text-destructive text-xs sm:text-sm">{error}</p>
       )}
     </div>
   )

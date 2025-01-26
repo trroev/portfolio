@@ -72,7 +72,7 @@ export default function Contact() {
   return (
     <div id="contact" className="w-full px-2 py-20">
       <div className="mx-auto w-full max-w-[1240px]">
-        <p className="font-cal text-xl uppercase tracking-widest text-red-400">
+        <p className="font-cal text-primary text-xl uppercase tracking-widest">
           Contact
         </p>
         <h2 className="py-4 font-cal">Get In Touch</h2>
@@ -129,15 +129,15 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex h-10 items-center justify-center rounded-md bg-slate-50 px-4 py-2 text-sm font-medium text-slate-950 duration-300 ease-in hover:bg-slate-50/70"
+              className="inline-flex h-10 cursor-pointer items-center justify-center rounded-md bg-foreground px-4 py-2 font-medium text-background text-sm duration-300 ease-in hover:bg-foreground/70"
             >
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
-            <p className="mb-2 mt-1 text-xs text-green-500 sm:text-sm">
+            <p className="mt-1 mb-2 text-success text-xs sm:text-sm">
               {success ? (
                 resultMessage
               ) : (
-                <span className="sm:textsm mb-2 mt-1 text-xs text-red-400">
+                <span className="sm:textsm mt-1 mb-2 text-primary text-xs">
                   {resultMessage}
                 </span>
               )}
@@ -148,7 +148,7 @@ export default function Contact() {
           <Link href="/" aria-label="return to the top of the page">
             <div className="cursor-pointer rounded-full border border-white/50 p-4 duration-300 ease-in hover:scale-110">
               <Icons.doubleUp
-                className="text-red-400"
+                className="text-primary"
                 size={30}
                 strokeWidth={1.5}
               />

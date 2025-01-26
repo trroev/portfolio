@@ -17,7 +17,7 @@ export const Footer = () => {
           </Link>
           <div className="mb-6 flex flex-wrap items-center text-sm sm:mb-0">
             <a
-              className="mr-6 cursor-pointer duration-300 ease-in hover:scale-110 hover:text-red-400 md:mr-10 lg:mr-14"
+              className="mr-6 cursor-pointer duration-300 ease-in hover:scale-110 hover:text-primary md:mr-10 lg:mr-14"
               href="https://www.linkedin.com/in/trevormathiak/"
               target="_blank"
               rel="noreferrer"
@@ -29,7 +29,7 @@ export const Footer = () => {
               <span className="sr-only">Linkedin page</span>
             </a>
             <a
-              className="mr-6 cursor-pointer duration-300 ease-in hover:scale-110 hover:text-red-400 md:mr-10 lg:mr-14"
+              className="mr-6 cursor-pointer duration-300 ease-in hover:scale-110 hover:text-primary md:mr-10 lg:mr-14"
               href="https://github.com/trroev/"
               target="_blank"
               rel="noreferrer"
@@ -41,7 +41,7 @@ export const Footer = () => {
               <span className="sr-only">Github page</span>
             </a>
             <a
-              className="cursor-pointer duration-300 ease-in hover:scale-110 hover:text-red-400"
+              className="cursor-pointer duration-300 ease-in hover:scale-110 hover:text-primary"
               href="/pdf/Trevor_Mathiak_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"

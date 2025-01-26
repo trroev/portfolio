@@ -34,7 +34,7 @@ export const Skills = () => {
   return (
     <div id="skills" className="w-full px-2 py-20">
       <div className="mx-auto flex h-full max-w-[1240px] flex-col justify-center">
-        <p className="font-cal text-xl uppercase tracking-widest text-red-400">
+        <p className="font-cal text-xl uppercase tracking-widest text-primary">
           Skills
         </p>
         <h2 className="py-4 font-cal">What I Can Do</h2>

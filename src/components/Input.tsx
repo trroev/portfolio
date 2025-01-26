@@ -21,7 +21,7 @@ export const Input = ({
       <label htmlFor={id} className="py-2 text-sm uppercase">
         {label}
         {(label === 'Name' || label === 'Email') && (
-          <span className="px-1 text-red-400">*</span>
+          <span className="px-1 text-primary">*</span>
         )}
       </label>
       <input
@@ -33,7 +33,9 @@ export const Input = ({
         placeholder={placeholder}
       />
       {error && (
-        <p className="mt-2 text-sm uppercase text-red-400">{errorMessage}</p>
+        <p className="mt-2 text-destructive text-sm uppercase">
+          {errorMessage}
+        </p>
       )}
     </>
   )

@@ -4,6 +4,9 @@
 @theme {
   --color-background: oklch(0 0 0);
   --color-foreground: oklch(100 0 0);
+  --color-primary: oklch(.705 .213 47.604);
+  --color-destructive: oklch(0.637 0.237 25.331);
+  --color-success: oklch(.723 .219 149.579);
 
   --font-*: initial;
   --font-sans: Geist, sans-serif;

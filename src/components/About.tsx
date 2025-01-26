@@ -5,7 +5,7 @@ export const About = () => {
     <div id="about" className="flex h-screen w-full items-center px-2 py-16">
       <div className="m-auto max-w-[1240px]">
         <div>
-          <p className="font-cal text-xl uppercase tracking-widest text-red-400">
+          <p className="font-cal text-xl uppercase tracking-widest text-primary">
             About
           </p>
           <h2 className="py-4 font-cal">Who I Am</h2>
@@ -28,7 +28,7 @@ export const About = () => {
             <p className="py-2">
               Check out some of my latest{' '}
               <Link href="/#projects">
-                <span className="cursor-pointer text-red-400 hover:underline">
+                <span className="cursor-pointer text-primary hover:underline">
                   projects
                 </span>
               </Link>

@@ -21,7 +21,7 @@ export const TextArea = ({
     <div className="flex flex-col py-2">
       <label htmlFor={id} className="py-2 text-sm uppercase">
         {label}
-        <span className="px-1 text-red-400">*</span>
+        <span className="px-1 text-primary">*</span>
       </label>
       <textarea
         {...props}
@@ -32,7 +32,9 @@ export const TextArea = ({
         placeholder={placeholder}
       ></textarea>
       {error && (
-        <p className="mt-2 text-sm uppercase text-red-400">{errorMessage}</p>
+        <p className="mt-2 text-destructive text-sm uppercase">
+          {errorMessage}
+        </p>
       )}
     </div>
   )

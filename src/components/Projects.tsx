@@ -4,7 +4,7 @@ export const Projects = () => {
   return (
     <div id="projects" className="w-full px-2 py-20">
       <div className="mx-auto flex h-full max-w-[1240px] flex-col justify-center">
-        <p className="font-cal text-xl uppercase tracking-widest text-red-400">
+        <p className="font-cal text-xl uppercase tracking-widest text-primary">
           Projects
         </p>
         <h2 className="py-4 font-cal">What I&#39;ve Built</h2>
