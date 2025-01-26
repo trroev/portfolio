@@ -9,8 +9,8 @@ import { useForm } from 'react-hook-form'
 import type { Form } from '@/app/models/Form'
 import { FormSchema } from '@/app/models/Form'
 
+import { ChevronDoubleUpIcon } from '@/icons/ChevronDoubleUp'
 import { FormField } from './FormField'
-import { Icons } from './Icons'
 
 type Result = {
   status: string
@@ -147,11 +147,7 @@ export default function Contact() {
         <div className="flex justify-center py-12">
           <Link href="/" aria-label="return to the top of the page">
             <div className="cursor-pointer rounded-full border border-white/50 p-4 duration-300 ease-in hover:scale-110">
-              <Icons.doubleUp
-                className="text-primary"
-                size={30}
-                strokeWidth={1.5}
-              />
+              <ChevronDoubleUpIcon className="size-7 text-primary" />
             </div>
           </Link>
         </div>
