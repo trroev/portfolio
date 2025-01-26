@@ -26,6 +26,14 @@ jobs:
       - name: Slugify
         uses: rlespinasse/github-slug-action@v4.4.1
 
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: latest
+
+      - name: Run Biome
+        run: biome ci .
+
       - name: Install pnpm (if necessary)
         run: which pnpm || npm install -g pnpm
 
