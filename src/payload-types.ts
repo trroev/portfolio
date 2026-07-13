@@ -89,8 +89,16 @@ export interface Config {
     defaultIDType: string;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    home: Home;
+    about: About;
+    services: Service;
+  };
+  globalsSelect: {
+    home: HomeSelect<false> | HomeSelect<true>;
+    about: AboutSelect<false> | AboutSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -364,6 +372,254 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home".
+ */
+export interface Home {
+  id: string;
+  hero: {
+    eyebrow?: string | null;
+    heading: string;
+    subheading?: string | null;
+    primaryCtaLabel?: string | null;
+    secondaryCtaLabel?: string | null;
+  };
+  valueProp?: {
+    heading?: string | null;
+    intro?: string | null;
+    points?:
+      | {
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  featuredWork?: {
+    heading?: string | null;
+    intro?: string | null;
+    ctaLabel?: string | null;
+  };
+  _status?: ('draft' | 'published') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about".
+ */
+export interface About {
+  id: string;
+  eyebrow?: string | null;
+  heading: string;
+  lead?: string | null;
+  /**
+   * Optional portrait shown alongside the story.
+   */
+  portrait?: (string | null) | Media;
+  /**
+   * The chef-to-developer story, in your own words.
+   */
+  story?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  values?: {
+    heading?: string | null;
+    items?:
+      | {
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  howIWork?: {
+    heading?: string | null;
+    items?:
+      | {
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  _status?: ('draft' | 'published') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: string;
+  eyebrow?: string | null;
+  heading: string;
+  intro?: string | null;
+  capabilities?: {
+    heading?: string | null;
+    items?:
+      | {
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  approach?: {
+    heading?: string | null;
+    items?:
+      | {
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  cta?: {
+    heading?: string | null;
+    body?: string | null;
+    ctaLabel?: string | null;
+  };
+  _status?: ('draft' | 'published') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home_select".
+ */
+export interface HomeSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        eyebrow?: T;
+        heading?: T;
+        subheading?: T;
+        primaryCtaLabel?: T;
+        secondaryCtaLabel?: T;
+      };
+  valueProp?:
+    | T
+    | {
+        heading?: T;
+        intro?: T;
+        points?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  featuredWork?:
+    | T
+    | {
+        heading?: T;
+        intro?: T;
+        ctaLabel?: T;
+      };
+  _status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about_select".
+ */
+export interface AboutSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  lead?: T;
+  portrait?: T;
+  story?: T;
+  values?:
+    | T
+    | {
+        heading?: T;
+        items?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  howIWork?:
+    | T
+    | {
+        heading?: T;
+        items?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  _status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
+  capabilities?:
+    | T
+    | {
+        heading?: T;
+        items?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  approach?:
+    | T
+    | {
+        heading?: T;
+        items?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  cta?:
+    | T
+    | {
+        heading?: T;
+        body?: T;
+        ctaLabel?: T;
+      };
+  _status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

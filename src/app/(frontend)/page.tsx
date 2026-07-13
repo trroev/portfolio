@@ -1,28 +1,78 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { primaryButton, secondaryButton } from "~/lib/styles";
+import { siteConfig } from "~/config/site";
+import { getHome } from "~/features/marketing/api/get-home";
+import { FeatureList } from "~/features/marketing/components/feature-list";
+import { HomeHero } from "~/features/marketing/components/home-hero";
+import { getProjects } from "~/features/portfolio/api/get-projects";
+import { ProjectGrid } from "~/features/portfolio/components/project-grid";
+import { pageMetadata } from "~/lib/metadata";
+import { secondaryButton } from "~/lib/styles";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const home = await getHome();
+  return pageMetadata({
+    description: home.hero.subheading ?? siteConfig.description,
+    path: "/",
+  });
+}
+
+export default async function HomePage() {
+  const [home, projects] = await Promise.all([
+    getHome(),
+    getProjects({ limit: 3 }),
+  ]);
+
   return (
-    <section className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center gap-6 px-6 py-20 text-center">
-      <p className="font-medium text-muted text-sm uppercase tracking-[0.2em]">
-        trroev development
-      </p>
-      <h1 className="text-balance font-display font-semibold text-4xl sm:text-display">
-        I'm Trevor Mathiak
-        <span className="text-signature">.</span>
-      </h1>
-      <p className="max-w-xl text-balance text-lg text-muted">
-        A full-stack developer building clean, professional web experiences. The
-        new site is on its way.
-      </p>
-      <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
-        <Link className={primaryButton} href="/contact">
-          Get in touch
-        </Link>
-        <Link className={secondaryButton} href="/portfolio">
-          View portfolio →
-        </Link>
+    <div className="mx-auto w-full max-w-5xl px-6 pb-20">
+      <HomeHero
+        eyebrow={home.hero.eyebrow}
+        heading={home.hero.heading}
+        primaryCtaLabel={home.hero.primaryCtaLabel}
+        secondaryCtaLabel={home.hero.secondaryCtaLabel}
+        subheading={home.hero.subheading}
+      />
+
+      <div className="flex flex-col gap-20">
+        {home.valueProp ? (
+          <div className="flex flex-col gap-6">
+            {home.valueProp.heading ? (
+              <h2 className="text-balance font-display font-semibold text-3xl">
+                {home.valueProp.heading}
+              </h2>
+            ) : null}
+            {home.valueProp.intro ? (
+              <p className="max-w-2xl text-balance text-lg text-muted">
+                {home.valueProp.intro}
+              </p>
+            ) : null}
+            <FeatureList items={home.valueProp.points} />
+          </div>
+        ) : null}
+
+        <section className="flex flex-col gap-6">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div className="flex flex-col gap-2">
+              {home.featuredWork?.heading ? (
+                <h2 className="font-display font-semibold text-3xl">
+                  {home.featuredWork.heading}
+                </h2>
+              ) : null}
+              {home.featuredWork?.intro ? (
+                <p className="max-w-2xl text-muted">
+                  {home.featuredWork.intro}
+                </p>
+              ) : null}
+            </div>
+            <Link className={secondaryButton} href="/portfolio">
+              {home.featuredWork?.ctaLabel ?? "View portfolio"} →
+            </Link>
+          </div>
+          <ProjectGrid projects={projects} />
+        </section>
       </div>
-    </section>
+    </div>
   );
 }

@@ -8,6 +8,9 @@ import sharp from "sharp";
 import { Admins } from "./collections/admins";
 import { Media } from "./collections/media";
 import { Projects } from "./collections/projects";
+import { About } from "./globals/about";
+import { Home } from "./globals/home";
+import { Services } from "./globals/services";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -24,6 +27,7 @@ export default buildConfig({
     url: process.env.DATABASE_URI ?? "",
   }),
   editor: lexicalEditor(),
+  globals: [Home, About, Services],
   plugins: [
     vercelBlobStorage({
       collections: {
