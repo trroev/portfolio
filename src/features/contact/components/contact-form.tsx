@@ -1,0 +1,125 @@
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { focusRing, primaryButton } from "~/lib/styles";
+import { sendMessage } from "../api/send-message";
+import { type ContactInput, contactSchema } from "../schema";
+import { FormField } from "./form-field";
+
+type FormState =
+  | { kind: "idle" }
+  | { kind: "success" }
+  | { kind: "error"; message: string };
+
+const fieldControl = `rounded-md border border-border bg-background px-3 py-2 text-sm transition-colors placeholder:text-muted aria-[invalid=true]:border-red-500 ${focusRing}`;
+
+export function ContactForm() {
+  const [formState, setFormState] = useState<FormState>({ kind: "idle" });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactInput>({
+    defaultValues: { email: "", message: "", name: "" },
+    resolver: zodResolver(contactSchema),
+  });
+
+  async function handleValidSubmit(values: ContactInput) {
+    setFormState({ kind: "idle" });
+    const result = await sendMessage(values);
+    if (result.status === "success") {
+      setFormState({ kind: "success" });
+      reset();
+      return;
+    }
+    setFormState({ kind: "error", message: result.message });
+  }
+
+  if (formState.kind === "success") {
+    return (
+      <div
+        className="flex flex-col gap-2 rounded-lg border border-border bg-surface px-6 py-8 text-center"
+        role="status"
+      >
+        <h2 className="font-display font-semibold text-xl">Message sent</h2>
+        <p className="text-muted">
+          Thanks for reaching out — I'll get back to you soon.
+        </p>
+        <button
+          className={`mt-2 self-center rounded-sm font-medium text-link text-sm hover:underline ${focusRing}`}
+          onClick={() => setFormState({ kind: "idle" })}
+          type="button"
+        >
+          Send another message
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      className="flex flex-col gap-5"
+      noValidate
+      onSubmit={handleSubmit(handleValidSubmit)}
+    >
+      {formState.kind === "error" ? (
+        <p
+          className="rounded-md border border-red-500/40 bg-red-500/10 px-4 py-3 text-red-600 text-sm dark:text-red-400"
+          role="alert"
+        >
+          {formState.message}
+        </p>
+      ) : null}
+
+      <FormField error={errors.name?.message} htmlFor="name" label="Name">
+        <input
+          aria-describedby={errors.name ? "name-error" : undefined}
+          aria-invalid={Boolean(errors.name)}
+          autoComplete="name"
+          className={fieldControl}
+          id="name"
+          type="text"
+          {...register("name")}
+        />
+      </FormField>
+
+      <FormField error={errors.email?.message} htmlFor="email" label="Email">
+        <input
+          aria-describedby={errors.email ? "email-error" : undefined}
+          aria-invalid={Boolean(errors.email)}
+          autoComplete="email"
+          className={fieldControl}
+          id="email"
+          type="email"
+          {...register("email")}
+        />
+      </FormField>
+
+      <FormField
+        error={errors.message?.message}
+        htmlFor="message"
+        label="Message"
+      >
+        <textarea
+          aria-describedby={errors.message ? "message-error" : undefined}
+          aria-invalid={Boolean(errors.message)}
+          className={`${fieldControl} min-h-36 resize-y`}
+          id="message"
+          rows={6}
+          {...register("message")}
+        />
+      </FormField>
+
+      <button
+        className={`self-start ${primaryButton}`}
+        disabled={isSubmitting}
+        type="submit"
+      >
+        {isSubmitting ? "Sending…" : "Send message"}
+      </button>
+    </form>
+  );
+}

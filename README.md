@@ -44,13 +44,20 @@ from Vercel in preview/production — pull them locally with `vercel env pull`.
 | `PAYLOAD_SECRET`        | yes      | Long random string used to sign/encrypt Payload tokens. Generate with `openssl rand -hex 32`.                |
 | `DATABASE_URI`          | yes      | MongoDB Atlas connection string (`mongodb+srv://…`). The Payload datastore.                                  |
 | `BLOB_READ_WRITE_TOKEN` | yes      | Vercel Blob read/write token for media uploads. Auto-provisioned when a Blob store is linked to the project. |
+| `RESEND_API_KEY`        | yes      | [Resend](https://resend.com) API key used by the contact form to deliver messages.                          |
+| `CONTACT_TO_EMAIL`      | yes      | Inbox that contact-form submissions are delivered to.                                                        |
 
 ```sh
 # .env
 PAYLOAD_SECRET=your-generated-secret
 DATABASE_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/portfolio?retryWrites=true&w=majority
 BLOB_READ_WRITE_TOKEN=vercel_blob_rw_xxxxxxxx
+RESEND_API_KEY=re_xxxxxxxx
+CONTACT_TO_EMAIL=you@example.com
 ```
+
+The contact form sends from `contact@trevormathiak.dev`; that domain must be
+verified in Resend for delivery to succeed.
 
 ## CMS
 

@@ -20,6 +20,7 @@
     "generate:importmap": "payload generate:importmap"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
     "@payloadcms/db-mongodb": "^3.86.0",
     "@payloadcms/next": "^3.86.0",
     "@payloadcms/richtext-lexical": "^3.86.0",
@@ -32,7 +33,10 @@
     "payload": "^3.86.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "sharp": "^0.34.2"
+    "react-hook-form": "^7.81.0",
+    "resend": "^6.17.2",
+    "sharp": "^0.34.2",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.2",
