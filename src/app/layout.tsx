@@ -57,10 +57,12 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${fontSans.variable} ${fontDisplay.variable} flex min-h-screen flex-col antialiased`}
-      >
+    <html
+      className={`${fontSans.variable} ${fontDisplay.variable}`}
+      lang="en"
+      suppressHydrationWarning
+    >
+      <body className="flex min-h-screen flex-col antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
