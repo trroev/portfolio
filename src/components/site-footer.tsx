@@ -1,8 +1,8 @@
 import { RiGithubFill, RiLinkedinBoxFill } from "@remixicon/react";
 import Link from "next/link";
-import { Wordmark } from "@/components/wordmark";
-import { siteConfig, socialLinks } from "@/config/site";
-import { focusRing, iconButton } from "@/lib/styles";
+import { Wordmark } from "~/components/wordmark";
+import { siteConfig, socialLinks } from "~/config/site";
+import { focusRing, iconButton } from "~/lib/styles";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { primaryButton, secondaryButton } from "@/lib/styles";
+import { primaryButton, secondaryButton } from "~/lib/styles";
 
 export default function Home() {
   return (

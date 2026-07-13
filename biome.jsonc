@@ -5,6 +5,13 @@
     "ultracite/biome/react",
     "ultracite/biome/next"
   ],
+  "files": {
+    "includes": [
+      "!src/payload-types.ts",
+      "!**/importMap.js",
+      "!src/app/(payload)"
+    ]
+  },
   "linter": {
     "rules": {
       "performance": {

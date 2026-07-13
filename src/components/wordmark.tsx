@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { focusRing } from "@/lib/styles";
+import { focusRing } from "~/lib/styles";
 
 export function Wordmark() {
   return (

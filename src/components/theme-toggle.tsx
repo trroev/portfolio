@@ -3,7 +3,7 @@
 import { RiMoonLine, RiSunLine } from "@remixicon/react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { iconButton } from "@/lib/styles";
+import { iconButton } from "~/lib/styles";
 
 type ThemeIconProps = {
   isMounted: boolean;

@@ -4,10 +4,10 @@ import { RiCloseLine, RiMenuLine } from "@remixicon/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { Wordmark } from "@/components/wordmark";
-import { mainNav, type NavItem } from "@/config/site";
-import { focusRing, iconButton, primaryButton } from "@/lib/styles";
+import { ThemeToggle } from "~/components/theme-toggle";
+import { Wordmark } from "~/components/wordmark";
+import { mainNav, type NavItem } from "~/config/site";
+import { focusRing, iconButton, primaryButton } from "~/lib/styles";
 
 function isActive({ pathname, href }: { pathname: string; href: string }) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
