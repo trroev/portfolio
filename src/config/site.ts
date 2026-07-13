@@ -13,6 +13,7 @@ export const siteConfig = {
   ],
   name: "trroev development",
   ogImage: "/portfolio_splash.jpg",
+  resumePath: "/pdf/Trevor_Mathiak_Resume.pdf",
   title: "Trevor Mathiak — trroev development",
   url: "https://trevormathiak.dev",
 } as const;

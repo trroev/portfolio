@@ -7,6 +7,7 @@ import { buildConfig } from "payload";
 import sharp from "sharp";
 import { Admins } from "./collections/admins";
 import { Media } from "./collections/media";
+import { Projects } from "./collections/projects";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -18,7 +19,7 @@ export default buildConfig({
     },
     user: Admins.slug,
   },
-  collections: [Admins, Media],
+  collections: [Admins, Media, Projects],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI ?? "",
   }),
