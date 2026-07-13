@@ -1,7 +1,10 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter, Space_Grotesk } from "next/font/google";
+import type { ReactNode } from "react";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -10,10 +13,9 @@ const fontSans = Inter({
   variable: "--font-inter",
 });
 
-const fontDisplay = localFont({
-  display: "swap",
-  src: "../assets/fonts/CalSans-SemiBold.woff2",
-  variable: "--font-cal-sans",
+const fontDisplay = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
 });
 
 export const metadata: Metadata = {
@@ -49,17 +51,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+type RootLayoutProps = {
+  children: ReactNode;
+};
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${fontSans.variable} ${fontDisplay.variable} flex min-h-screen flex-col antialiased`}
       >
-        <main className="flex flex-1 flex-col">{children}</main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+          enableSystem
+        >
+          <SiteHeader />
+          <main className="flex flex-1 flex-col">{children}</main>
+          <SiteFooter />
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
