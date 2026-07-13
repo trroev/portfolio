@@ -35,9 +35,18 @@ export function ThemeToggle() {
     setTheme(isDark ? "light" : "dark");
   }
 
+  function resolveLabel() {
+    if (!isMounted) {
+      return "Toggle theme";
+    }
+    return isDark ? "Switch to light theme" : "Switch to dark theme";
+  }
+
+  const label = resolveLabel();
+
   return (
     <button
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      aria-label={label}
       className={iconButton}
       onClick={handleToggleTheme}
       type="button"
