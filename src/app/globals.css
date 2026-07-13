@@ -1,45 +1,22 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cal-sans), var(--font-inter), sans-serif;
+}
+
+:root {
+  color-scheme: light dark;
+}
 
 html {
-  --scroll-behavior: smooth !important;
-  scroll-behavior: smooth !important;
+  scroll-behavior: smooth;
 }
 
-@layer base {
-  body {
-    @apply bg-slate-950 text-slate-50 tracking-wide;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold;
-  }
-
-  h1 {
-    @apply text-4xl sm:text-5xl md:text-6xl;
-  }
-
-  h2 {
-    @apply text-3xl sm:text-4xl;
-  }
-
-  li {
-    @apply cursor-pointer;
-  }
-
-  /* button {
-    @apply border border-gray-400 rounded-xl uppercase bg-[#3B3B3B] hover:bg-[#3B3B3B]/70 ease-in duration-300;
-  } */
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+body {
+  font-family: var(--font-sans);
+  color: light-dark(#0f172a, #f8fafc);
+  letter-spacing: 0.015em;
+  /* slate-50 / slate-950 — theme-aware via color-scheme above */
+  background-color: light-dark(#f8fafc, #020617);
 }

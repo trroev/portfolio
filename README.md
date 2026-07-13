@@ -1,27 +1,42 @@
-# PORTFOLIO
+# portfolio
 
-**Check it out:** [trevormathiak.dev](https://www.trevormathiak.dev)
+The website for **trroev development** — Trevor Mathiak's personal developer brand.
 
-![page preview image](/public/portfolio_splash.jpg)
+**Check it out:** [trevormathiak.dev](https://trevormathiak.dev)
 
-## How It's Made:
+![page preview image](/portfolio_splash.jpg)
 
-**Built with:**
+## Stack
 
-- [React](https://reactjs.org/)
-- [Next.js](https://nextjs.org/)
-- [TailwindCSS](https://tailwindcss.com/)
-- [Lucide](https://lucide.dev/)
+- [Next.js 16](https://nextjs.org/) (App Router)
+- [React 19](https://react.dev/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [Biome](https://biomejs.dev/) via [Ultracite](https://www.ultracite.ai/) for linting & formatting
+- [pnpm](https://pnpm.io/) package manager
+- Deployed on [Vercel](https://vercel.com/)
 
-## Getting Started:
+## Getting started
 
-```
+```sh
 # clone this repo
 git clone https://github.com/trroev/portfolio.git
 # change into the directory
 cd portfolio
 # install dependencies
-npm install
-# start development server
-npm start
+pnpm install
+# start the development server
+pnpm dev
 ```
+
+The app runs at [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+| Command          | Description                          |
+| ---------------- | ------------------------------------ |
+| `pnpm dev`       | Start the development server         |
+| `pnpm build`     | Build for production                 |
+| `pnpm start`     | Serve the production build           |
+| `pnpm lint`      | Lint with Biome (via Ultracite)      |
+| `pnpm format`    | Format & auto-fix with Ultracite     |
+| `pnpm typecheck` | Type-check with the TypeScript compiler |

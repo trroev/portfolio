@@ -12,6 +12,7 @@
 /.next/
 /out/
 next-env.d.ts
+*.tsbuildinfo
 
 # production
 /build
@@ -28,9 +29,6 @@ yarn-error.log*
 
 # local env files
 .env*.local
-sendgrid.env
-email.env
-
 
 # vercel
 .vercel
