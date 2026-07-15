@@ -38,7 +38,6 @@ export default buildConfig({
     }),
   ],
   secret: process.env.PAYLOAD_SECRET ?? "",
-  // @ts-expect-error sharp 0.34's overloaded signature is structurally incompatible with Payload's single-signature SharpDependency type; safe at runtime.
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
