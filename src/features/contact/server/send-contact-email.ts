@@ -2,7 +2,7 @@ import "server-only";
 import { Resend } from "resend";
 import type { ContactInput } from "../schema";
 
-const FROM_ADDRESS = "trroev development <contact@trevormathiak.dev>";
+const FROM_ADDRESS = "trroev development <contact@send.trevormathiak.dev>";
 
 export async function sendContactEmail({
   name,
