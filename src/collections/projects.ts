@@ -1,6 +1,10 @@
 import type { CollectionConfig, TextFieldSingleValidation } from "payload";
 import { anyone } from "../access/anyone";
 import { authenticated } from "../access/authenticated";
+import {
+  revalidateProjects,
+  revalidateProjectsDelete,
+} from "./hooks/revalidate-projects";
 
 const URL_FORMAT_ERROR = "Enter a full URL starting with http:// or https://";
 
@@ -90,6 +94,10 @@ export const Projects: CollectionConfig = {
       type: "number",
     },
   ],
+  hooks: {
+    afterChange: [revalidateProjects],
+    afterDelete: [revalidateProjectsDelete],
+  },
   slug: "projects",
   versions: {
     drafts: true,

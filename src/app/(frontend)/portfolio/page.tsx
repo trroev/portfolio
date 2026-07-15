@@ -5,8 +5,6 @@ import { getProjects } from "~/features/portfolio/api/get-projects";
 import { ProjectGrid } from "~/features/portfolio/components/project-grid";
 import { primaryButton, secondaryButton } from "~/lib/styles";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "Portfolio",
 };

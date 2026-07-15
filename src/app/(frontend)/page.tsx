@@ -9,8 +9,6 @@ import { ProjectGrid } from "~/features/portfolio/components/project-grid";
 import { pageMetadata } from "~/lib/metadata";
 import { secondaryButton } from "~/lib/styles";
 
-export const dynamic = "force-dynamic";
-
 export async function generateMetadata(): Promise<Metadata> {
   const home = await getHome();
   return pageMetadata({

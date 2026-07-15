@@ -6,8 +6,6 @@ import { FeatureList } from "~/features/marketing/components/feature-list";
 import { PageIntro } from "~/features/marketing/components/page-intro";
 import { pageMetadata } from "~/lib/metadata";
 
-export const dynamic = "force-dynamic";
-
 export async function generateMetadata(): Promise<Metadata> {
   const services = await getServices();
   return pageMetadata({

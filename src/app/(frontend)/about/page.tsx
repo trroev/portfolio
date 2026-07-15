@@ -8,8 +8,6 @@ import { Story } from "~/features/marketing/components/story";
 import { pageMetadata } from "~/lib/metadata";
 import type { About, Media } from "~/payload-types";
 
-export const dynamic = "force-dynamic";
-
 export async function generateMetadata(): Promise<Metadata> {
   const about = await getAbout();
   return pageMetadata({

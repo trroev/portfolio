@@ -2,6 +2,7 @@ import type { GlobalConfig } from "payload";
 import { anyone } from "../access/anyone";
 import { authenticated } from "../access/authenticated";
 import { titledItems } from "./fields";
+import { revalidateGlobalPath } from "./hooks/revalidate";
 
 export const About: GlobalConfig = {
   access: {
@@ -109,6 +110,9 @@ export const About: GlobalConfig = {
       type: "group",
     },
   ],
+  hooks: {
+    afterChange: [revalidateGlobalPath("/about")],
+  },
   slug: "about",
   versions: {
     drafts: true,

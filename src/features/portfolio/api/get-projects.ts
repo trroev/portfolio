@@ -9,17 +9,21 @@ type GetProjectsOptions = {
 export async function getProjects({
   limit = 24,
 }: GetProjectsOptions = {}): Promise<Array<Project>> {
-  const payload = await getPayload({ config });
-  const { docs } = await payload.find({
-    collection: "projects",
-    depth: 1,
-    limit,
-    sort: "order",
-    where: {
-      _status: {
-        equals: "published",
+  try {
+    const payload = await getPayload({ config });
+    const { docs } = await payload.find({
+      collection: "projects",
+      depth: 1,
+      limit,
+      sort: "order",
+      where: {
+        _status: {
+          equals: "published",
+        },
       },
-    },
-  });
-  return docs;
+    });
+    return docs;
+  } catch {
+    return [];
+  }
 }
