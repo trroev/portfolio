@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
-import { buildConfig } from "payload";
+import { buildConfig, type SharpDependency } from "payload";
 import sharp from "sharp";
 import { Admins } from "./collections/admins";
 import { Media } from "./collections/media";
@@ -38,8 +38,12 @@ export default buildConfig({
     }),
   ],
   secret: process.env.PAYLOAD_SECRET ?? "",
-  // @ts-expect-error sharp 0.34's overloaded signature is structurally incompatible with Payload's single-signature SharpDependency type; safe at runtime.
-  sharp,
+  // sharp 0.34's overloaded signature is structurally incompatible with
+  // Payload's single-signature SharpDependency type depending on which
+  // overload TS resolves, which varies by environment (see #22) — a
+  // deterministic double cast beats a @ts-expect-error that flip-flops
+  // between "needed" and "unused".
+  sharp: sharp as unknown as SharpDependency,
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
