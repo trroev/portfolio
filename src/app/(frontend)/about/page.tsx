@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { PageIntro } from "~/components/page-intro";
 import { siteConfig } from "~/config/site";
 import { getAbout } from "~/features/marketing/api/get-about";
 import { FeatureList } from "~/features/marketing/components/feature-list";
-import { PageIntro } from "~/features/marketing/components/page-intro";
 import { Story } from "~/features/marketing/components/story";
 import { pageMetadata } from "~/lib/metadata";
 import type { About, Media } from "~/payload-types";
@@ -36,7 +36,7 @@ export default async function AboutPage() {
       <div className="mt-12 flex flex-col gap-20">
         <section className="flex flex-col gap-8 sm:flex-row sm:items-start">
           {portrait?.url ? (
-            <div className="relative aspect-[4/5] w-full max-w-xs shrink-0 overflow-hidden rounded-lg border border-border bg-surface">
+            <div className="relative aspect-4/5 w-full max-w-xs shrink-0 overflow-hidden rounded-lg border border-border bg-surface">
               <Image
                 alt={portrait.alt}
                 className="object-cover"

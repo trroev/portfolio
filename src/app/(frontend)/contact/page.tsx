@@ -1,3 +1,4 @@
+import { PageIntro } from "~/components/page-intro";
 import { ContactForm } from "~/features/contact/components/contact-form";
 import { pageMetadata } from "~/lib/metadata";
 
@@ -11,18 +12,11 @@ export const metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <div className="mx-auto w-full max-w-2xl px-6 py-16 sm:py-20">
-      <header className="flex flex-col gap-4">
-        <p className="font-medium text-signature text-sm uppercase tracking-[0.2em]">
-          Contact
-        </p>
-        <h1 className="text-balance font-display font-semibold text-4xl sm:text-5xl">
-          Get in touch
-        </h1>
-        <p className="text-balance text-lg text-muted">
-          Have a project in mind, or just want to say hello? Send me a message
-          and I'll get back to you.
-        </p>
-      </header>
+      <PageIntro
+        eyebrow="Contact"
+        heading="Get in touch"
+        lead="Have a project in mind, or just want to say hello? Send me a message and I'll get back to you."
+      />
 
       <div className="mt-10">
         <ContactForm />

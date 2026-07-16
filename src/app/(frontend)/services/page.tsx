@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import { CtaBand } from "~/components/cta-band";
+import { PageIntro } from "~/components/page-intro";
 import { siteConfig } from "~/config/site";
 import { getServices } from "~/features/marketing/api/get-services";
-import { CtaBand } from "~/features/marketing/components/cta-band";
 import { FeatureList } from "~/features/marketing/components/feature-list";
-import { PageIntro } from "~/features/marketing/components/page-intro";
 import { pageMetadata } from "~/lib/metadata";
 
 export async function generateMetadata(): Promise<Metadata> {

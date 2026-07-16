@@ -24,7 +24,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             alt={screenshot.alt}
             className="object-cover"
             fill
-            sizes="(min-width: 640px) 50vw, 100vw"
+            sizes="(min-width: 1024px) 476px, (min-width: 640px) 50vw, 100vw"
             src={screenshot.url}
           />
         ) : null}

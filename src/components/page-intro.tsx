@@ -1,10 +1,13 @@
+import type { ReactNode } from "react";
+
 type PageIntroProps = {
   eyebrow?: string | null;
   heading: string;
   lead?: string | null;
+  actions?: ReactNode;
 };
 
-export function PageIntro({ eyebrow, heading, lead }: PageIntroProps) {
+export function PageIntro({ eyebrow, heading, lead, actions }: PageIntroProps) {
   return (
     <header className="flex flex-col gap-4">
       {eyebrow ? (
@@ -17,6 +20,9 @@ export function PageIntro({ eyebrow, heading, lead }: PageIntroProps) {
       </h1>
       {lead ? (
         <p className="max-w-2xl text-balance text-lg text-muted">{lead}</p>
+      ) : null}
+      {actions ? (
+        <div className="mt-2 flex flex-wrap items-center gap-3">{actions}</div>
       ) : null}
     </header>
   );
