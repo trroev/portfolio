@@ -1,6 +1,6 @@
 import type { GlobalConfig } from "payload";
-import { authenticated } from "../access/authenticated";
-import { authenticatedOrPublished } from "../access/authenticated-or-published";
+import { authenticated } from "~/access/authenticated";
+import { authenticatedOrPublished } from "~/access/authenticated-or-published";
 import { titledItems } from "./fields";
 import { revalidateGlobalPath } from "./hooks/revalidate";
 

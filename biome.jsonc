@@ -34,7 +34,7 @@
   // cms layer → lib only). See docs/adr/0002-architecture-import-boundaries.md.
   "overrides": [
     {
-      "includes": ["src/features/contact/**"],
+      "includes": ["src/features/contact/*"],
       "linter": {
         "rules": {
           "style": {
@@ -43,7 +43,12 @@
               "options": {
                 "patterns": [
                   {
-                    "group": ["~/features/**", "!~/features/contact/**"],
+                    "group": [
+                      "~/features/*",
+                      "~/features/**",
+                      "!~/features/contact",
+                      "!~/features/contact/**"
+                    ],
                     "message": "Cross-feature imports are not allowed. Promote shared code to ~/components, ~/lib, or ~/config, and compose features at the app layer."
                   },
                   {
@@ -57,6 +62,10 @@
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
+                  },
+                  {
+                    "group": ["../**"],
+                    "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
                   }
                 ]
               }
@@ -66,7 +75,7 @@
       }
     },
     {
-      "includes": ["src/features/marketing/**"],
+      "includes": ["src/features/contact/*/**"],
       "linter": {
         "rules": {
           "style": {
@@ -75,7 +84,12 @@
               "options": {
                 "patterns": [
                   {
-                    "group": ["~/features/**", "!~/features/marketing/**"],
+                    "group": [
+                      "~/features/*",
+                      "~/features/**",
+                      "!~/features/contact",
+                      "!~/features/contact/**"
+                    ],
                     "message": "Cross-feature imports are not allowed. Promote shared code to ~/components, ~/lib, or ~/config, and compose features at the app layer."
                   },
                   {
@@ -89,6 +103,10 @@
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
+                  },
+                  {
+                    "group": ["../../**"],
+                    "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
                   }
                 ]
               }
@@ -98,7 +116,7 @@
       }
     },
     {
-      "includes": ["src/features/portfolio/**"],
+      "includes": ["src/features/marketing/*"],
       "linter": {
         "rules": {
           "style": {
@@ -107,7 +125,12 @@
               "options": {
                 "patterns": [
                   {
-                    "group": ["~/features/**", "!~/features/portfolio/**"],
+                    "group": [
+                      "~/features/*",
+                      "~/features/**",
+                      "!~/features/marketing",
+                      "!~/features/marketing/**"
+                    ],
                     "message": "Cross-feature imports are not allowed. Promote shared code to ~/components, ~/lib, or ~/config, and compose features at the app layer."
                   },
                   {
@@ -121,6 +144,133 @@
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
+                  },
+                  {
+                    "group": ["../**"],
+                    "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/features/marketing/*/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": [
+                      "~/features/*",
+                      "~/features/**",
+                      "!~/features/marketing",
+                      "!~/features/marketing/**"
+                    ],
+                    "message": "Cross-feature imports are not allowed. Promote shared code to ~/components, ~/lib, or ~/config, and compose features at the app layer."
+                  },
+                  {
+                    "group": ["~/app/**"],
+                    "message": "Features must not import from the app layer (unidirectional flow: shared → features → app)."
+                  },
+                  {
+                    "group": [
+                      "~/collections/**",
+                      "~/globals/**",
+                      "~/access/**"
+                    ],
+                    "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
+                  },
+                  {
+                    "group": ["../../**"],
+                    "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/features/portfolio/*"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": [
+                      "~/features/*",
+                      "~/features/**",
+                      "!~/features/portfolio",
+                      "!~/features/portfolio/**"
+                    ],
+                    "message": "Cross-feature imports are not allowed. Promote shared code to ~/components, ~/lib, or ~/config, and compose features at the app layer."
+                  },
+                  {
+                    "group": ["~/app/**"],
+                    "message": "Features must not import from the app layer (unidirectional flow: shared → features → app)."
+                  },
+                  {
+                    "group": [
+                      "~/collections/**",
+                      "~/globals/**",
+                      "~/access/**"
+                    ],
+                    "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
+                  },
+                  {
+                    "group": ["../**"],
+                    "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/features/portfolio/*/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": [
+                      "~/features/*",
+                      "~/features/**",
+                      "!~/features/portfolio",
+                      "!~/features/portfolio/**"
+                    ],
+                    "message": "Cross-feature imports are not allowed. Promote shared code to ~/components, ~/lib, or ~/config, and compose features at the app layer."
+                  },
+                  {
+                    "group": ["~/app/**"],
+                    "message": "Features must not import from the app layer (unidirectional flow: shared → features → app)."
+                  },
+                  {
+                    "group": [
+                      "~/collections/**",
+                      "~/globals/**",
+                      "~/access/**"
+                    ],
+                    "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
+                  },
+                  {
+                    "group": ["../../**"],
+                    "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
                   }
                 ]
               }
@@ -140,6 +290,7 @@
                 "patterns": [
                   {
                     "group": [
+                      "~/features/*",
                       "~/features/**",
                       "~/app/**",
                       "~/collections/**",
@@ -147,6 +298,10 @@
                       "~/access/**"
                     ],
                     "message": "Shared modules must not import from features, the app layer, or the cms layer (unidirectional flow: shared → features → app)."
+                  },
+                  {
+                    "group": ["../**"],
+                    "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
                   }
                 ]
               }
@@ -156,7 +311,12 @@
       }
     },
     {
-      "includes": ["src/collections/**", "src/globals/**", "src/access/**"],
+      "includes": [
+        "src/collections/**",
+        "src/globals/**",
+        "src/access/**",
+        "src/payload.config.ts"
+      ],
       "linter": {
         "rules": {
           "style": {
@@ -166,12 +326,17 @@
                 "patterns": [
                   {
                     "group": [
+                      "~/features/*",
                       "~/features/**",
                       "~/app/**",
                       "~/components/**",
                       "~/config/**"
                     ],
-                    "message": "The cms layer (collections, globals, access) may import only from ~/lib. See docs/adr/0002-architecture-import-boundaries.md."
+                    "message": "The cms layer (collections, globals, access, payload.config) may import only from ~/lib. See docs/adr/0002-architecture-import-boundaries.md."
+                  },
+                  {
+                    "group": ["../**"],
+                    "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
                   }
                 ]
               }

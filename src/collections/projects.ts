@@ -1,6 +1,6 @@
 import type { CollectionConfig, TextFieldSingleValidation } from "payload";
-import { authenticated } from "../access/authenticated";
-import { authenticatedOrPublished } from "../access/authenticated-or-published";
+import { authenticated } from "~/access/authenticated";
+import { authenticatedOrPublished } from "~/access/authenticated-or-published";
 import {
   revalidateProjects,
   revalidateProjectsDelete,

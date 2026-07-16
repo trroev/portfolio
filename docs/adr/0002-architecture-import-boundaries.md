@@ -1,6 +1,8 @@
 # Import boundaries enforced by Biome, with a distinct cms layer
 
-Source code follows the bulletproof-react unidirectional dependency flow — **shared → features → app** — plus a fourth layer for Payload configuration. The rules are enforced mechanically by Biome `noRestrictedImports` overrides in `biome.jsonc` (one zone per feature plus zones for the shared and cms layers), not by review discipline. A pre-commit hook and a GitHub Actions workflow run lint and typecheck so a violation can't land.
+Source code follows the bulletproof-react unidirectional dependency flow — **shared → features → app** — plus a fourth layer for Payload configuration. The rules are enforced mechanically by Biome `noRestrictedImports` overrides in `biome.jsonc` (two depth-aware zones per feature plus zones for the shared and cms layers), not by review discipline. A pre-commit hook and a GitHub Actions workflow run lint and typecheck so a violation can't land.
+
+The zones block both alias imports (`~/features/other-feature/...`) and relative escapes: feature root files may not import `../**` (anything above the feature), files one level deeper may not import `../../**`, and shared/cms files may not use `../` at all. Intra-feature relative imports (`./sibling`, `../api/x` from a subdirectory) stay legal. Consequence: feature subdirectories may only nest one level deep — a second level would need a third zone per feature.
 
 ## The layers and their allowed imports
 
@@ -17,6 +19,6 @@ Source code follows the bulletproof-react unidirectional dependency flow — **s
 
 ## Consequences
 
-- Adding a feature folder requires adding its override block to `biome.jsonc` (copy an existing feature zone, change the name in `includes` and the self-exception).
-- Intra-feature imports may use either relative paths or the `~/features/<own>` alias; everything crossing a directory boundary uses `~/*`.
+- Adding a feature folder requires adding its pair of override blocks to `biome.jsonc` (copy an existing feature's two zones, change the name in `includes` and the self-exceptions).
+- Intra-feature imports may use either relative paths or the `~/features/<own>` alias; everything crossing a directory or layer boundary must use `~/*` (relative escapes are lint errors).
 - The pre-commit hook (`.husky/pre-commit`) runs staged lint + typecheck; CI (`.github/workflows/ci.yml`) runs full lint + typecheck on pushes and PRs to `main`/`dev`. Test execution joins CI when the test foundation lands (#18).
