@@ -1,12 +1,13 @@
 import type { GlobalConfig } from "payload";
-import { anyone } from "../access/anyone";
 import { authenticated } from "../access/authenticated";
+import { authenticatedOrPublished } from "../access/authenticated-or-published";
 import { titledItems } from "./fields";
 import { revalidateGlobalPath } from "./hooks/revalidate";
 
 export const Services: GlobalConfig = {
   access: {
-    read: anyone,
+    read: authenticatedOrPublished,
+    readVersions: authenticated,
     update: authenticated,
   },
   admin: {

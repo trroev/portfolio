@@ -1,6 +1,6 @@
 import type { CollectionConfig, TextFieldSingleValidation } from "payload";
-import { anyone } from "../access/anyone";
 import { authenticated } from "../access/authenticated";
+import { authenticatedOrPublished } from "../access/authenticated-or-published";
 import {
   revalidateProjects,
   revalidateProjectsDelete,
@@ -38,7 +38,8 @@ export const Projects: CollectionConfig = {
   access: {
     create: authenticated,
     delete: authenticated,
-    read: anyone,
+    read: authenticatedOrPublished,
+    readVersions: authenticated,
     update: authenticated,
   },
   admin: {
