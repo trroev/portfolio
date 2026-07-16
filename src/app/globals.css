@@ -37,6 +37,14 @@
   --text-display--letter-spacing: -0.03em;
 }
 
+@utility focus-ring {
+  @apply outline-none;
+
+  &:focus-visible {
+    @apply ring-2 ring-signature ring-offset-2 ring-offset-background;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

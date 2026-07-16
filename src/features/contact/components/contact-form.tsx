@@ -3,7 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { focusRing, primaryButton } from "~/lib/styles";
+import { Button } from "~/components/button";
+import { cn } from "~/lib/cn";
 import { sendMessage } from "../api/send-message";
 import { type ContactFormInput, contactFormSchema } from "../schema";
 import { FormField } from "./form-field";
@@ -13,7 +14,8 @@ type FormState =
   | { kind: "success" }
   | { kind: "error"; message: string };
 
-const fieldControl = `rounded-md border border-border bg-background px-3 py-2 text-sm transition-colors placeholder:text-muted aria-[invalid=true]:border-red-500 ${focusRing}`;
+const fieldControl =
+  "focus-ring rounded-md border border-border bg-background px-3 py-2 text-sm transition-colors placeholder:text-muted aria-[invalid=true]:border-red-500";
 
 export function ContactForm() {
   const [formState, setFormState] = useState<FormState>({ kind: "idle" });
@@ -49,7 +51,7 @@ export function ContactForm() {
           Thanks for reaching out — I'll get back to you soon.
         </p>
         <button
-          className={`mt-2 self-center rounded-sm font-medium text-link text-sm hover:underline ${focusRing}`}
+          className="focus-ring mt-2 self-center rounded-sm font-medium text-link text-sm hover:underline"
           onClick={() => setFormState({ kind: "idle" })}
           type="button"
         >
@@ -120,20 +122,16 @@ export function ContactForm() {
         <textarea
           aria-describedby={errors.message ? "message-error" : undefined}
           aria-invalid={Boolean(errors.message)}
-          className={`${fieldControl} min-h-36 resize-y`}
+          className={cn(fieldControl, "min-h-36 resize-y")}
           id="message"
           rows={6}
           {...register("message")}
         />
       </FormField>
 
-      <button
-        className={`self-start ${primaryButton}`}
-        disabled={isSubmitting}
-        type="submit"
-      >
+      <Button className="self-start" disabled={isSubmitting} type="submit">
         {isSubmitting ? "Sending…" : "Send message"}
-      </button>
+      </Button>
     </form>
   );
 }

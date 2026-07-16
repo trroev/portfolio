@@ -1,6 +1,5 @@
 import { RiExternalLinkLine, RiGithubFill } from "@remixicon/react";
 import Image from "next/image";
-import { focusRing } from "~/lib/styles";
 import type { Media, Project } from "~/payload-types";
 
 type ProjectCardProps = {
@@ -11,7 +10,8 @@ function resolveScreenshot(screenshot: Project["screenshot"]): Media | null {
   return typeof screenshot === "object" ? screenshot : null;
 }
 
-const projectLink = `inline-flex items-center gap-1.5 rounded-sm font-medium text-link text-sm transition-colors hover:underline ${focusRing}`;
+const projectLink =
+  "focus-ring inline-flex items-center gap-1.5 rounded-sm font-medium text-link text-sm transition-colors hover:underline";
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const screenshot = resolveScreenshot(project.screenshot);

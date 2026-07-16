@@ -3,7 +3,7 @@
 import { RiMoonLine, RiSunLine } from "@remixicon/react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { iconButton } from "~/lib/styles";
+import { Button } from "~/components/button";
 
 type ThemeIconProps = {
   isMounted: boolean;
@@ -45,13 +45,13 @@ export function ThemeToggle() {
   const label = resolveLabel();
 
   return (
-    <button
+    <Button
       aria-label={label}
-      className={iconButton}
       onClick={handleToggleTheme}
       type="button"
+      variant="icon"
     >
       <ThemeIcon isDark={isDark} isMounted={isMounted} />
-    </button>
+    </Button>
   );
 }

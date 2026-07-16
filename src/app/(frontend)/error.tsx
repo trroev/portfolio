@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect } from "react";
+import { Button } from "~/components/button";
+import { ButtonLink } from "~/components/button-link";
 import { PageIntro } from "~/components/page-intro";
-import { primaryButton, secondaryButton } from "~/lib/styles";
 
 type ErrorPageProps = {
   error: Error & { digest?: string };
@@ -20,12 +20,12 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
       <PageIntro
         actions={
           <>
-            <button className={primaryButton} onClick={reset} type="button">
+            <Button onClick={reset} type="button">
               Try again
-            </button>
-            <Link className={secondaryButton} href="/">
+            </Button>
+            <ButtonLink href="/" variant="secondary">
               Back to home
-            </Link>
+            </ButtonLink>
           </>
         }
         eyebrow="Error"

@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { primaryButton } from "~/lib/styles";
+import { ButtonLink } from "~/components/button-link";
 
 type CtaBandProps = {
   heading?: string | null;
@@ -16,11 +15,7 @@ export function CtaBand({ heading, body, ctaLabel }: CtaBandProps) {
         </h2>
       ) : null}
       {body ? <p className="max-w-xl text-balance text-muted">{body}</p> : null}
-      {ctaLabel ? (
-        <Link className={primaryButton} href="/contact">
-          {ctaLabel}
-        </Link>
-      ) : null}
+      {ctaLabel ? <ButtonLink href="/contact">{ctaLabel}</ButtonLink> : null}
     </section>
   );
 }

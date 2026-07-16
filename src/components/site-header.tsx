@@ -4,10 +4,12 @@ import { RiCloseLine, RiMenuLine } from "@remixicon/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Button } from "~/components/button";
+import { ButtonLink } from "~/components/button-link";
 import { ThemeToggle } from "~/components/theme-toggle";
 import { Wordmark } from "~/components/wordmark";
 import { mainNav, type NavItem } from "~/config/site";
-import { focusRing, iconButton, primaryButton } from "~/lib/styles";
+import { cn } from "~/lib/cn";
 
 function isActive({ pathname, href }: { pathname: string; href: string }) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -24,11 +26,12 @@ function NavLink({ item, isCurrent, variant }: NavLinkProps) {
     return (
       <Link
         aria-current={isCurrent ? "page" : undefined}
-        className={`block rounded-md px-3 py-2.5 font-medium text-base transition-colors ${focusRing} ${
+        className={cn(
+          "focus-ring block rounded-md px-3 py-2.5 font-medium text-base transition-colors",
           isCurrent
             ? "bg-surface text-foreground"
             : "text-muted hover:bg-surface hover:text-foreground"
-        }`}
+        )}
         href={item.href}
       >
         {item.title}
@@ -39,9 +42,10 @@ function NavLink({ item, isCurrent, variant }: NavLinkProps) {
   return (
     <Link
       aria-current={isCurrent ? "page" : undefined}
-      className={`relative rounded-sm px-3 py-2 font-medium text-sm transition-colors ${focusRing} ${
+      className={cn(
+        "focus-ring relative rounded-sm px-3 py-2 font-medium text-sm transition-colors",
         isCurrent ? "text-foreground" : "text-muted hover:text-foreground"
-      }`}
+      )}
       href={item.href}
     >
       {item.title}
@@ -99,26 +103,24 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Link
-            className={`hidden md:inline-flex ${primaryButton}`}
-            href="/contact"
-          >
+          <ButtonLink className="hidden md:inline-flex" href="/contact">
             Get in touch
-          </Link>
-          <button
+          </ButtonLink>
+          <Button
             aria-controls="mobile-nav"
             aria-expanded={isMenuOpen}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            className={`md:hidden ${iconButton}`}
+            className="md:hidden"
             onClick={handleToggleMenu}
             type="button"
+            variant="icon"
           >
             {isMenuOpen ? (
               <RiCloseLine aria-hidden="true" size={22} />
             ) : (
               <RiMenuLine aria-hidden="true" size={22} />
             )}
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -139,9 +141,9 @@ export function SiteHeader() {
               </li>
             ))}
           </ul>
-          <Link className={`mt-4 w-full ${primaryButton}`} href="/contact">
+          <ButtonLink className="mt-4 w-full" href="/contact">
             Get in touch
-          </Link>
+          </ButtonLink>
         </nav>
       ) : null}
     </header>

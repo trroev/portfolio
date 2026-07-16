@@ -1,8 +1,8 @@
 import { RiGithubFill, RiLinkedinBoxFill } from "@remixicon/react";
 import Link from "next/link";
+import { ButtonLink } from "~/components/button-link";
 import { Wordmark } from "~/components/wordmark";
 import { siteConfig, socialLinks } from "~/config/site";
-import { focusRing, iconButton } from "~/lib/styles";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -16,7 +16,7 @@ export function SiteFooter() {
             Full-stack developer building clean, professional web experiences.
           </p>
           <Link
-            className={`mt-1 rounded-sm font-medium text-link text-sm hover:underline ${focusRing}`}
+            className="focus-ring mt-1 rounded-sm font-medium text-link text-sm hover:underline"
             href="/portfolio"
           >
             View portfolio →
@@ -25,24 +25,24 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-3 sm:items-end">
           <div className="flex items-center gap-1">
-            <a
+            <ButtonLink
               aria-label="Trevor Mathiak on GitHub"
-              className={iconButton}
               href={socialLinks.github}
               rel="noopener noreferrer"
               target="_blank"
+              variant="icon"
             >
               <RiGithubFill aria-hidden="true" size={20} />
-            </a>
-            <a
+            </ButtonLink>
+            <ButtonLink
               aria-label="Trevor Mathiak on LinkedIn"
-              className={iconButton}
               href={socialLinks.linkedin}
               rel="noopener noreferrer"
               target="_blank"
+              variant="icon"
             >
               <RiLinkedinBoxFill aria-hidden="true" size={20} />
-            </a>
+            </ButtonLink>
           </div>
           <p className="text-muted text-xs">
             © {year} {siteConfig.author}

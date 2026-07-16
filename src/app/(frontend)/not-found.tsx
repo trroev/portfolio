@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { ButtonLink } from "~/components/button-link";
 import { PageIntro } from "~/components/page-intro";
-import { primaryButton, secondaryButton } from "~/lib/styles";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -13,12 +12,10 @@ export default function NotFoundPage() {
       <PageIntro
         actions={
           <>
-            <Link className={primaryButton} href="/">
-              Back to home
-            </Link>
-            <Link className={secondaryButton} href="/portfolio">
+            <ButtonLink href="/">Back to home</ButtonLink>
+            <ButtonLink href="/portfolio" variant="secondary">
               View portfolio
-            </Link>
+            </ButtonLink>
           </>
         }
         eyebrow="404"

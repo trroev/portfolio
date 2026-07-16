@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { ButtonLink } from "~/components/button-link";
 import { CtaBand } from "~/components/cta-band";
 import { PageIntro } from "~/components/page-intro";
 import { siteConfig } from "~/config/site";
 import { getProjects } from "~/features/portfolio/api/get-projects";
 import { ProjectGrid } from "~/features/portfolio/components/project-grid";
-import { primaryButton, secondaryButton } from "~/lib/styles";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -19,12 +18,12 @@ export default async function PortfolioPage() {
       <PageIntro
         actions={
           <>
-            <a className={primaryButton} download href={siteConfig.resumePath}>
+            <ButtonLink download href={siteConfig.resumePath}>
               Download resume
-            </a>
-            <Link className={secondaryButton} href="/contact">
+            </ButtonLink>
+            <ButtonLink href="/contact" variant="secondary">
               Get in touch
-            </Link>
+            </ButtonLink>
           </>
         }
         eyebrow="Portfolio"

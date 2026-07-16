@@ -6,6 +6,7 @@ import { SiteFooter } from "~/components/site-footer";
 import { SiteHeader } from "~/components/site-header";
 import { ThemeProvider } from "~/components/theme-provider";
 import { siteConfig } from "~/config/site";
+import { cn } from "~/lib/cn";
 import "../globals.css";
 
 const fontSans = Geist({
@@ -58,7 +59,7 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
-      className={`${fontSans.variable} ${fontDisplay.variable}`}
+      className={cn(fontSans.variable, fontDisplay.variable)}
       lang="en"
       suppressHydrationWarning
     >

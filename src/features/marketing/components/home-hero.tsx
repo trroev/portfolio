@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { primaryButton, secondaryButton } from "~/lib/styles";
+import { ButtonLink } from "~/components/button-link";
 
 type HomeHeroProps = {
   eyebrow?: string | null;
@@ -32,14 +31,12 @@ export function HomeHero({
       ) : null}
       <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
         {primaryCtaLabel ? (
-          <Link className={primaryButton} href="/contact">
-            {primaryCtaLabel}
-          </Link>
+          <ButtonLink href="/contact">{primaryCtaLabel}</ButtonLink>
         ) : null}
         {secondaryCtaLabel ? (
-          <Link className={secondaryButton} href="/portfolio">
+          <ButtonLink href="/portfolio" variant="secondary">
             {secondaryCtaLabel} →
-          </Link>
+          </ButtonLink>
         ) : null}
       </div>
     </section>

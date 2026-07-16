@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { ButtonLink } from "~/components/button-link";
 import { siteConfig } from "~/config/site";
 import { getHome } from "~/features/marketing/api/get-home";
 import { FeatureList } from "~/features/marketing/components/feature-list";
@@ -7,7 +7,6 @@ import { HomeHero } from "~/features/marketing/components/home-hero";
 import { getProjects } from "~/features/portfolio/api/get-projects";
 import { ProjectGrid } from "~/features/portfolio/components/project-grid";
 import { pageMetadata } from "~/lib/metadata";
-import { secondaryButton } from "~/lib/styles";
 
 export async function generateMetadata(): Promise<Metadata> {
   const home = await getHome();
@@ -64,9 +63,9 @@ export default async function HomePage() {
                 </p>
               ) : null}
             </div>
-            <Link className={secondaryButton} href="/portfolio">
+            <ButtonLink href="/portfolio" variant="secondary">
               {home.featuredWork?.ctaLabel ?? "View portfolio"} →
-            </Link>
+            </ButtonLink>
           </div>
           <ProjectGrid projects={projects} />
         </section>
