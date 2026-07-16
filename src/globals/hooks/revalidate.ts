@@ -1,5 +1,5 @@
 import type { GlobalAfterChangeHook } from "payload";
-import { isPublished, revalidatePaths } from "../../lib/revalidate";
+import { isPublished, revalidatePaths } from "~/lib/revalidate";
 
 export function revalidateGlobalPath(path: string): GlobalAfterChangeHook {
   return ({ doc, previousDoc, req: { payload, context } }) => {

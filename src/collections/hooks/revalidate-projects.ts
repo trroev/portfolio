@@ -2,7 +2,7 @@ import type {
   CollectionAfterChangeHook,
   CollectionAfterDeleteHook,
 } from "payload";
-import { isPublished, revalidatePaths } from "../../lib/revalidate";
+import { isPublished, revalidatePaths } from "~/lib/revalidate";
 
 const PROJECT_PATHS = [
   "/portfolio",

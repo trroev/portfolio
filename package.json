@@ -15,6 +15,7 @@
     "lint": "ultracite check",
     "format": "ultracite fix",
     "typecheck": "tsc --noEmit",
+    "prepare": "husky",
     "payload": "payload",
     "generate:types": "payload generate:types",
     "generate:importmap": "payload generate:importmap"
@@ -44,6 +45,7 @@
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.3",
     "@types/react-dom": "^19.2.3",
+    "husky": "^9.1.7",
     "tailwindcss": "^4.3.2",
     "typescript": "^5.9.3",
     "ultracite": "7.9.3"
