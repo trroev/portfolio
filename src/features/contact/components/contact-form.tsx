@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { focusRing, primaryButton } from "~/lib/styles";
 import { sendMessage } from "../api/send-message";
-import { type ContactInput, contactSchema } from "../schema";
+import { type ContactFormInput, contactFormSchema } from "../schema";
 import { FormField } from "./form-field";
 
 type FormState =
@@ -22,12 +22,12 @@ export function ContactForm() {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<ContactInput>({
-    defaultValues: { email: "", message: "", name: "" },
-    resolver: zodResolver(contactSchema),
+  } = useForm<ContactFormInput>({
+    defaultValues: { botField: "", email: "", message: "", name: "" },
+    resolver: zodResolver(contactFormSchema),
   });
 
-  async function handleValidSubmit(values: ContactInput) {
+  async function handleValidSubmit(values: ContactFormInput) {
     setFormState({ kind: "idle" });
     const result = await sendMessage(values);
     if (result.status === "success") {
@@ -73,6 +73,20 @@ export function ContactForm() {
           {formState.message}
         </p>
       ) : null}
+
+      <div
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-px w-px overflow-hidden"
+      >
+        <label htmlFor="botField">Leave this field empty</label>
+        <input
+          autoComplete="off"
+          id="botField"
+          tabIndex={-1}
+          type="text"
+          {...register("botField")}
+        />
+      </div>
 
       <FormField error={errors.name?.message} htmlFor="name" label="Name">
         <input

@@ -15,3 +15,9 @@ export const contactSchema = z.object({
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;
+
+export const contactFormSchema = contactSchema.extend({
+  botField: z.string(),
+});
+
+export type ContactFormInput = z.infer<typeof contactFormSchema>;

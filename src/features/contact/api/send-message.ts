@@ -1,4 +1,4 @@
-import type { ContactInput } from "../schema";
+import type { ContactFormInput } from "../schema";
 
 type SendMessageResult =
   | { status: "success" }
@@ -19,8 +19,11 @@ function extractErrorMessage(body: unknown): string | null {
   return null;
 }
 
+const RATE_LIMIT_ERROR =
+  "You've sent a few messages in a row — please wait a minute and try again.";
+
 export async function sendMessage(
-  input: ContactInput
+  input: ContactFormInput
 ): Promise<SendMessageResult> {
   try {
     const response = await fetch("/contact/send", {
@@ -28,6 +31,10 @@ export async function sendMessage(
       headers: { "Content-Type": "application/json" },
       method: "POST",
     });
+
+    if (response.status === 429) {
+      return { message: RATE_LIMIT_ERROR, status: "error" };
+    }
 
     if (!response.ok) {
       const body: unknown = await response.json().catch(() => null);
