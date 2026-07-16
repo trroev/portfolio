@@ -64,6 +64,10 @@
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
                   },
                   {
+                    "group": ["@payload-config"],
+                    "message": "Get the Payload client from ~/lib/payload instead of importing payload.config directly."
+                  },
+                  {
                     "group": ["../**"],
                     "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
                   }
@@ -103,6 +107,10 @@
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
+                  },
+                  {
+                    "group": ["@payload-config"],
+                    "message": "Get the Payload client from ~/lib/payload instead of importing payload.config directly."
                   },
                   {
                     "group": ["../../**"],
@@ -146,6 +154,10 @@
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
                   },
                   {
+                    "group": ["@payload-config"],
+                    "message": "Get the Payload client from ~/lib/payload instead of importing payload.config directly."
+                  },
+                  {
                     "group": ["../**"],
                     "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
                   }
@@ -185,6 +197,10 @@
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
+                  },
+                  {
+                    "group": ["@payload-config"],
+                    "message": "Get the Payload client from ~/lib/payload instead of importing payload.config directly."
                   },
                   {
                     "group": ["../../**"],
@@ -228,6 +244,10 @@
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
                   },
                   {
+                    "group": ["@payload-config"],
+                    "message": "Get the Payload client from ~/lib/payload instead of importing payload.config directly."
+                  },
+                  {
                     "group": ["../**"],
                     "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
                   }
@@ -269,6 +289,10 @@
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
                   },
                   {
+                    "group": ["@payload-config"],
+                    "message": "Get the Payload client from ~/lib/payload instead of importing payload.config directly."
+                  },
+                  {
                     "group": ["../../**"],
                     "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
                   }
@@ -281,6 +305,41 @@
     },
     {
       "includes": ["src/components/**", "src/lib/**", "src/config/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": [
+                      "~/features/*",
+                      "~/features/**",
+                      "~/app/**",
+                      "~/collections/**",
+                      "~/globals/**",
+                      "~/access/**"
+                    ],
+                    "message": "Shared modules must not import from features, the app layer, or the cms layer (unidirectional flow: shared → features → app)."
+                  },
+                  {
+                    "group": ["@payload-config"],
+                    "message": "Only ~/lib/payload may import payload.config — it is the single sanctioned cms touchpoint for the shared layer."
+                  },
+                  {
+                    "group": ["../**"],
+                    "message": "Relative imports must not cross a layer or feature boundary — use the ~/* alias so the boundary rules apply."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/lib/payload.ts"],
       "linter": {
         "rules": {
           "style": {

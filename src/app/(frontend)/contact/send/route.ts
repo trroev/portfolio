@@ -21,7 +21,8 @@ export async function POST(request: Request): Promise<Response> {
   try {
     await sendContactEmail(parsed.data);
     return Response.json({ ok: true });
-  } catch {
+  } catch (error) {
+    console.error("Failed to send contact email:", error);
     return Response.json(
       { error: "Something went wrong sending your message. Please try again." },
       { status: 502 }

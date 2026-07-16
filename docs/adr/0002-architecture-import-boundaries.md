@@ -22,3 +22,7 @@ The zones block both alias imports (`~/features/other-feature/...`) and relative
 - Adding a feature folder requires adding its pair of override blocks to `biome.jsonc` (copy an existing feature's two zones, change the name in `includes` and the self-exceptions).
 - Intra-feature imports may use either relative paths or the `~/features/<own>` alias; everything crossing a directory or layer boundary must use `~/*` (relative escapes are lint errors).
 - The pre-commit hook (`.husky/pre-commit`) runs staged lint + typecheck; CI (`.github/workflows/ci.yml`) runs full lint + typecheck on pushes and PRs to `main`/`dev`. Test execution joins CI when the test foundation lands (#18).
+
+## Amendment (2026-07-16): the shared Payload client is the single cms touchpoint
+
+Issue #17 introduced `src/lib/payload.ts`, a shared helper that wraps `getPayload({ config })` in per-request `cache()` and exposes `getGlobal` for typed global fetches. This is the **only** module allowed to import `@payload-config`; feature `api/` folders get their Payload client from `~/lib/payload` rather than importing the config themselves. The Biome zones enforce it: `@payload-config` is a restricted import in every feature zone and the shared zone, with a dedicated override exempting `src/lib/payload.ts`. This narrows the original rule ("shared never imports cms") to a single audited exception instead of a per-feature convention.
