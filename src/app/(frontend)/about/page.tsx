@@ -6,7 +6,7 @@ import { getAbout } from "~/features/marketing/api/get-about";
 import { FeatureList } from "~/features/marketing/components/feature-list";
 import { Story } from "~/features/marketing/components/story";
 import { pageMetadata } from "~/lib/metadata";
-import type { About, Media } from "~/payload-types";
+import { resolveMedia } from "~/lib/resolve-media";
 
 export async function generateMetadata(): Promise<Metadata> {
   const about = await getAbout();
@@ -17,13 +17,9 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-function resolvePortrait(portrait: About["portrait"]): Media | null {
-  return typeof portrait === "object" ? portrait : null;
-}
-
 export default async function AboutPage() {
   const about = await getAbout();
-  const portrait = resolvePortrait(about.portrait);
+  const portrait = resolveMedia(about.portrait);
 
   return (
     <div className="mx-auto w-full max-w-5xl px-6 py-16 sm:py-20">

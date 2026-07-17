@@ -1,20 +1,17 @@
 import { RiExternalLinkLine, RiGithubFill } from "@remixicon/react";
 import Image from "next/image";
-import type { Media, Project } from "~/payload-types";
+import { resolveMedia } from "~/lib/resolve-media";
+import type { Project } from "~/payload-types";
 
 type ProjectCardProps = {
   project: Project;
 };
 
-function resolveScreenshot(screenshot: Project["screenshot"]): Media | null {
-  return typeof screenshot === "object" ? screenshot : null;
-}
-
 const projectLink =
   "focus-ring inline-flex items-center gap-1.5 rounded-sm font-medium text-link text-sm transition-colors hover:underline";
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const screenshot = resolveScreenshot(project.screenshot);
+  const screenshot = resolveMedia(project.screenshot);
 
   return (
     <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-surface transition-colors hover:border-signature">
