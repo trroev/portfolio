@@ -23,11 +23,6 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.author, url: siteConfig.url }],
   creator: siteConfig.author,
   description: siteConfig.description,
-  icons: {
-    apple: "/favicon/apple-touch-icon.png",
-    icon: "/favicon/favicon.ico",
-    shortcut: "/favicon/favicon-16x16.png",
-  },
   keywords: [...siteConfig.keywords],
   manifest: "/site.webmanifest",
   metadataBase: new URL(siteConfig.url),
