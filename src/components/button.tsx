@@ -8,11 +8,11 @@ export const buttonStyles = tv({
   },
   variants: {
     variant: {
-      icon: "size-9 text-muted hover:bg-surface hover:text-foreground",
+      icon: "size-9 text-text-muted hover:bg-surface hover:text-text-primary",
       primary:
-        "bg-primary px-5 py-2.5 font-medium text-primary-foreground text-sm hover:bg-primary-hover",
+        "bg-accent px-5 py-2.5 font-medium text-accent-foreground text-sm hover:bg-accent-hover",
       secondary:
-        "border border-border px-5 py-2.5 font-medium text-foreground text-sm hover:bg-surface",
+        "border border-border px-5 py-2.5 font-medium text-sm text-text-primary hover:bg-surface",
     },
   },
 });

@@ -27,7 +27,7 @@ export function FeatureList({ heading, items }: FeatureListProps) {
             key={item.title}
           >
             <h3 className="font-display font-semibold text-lg">{item.title}</h3>
-            <p className="text-muted text-sm leading-relaxed">
+            <p className="text-sm text-text-muted leading-relaxed">
               {item.description}
             </p>
           </li>

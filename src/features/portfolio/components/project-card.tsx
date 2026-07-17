@@ -8,13 +8,13 @@ type ProjectCardProps = {
 };
 
 const projectLink =
-  "focus-ring inline-flex items-center gap-1.5 rounded-sm font-medium text-link text-sm transition-colors hover:underline";
+  "focus-ring inline-flex items-center gap-1.5 rounded-sm font-medium text-accent text-sm transition-colors hover:underline";
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const screenshot = resolveMedia(project.screenshot);
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-surface transition-colors hover:border-signature">
+    <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-surface transition-colors hover:border-accent">
       <div className="relative aspect-video w-full overflow-hidden bg-background">
         {screenshot?.url ? (
           <Image
@@ -28,13 +28,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
       <div className="flex flex-1 flex-col gap-3 p-5">
         <h3 className="font-display font-semibold text-xl">{project.title}</h3>
-        <p className="text-muted text-sm leading-relaxed">
+        <p className="text-sm text-text-muted leading-relaxed">
           {project.description}
         </p>
         <ul className="mt-1 flex flex-wrap gap-2">
           {project.tech.map((tech) => (
             <li
-              className="rounded-full border border-border px-2.5 py-0.5 text-muted text-xs"
+              className="rounded-full border border-border px-2.5 py-0.5 text-text-muted text-xs"
               key={tech}
             >
               {tech}

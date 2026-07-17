@@ -15,7 +15,7 @@ type FormState =
   | { kind: "error"; message: string };
 
 const fieldControl =
-  "focus-ring rounded-md border border-border bg-background px-3 py-2 text-sm transition-colors placeholder:text-muted aria-[invalid=true]:border-red-500";
+  "focus-ring rounded-md border border-border bg-background px-3 py-2 text-sm transition-colors placeholder:text-text-muted aria-[invalid=true]:border-destructive";
 
 export function ContactForm() {
   const [formState, setFormState] = useState<FormState>({ kind: "idle" });
@@ -47,11 +47,11 @@ export function ContactForm() {
         role="status"
       >
         <h2 className="font-display font-semibold text-xl">Message sent</h2>
-        <p className="text-muted">
+        <p className="text-text-muted">
           Thanks for reaching out — I'll get back to you soon.
         </p>
         <button
-          className="focus-ring mt-2 self-center rounded-sm font-medium text-link text-sm hover:underline"
+          className="focus-ring mt-2 self-center rounded-sm font-medium text-accent text-sm hover:underline"
           onClick={() => setFormState({ kind: "idle" })}
           type="button"
         >
@@ -69,7 +69,7 @@ export function ContactForm() {
     >
       {formState.kind === "error" ? (
         <p
-          className="rounded-md border border-red-500/40 bg-red-500/10 px-4 py-3 text-red-600 text-sm dark:text-red-400"
+          className="rounded-md border border-destructive/40 bg-destructive/10 px-4 py-3 text-destructive text-sm"
           role="alert"
         >
           {formState.message}

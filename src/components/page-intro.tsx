@@ -11,7 +11,7 @@ export function PageIntro({ eyebrow, heading, lead, actions }: PageIntroProps) {
   return (
     <header className="flex flex-col gap-4">
       {eyebrow ? (
-        <p className="font-medium text-signature text-sm uppercase tracking-[0.2em]">
+        <p className="font-medium text-accent text-sm uppercase tracking-[0.2em]">
           {eyebrow}
         </p>
       ) : null}
@@ -19,7 +19,7 @@ export function PageIntro({ eyebrow, heading, lead, actions }: PageIntroProps) {
         {heading}
       </h1>
       {lead ? (
-        <p className="max-w-2xl text-balance text-lg text-muted">{lead}</p>
+        <p className="max-w-2xl text-balance text-lg text-text-muted">{lead}</p>
       ) : null}
       {actions ? (
         <div className="mt-2 flex flex-wrap items-center gap-3">{actions}</div>

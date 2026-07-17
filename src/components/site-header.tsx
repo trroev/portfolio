@@ -29,8 +29,8 @@ function NavLink({ item, isCurrent, variant }: NavLinkProps) {
         className={cn(
           "focus-ring block rounded-md px-3 py-2.5 font-medium text-base transition-colors",
           isCurrent
-            ? "bg-surface text-foreground"
-            : "text-muted hover:bg-surface hover:text-foreground"
+            ? "bg-surface text-text-primary"
+            : "text-text-muted hover:bg-surface hover:text-text-primary"
         )}
         href={item.href}
       >
@@ -44,7 +44,9 @@ function NavLink({ item, isCurrent, variant }: NavLinkProps) {
       aria-current={isCurrent ? "page" : undefined}
       className={cn(
         "focus-ring relative rounded-sm px-3 py-2 font-medium text-sm transition-colors",
-        isCurrent ? "text-foreground" : "text-muted hover:text-foreground"
+        isCurrent
+          ? "text-text-primary"
+          : "text-text-muted hover:text-text-primary"
       )}
       href={item.href}
     >
@@ -52,7 +54,7 @@ function NavLink({ item, isCurrent, variant }: NavLinkProps) {
       {isCurrent ? (
         <span
           aria-hidden="true"
-          className="absolute inset-x-3 -bottom-px h-0.5 rounded bg-signature"
+          className="absolute inset-x-3 -bottom-px h-0.5 rounded bg-accent"
         />
       ) : null}
     </Link>

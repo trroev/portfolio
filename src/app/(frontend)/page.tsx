@@ -41,7 +41,7 @@ export default async function HomePage() {
               </h2>
             ) : null}
             {home.valueProp.intro ? (
-              <p className="max-w-2xl text-balance text-lg text-muted">
+              <p className="max-w-2xl text-balance text-lg text-text-muted">
                 {home.valueProp.intro}
               </p>
             ) : null}
@@ -58,7 +58,7 @@ export default async function HomePage() {
                 </h2>
               ) : null}
               {home.featuredWork?.intro ? (
-                <p className="max-w-2xl text-muted">
+                <p className="max-w-2xl text-text-muted">
                   {home.featuredWork.intro}
                 </p>
               ) : null}

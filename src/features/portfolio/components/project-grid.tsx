@@ -8,7 +8,7 @@ type ProjectGridProps = {
 export function ProjectGrid({ projects }: ProjectGridProps) {
   if (projects.length === 0) {
     return (
-      <p className="text-muted">
+      <p className="text-text-muted">
         A curated selection of my work is on its way.
       </p>
     );

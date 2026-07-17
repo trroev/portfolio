@@ -65,7 +65,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     >
       <body className="flex min-h-screen flex-col antialiased">
         <ThemeProvider
-          attribute="class"
+          attribute="data-theme"
           defaultTheme="system"
           disableTransitionOnChange
           enableSystem

@@ -14,7 +14,9 @@ export function CtaBand({ heading, body, ctaLabel }: CtaBandProps) {
           {heading}
         </h2>
       ) : null}
-      {body ? <p className="max-w-xl text-balance text-muted">{body}</p> : null}
+      {body ? (
+        <p className="max-w-xl text-balance text-text-muted">{body}</p>
+      ) : null}
       {ctaLabel ? <ButtonLink href="/contact">{ctaLabel}</ButtonLink> : null}
     </section>
   );

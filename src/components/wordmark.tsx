@@ -8,7 +8,7 @@ export function Wordmark() {
       href="/"
     >
       trroev
-      <span aria-hidden="true" className="text-signature">
+      <span aria-hidden="true" className="text-accent">
         .
       </span>
     </Link>

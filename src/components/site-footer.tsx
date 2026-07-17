@@ -12,11 +12,11 @@ export function SiteFooter() {
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-10 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex flex-col items-start gap-2">
           <Wordmark />
-          <p className="max-w-xs text-muted text-sm">
+          <p className="max-w-xs text-sm text-text-muted">
             Full-stack developer building clean, professional web experiences.
           </p>
           <Link
-            className="focus-ring mt-1 rounded-sm font-medium text-link text-sm hover:underline"
+            className="focus-ring mt-1 rounded-sm font-medium text-accent text-sm hover:underline"
             href="/portfolio"
           >
             View portfolio →
@@ -44,7 +44,7 @@ export function SiteFooter() {
               <RiLinkedinBoxFill aria-hidden="true" size={20} />
             </ButtonLink>
           </div>
-          <p className="text-muted text-xs">
+          <p className="text-text-muted text-xs">
             © {year} {siteConfig.author}
           </p>
         </div>
