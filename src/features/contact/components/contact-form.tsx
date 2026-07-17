@@ -78,7 +78,7 @@ export function ContactForm() {
 
       <div
         aria-hidden="true"
-        className="absolute -left-[9999px] h-px w-px overflow-hidden"
+        className="absolute left-[-9999px] h-px w-px overflow-hidden"
       >
         <label htmlFor="botField">Leave this field empty</label>
         <input
