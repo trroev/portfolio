@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { match } from "ts-pattern";
-import { ButtonLink } from "~/components/button-link";
 import { CtaBand } from "~/components/cta-band";
+import { CtaButton } from "~/components/cta-button";
 import { PageIntro } from "~/components/page-intro";
 import { RichText } from "~/components/rich-text";
 import { ContactForm } from "~/features/contact/components/contact-form";
@@ -9,21 +9,19 @@ import { FeatureList } from "~/features/marketing/components/feature-list";
 import { HomeHero } from "~/features/marketing/components/home-hero";
 import { Story } from "~/features/marketing/components/story";
 import { ProjectShowcase } from "~/features/portfolio/components/project-showcase";
-import { pageRelationshipHref } from "~/lib/page-href";
+import { type ResolvedCta, resolveLink } from "~/lib/page-href";
 import { resolveMedia } from "~/lib/resolve-media";
 import type { HeroBlock, Page, StoryBlock } from "~/payload-types";
 
 type Block = NonNullable<Page["layout"]>[number];
 type Lockup = HeroBlock["lockup"];
-type ResolvedCta = {
-  label: string;
-  href: string;
-};
 
 function resolveCtas(ctas: Lockup["ctas"]): Array<ResolvedCta> {
   return (ctas ?? []).flatMap((cta) => {
-    const href = pageRelationshipHref(cta.page);
-    return cta.label && href ? [{ href, label: cta.label }] : [];
+    const link = resolveLink(cta);
+    return cta.label && link
+      ? [{ download: link.download, href: link.href, label: cta.label }]
+      : [];
   });
 }
 
@@ -57,9 +55,13 @@ function PageIntroBlockView({ lockup }: { lockup: Lockup }) {
         actions={
           ctas.length > 0
             ? ctas.map((cta) => (
-                <ButtonLink href={cta.href} key={cta.href}>
+                <CtaButton
+                  download={cta.download}
+                  href={cta.href}
+                  key={cta.href}
+                >
                   {cta.label}
-                </ButtonLink>
+                </CtaButton>
               ))
             : undefined
         }

@@ -1,12 +1,9 @@
-import { ButtonLink } from "~/components/button-link";
+import { CtaButton } from "~/components/cta-button";
 import { RichText } from "~/components/rich-text";
+import type { ResolvedCta } from "~/lib/page-href";
 import type { HeroBlock } from "~/payload-types";
 
 type Lockup = HeroBlock["lockup"];
-type ResolvedCta = {
-  label: string;
-  href: string;
-};
 
 type HomeHeroProps = {
   eyebrow?: string | null;
@@ -44,13 +41,18 @@ export function HomeHero({
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           {ctas.map((cta, index) =>
             index === 0 ? (
-              <ButtonLink href={cta.href} key={cta.href}>
+              <CtaButton download={cta.download} href={cta.href} key={cta.href}>
                 {cta.label}
-              </ButtonLink>
+              </CtaButton>
             ) : (
-              <ButtonLink href={cta.href} key={cta.href} variant="secondary">
+              <CtaButton
+                download={cta.download}
+                href={cta.href}
+                key={cta.href}
+                variant="secondary"
+              >
                 {cta.label} →
-              </ButtonLink>
+              </CtaButton>
             )
           )}
         </div>

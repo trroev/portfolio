@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "~/components/button";
-import { ButtonLink } from "~/components/button-link";
+import { CtaButton } from "~/components/cta-button";
 import { ThemeToggle } from "~/components/theme-toggle";
 import { Wordmark } from "~/components/wordmark";
 import { cn } from "~/lib/cn";
@@ -18,6 +18,7 @@ export type NavLink = {
 export type NavCta = {
   label: string;
   href: string;
+  download: boolean;
 };
 
 function isActive({ pathname, href }: { pathname: string; href: string }) {
@@ -120,9 +121,13 @@ export function SiteHeader({ items, cta }: SiteHeaderProps) {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           {cta ? (
-            <ButtonLink className="hidden md:inline-flex" href={cta.href}>
+            <CtaButton
+              className="hidden md:inline-flex"
+              download={cta.download}
+              href={cta.href}
+            >
               {cta.label}
-            </ButtonLink>
+            </CtaButton>
           ) : null}
           <Button
             aria-controls="mobile-nav"
@@ -160,9 +165,13 @@ export function SiteHeader({ items, cta }: SiteHeaderProps) {
             ))}
           </ul>
           {cta ? (
-            <ButtonLink className="mt-4 w-full" href={cta.href}>
+            <CtaButton
+              className="mt-4 w-full"
+              download={cta.download}
+              href={cta.href}
+            >
               {cta.label}
-            </ButtonLink>
+            </CtaButton>
           ) : null}
         </nav>
       ) : null}

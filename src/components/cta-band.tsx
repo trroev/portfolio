@@ -1,12 +1,9 @@
-import { ButtonLink } from "~/components/button-link";
+import { CtaButton } from "~/components/cta-button";
 import { RichText } from "~/components/rich-text";
+import type { ResolvedCta } from "~/lib/page-href";
 import type { CtaBandBlock } from "~/payload-types";
 
 type Lockup = CtaBandBlock["lockup"];
-type ResolvedCta = {
-  label: string;
-  href: string;
-};
 
 type CtaBandProps = {
   eyebrow?: string | null;
@@ -40,9 +37,9 @@ export function CtaBand({
       {ctas.length > 0 ? (
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           {ctas.map((cta) => (
-            <ButtonLink href={cta.href} key={cta.href}>
+            <CtaButton download={cta.download} href={cta.href} key={cta.href}>
               {cta.label}
-            </ButtonLink>
+            </CtaButton>
           ))}
         </div>
       ) : null}

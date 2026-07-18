@@ -11,7 +11,7 @@ import {
 import { ThemeProvider } from "~/components/theme-provider";
 import { siteConfig } from "~/config/site";
 import { cn } from "~/lib/cn";
-import { pageRelationshipHref } from "~/lib/page-href";
+import { pageRelationshipHref, resolveLink } from "~/lib/page-href";
 import { getGlobal } from "~/lib/payload";
 import type { Footer, Navigation } from "~/payload-types";
 import "../globals.css";
@@ -64,11 +64,11 @@ function toNavLinks(
 }
 
 function toNavCta(cta: Navigation["cta"]): NavCta | null {
-  const href = pageRelationshipHref(cta?.page);
-  if (!(cta?.label && href)) {
+  const link = resolveLink(cta);
+  if (!(cta?.label && link)) {
     return null;
   }
-  return { href, label: cta.label };
+  return { download: link.download, href: link.href, label: cta.label };
 }
 
 function toSocialLinks(links: Footer["socialLinks"]): Array<SocialLink> {

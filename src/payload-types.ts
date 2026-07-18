@@ -186,13 +186,13 @@ export interface Page {
   slug: string;
   layout?:
     | (
+        | ContactFormBlock
+        | CtaBandBlock
+        | FeatureListBlock
         | HeroBlock
         | PageIntroBlock
-        | FeatureListBlock
         | ProjectShowcaseBlock
         | StoryBlock
-        | CtaBandBlock
-        | ContactFormBlock
       )[]
     | null;
   meta?: {
@@ -206,6 +206,74 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactFormBlock".
+ */
+export interface ContactFormBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactForm';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaBandBlock".
+ */
+export interface CtaBandBlock {
+  lockup: {
+    eyebrow?: string | null;
+    heading: string;
+    subheading?: string | null;
+    body?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    ctas?:
+      | {
+          type?: ('page' | 'download') | null;
+          label?: string | null;
+          page?: (string | null) | Page;
+          /**
+           * A file in the Media collection, offered as a download.
+           */
+          file?: (string | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ctaBand';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureListBlock".
+ */
+export interface FeatureListBlock {
+  heading?: string | null;
+  intro?: string | null;
+  items?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featureList';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -233,8 +301,13 @@ export interface HeroBlock {
     } | null;
     ctas?:
       | {
+          type?: ('page' | 'download') | null;
           label?: string | null;
           page?: (string | null) | Page;
+          /**
+           * A file in the Media collection, offered as a download.
+           */
+          file?: (string | null) | Media;
           id?: string | null;
         }[]
       | null;
@@ -269,8 +342,13 @@ export interface PageIntroBlock {
     } | null;
     ctas?:
       | {
+          type?: ('page' | 'download') | null;
           label?: string | null;
           page?: (string | null) | Page;
+          /**
+           * A file in the Media collection, offered as a download.
+           */
+          file?: (string | null) | Media;
           id?: string | null;
         }[]
       | null;
@@ -278,24 +356,6 @@ export interface PageIntroBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'pageIntro';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FeatureListBlock".
- */
-export interface FeatureListBlock {
-  heading?: string | null;
-  intro?: string | null;
-  items?:
-    | {
-        title: string;
-        description: string;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'featureList';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -337,51 +397,6 @@ export interface StoryBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'story';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CtaBandBlock".
- */
-export interface CtaBandBlock {
-  lockup: {
-    eyebrow?: string | null;
-    heading: string;
-    subheading?: string | null;
-    body?: {
-      root: {
-        type: string;
-        children: {
-          type: any;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    ctas?:
-      | {
-          label?: string | null;
-          page?: (string | null) | Page;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'ctaBand';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContactFormBlock".
- */
-export interface ContactFormBlock {
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'contactForm';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -543,13 +558,13 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        contactForm?: T | ContactFormBlockSelect<T>;
+        ctaBand?: T | CtaBandBlockSelect<T>;
+        featureList?: T | FeatureListBlockSelect<T>;
         hero?: T | HeroBlockSelect<T>;
         pageIntro?: T | PageIntroBlockSelect<T>;
-        featureList?: T | FeatureListBlockSelect<T>;
         projectShowcase?: T | ProjectShowcaseBlockSelect<T>;
         story?: T | StoryBlockSelect<T>;
-        ctaBand?: T | CtaBandBlockSelect<T>;
-        contactForm?: T | ContactFormBlockSelect<T>;
       };
   meta?:
     | T
@@ -564,32 +579,17 @@ export interface PagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HeroBlock_select".
+ * via the `definition` "ContactFormBlock_select".
  */
-export interface HeroBlockSelect<T extends boolean = true> {
-  lockup?:
-    | T
-    | {
-        eyebrow?: T;
-        heading?: T;
-        subheading?: T;
-        body?: T;
-        ctas?:
-          | T
-          | {
-              label?: T;
-              page?: T;
-              id?: T;
-            };
-      };
+export interface ContactFormBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "PageIntroBlock_select".
+ * via the `definition` "CtaBandBlock_select".
  */
-export interface PageIntroBlockSelect<T extends boolean = true> {
+export interface CtaBandBlockSelect<T extends boolean = true> {
   lockup?:
     | T
     | {
@@ -600,8 +600,10 @@ export interface PageIntroBlockSelect<T extends boolean = true> {
         ctas?:
           | T
           | {
+              type?: T;
               label?: T;
               page?: T;
+              file?: T;
               id?: T;
             };
       };
@@ -627,6 +629,56 @@ export interface FeatureListBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock_select".
+ */
+export interface HeroBlockSelect<T extends boolean = true> {
+  lockup?:
+    | T
+    | {
+        eyebrow?: T;
+        heading?: T;
+        subheading?: T;
+        body?: T;
+        ctas?:
+          | T
+          | {
+              type?: T;
+              label?: T;
+              page?: T;
+              file?: T;
+              id?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageIntroBlock_select".
+ */
+export interface PageIntroBlockSelect<T extends boolean = true> {
+  lockup?:
+    | T
+    | {
+        eyebrow?: T;
+        heading?: T;
+        subheading?: T;
+        body?: T;
+        ctas?:
+          | T
+          | {
+              type?: T;
+              label?: T;
+              page?: T;
+              file?: T;
+              id?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ProjectShowcaseBlock_select".
  */
 export interface ProjectShowcaseBlockSelect<T extends boolean = true> {
@@ -644,37 +696,6 @@ export interface ProjectShowcaseBlockSelect<T extends boolean = true> {
 export interface StoryBlockSelect<T extends boolean = true> {
   content?: T;
   portrait?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CtaBandBlock_select".
- */
-export interface CtaBandBlockSelect<T extends boolean = true> {
-  lockup?:
-    | T
-    | {
-        eyebrow?: T;
-        heading?: T;
-        subheading?: T;
-        body?: T;
-        ctas?:
-          | T
-          | {
-              label?: T;
-              page?: T;
-              id?: T;
-            };
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContactFormBlock_select".
- */
-export interface ContactFormBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
@@ -748,8 +769,13 @@ export interface Navigation {
       }[]
     | null;
   cta?: {
+    type?: ('page' | 'download') | null;
     label?: string | null;
     page?: (string | null) | Page;
+    /**
+     * A file in the Media collection, offered as a download.
+     */
+    file?: (string | null) | Media;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -792,8 +818,10 @@ export interface NavigationSelect<T extends boolean = true> {
   cta?:
     | T
     | {
+        type?: T;
         label?: T;
         page?: T;
+        file?: T;
       };
   updatedAt?: T;
   createdAt?: T;
