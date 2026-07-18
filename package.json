@@ -24,6 +24,7 @@
     "@hookform/resolvers": "^5.4.0",
     "@payloadcms/db-mongodb": "^3.86.0",
     "@payloadcms/next": "^3.86.0",
+    "@payloadcms/plugin-seo": "^3.86.0",
     "@payloadcms/richtext-lexical": "^3.86.0",
     "@payloadcms/storage-vercel-blob": "^3.86.0",
     "@remixicon/react": "^4.9.0",

@@ -2,35 +2,35 @@ import type { Metadata } from "next";
 import { siteConfig } from "~/config/site";
 
 type PageMetadataOptions = {
-  title?: string;
+  title: string;
   description: string;
   path: string;
+  image: string;
 };
 
 export function pageMetadata({
   title,
   description,
   path,
+  image,
 }: PageMetadataOptions): Metadata {
-  const ogTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.title;
-
   return {
     description,
     openGraph: {
       description,
-      images: [{ url: siteConfig.ogImage }],
+      images: [{ url: image }],
       locale: "en_US",
       siteName: siteConfig.name,
-      title: ogTitle,
+      title,
       type: "website",
       url: `${siteConfig.url}${path}`,
     },
-    title,
+    title: { absolute: title },
     twitter: {
       card: "summary_large_image",
       description,
-      images: [siteConfig.ogImage],
-      title: ogTitle,
+      images: [image],
+      title,
     },
   };
 }

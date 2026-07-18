@@ -11,6 +11,7 @@ import { Pages } from "./collections/pages";
 import { Projects } from "./collections/projects";
 import { Footer } from "./globals/footer";
 import { Navigation } from "./globals/navigation";
+import { seo } from "./plugins/seo";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -29,6 +30,7 @@ export default buildConfig({
   editor: lexicalEditor(),
   globals: [Navigation, Footer],
   plugins: [
+    seo,
     vercelBlobStorage({
       collections: {
         media: true,

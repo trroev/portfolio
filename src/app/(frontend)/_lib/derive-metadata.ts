@@ -1,24 +1,18 @@
 import type { Metadata } from "next";
 import { siteConfig } from "~/config/site";
 import { pageMetadata } from "~/lib/metadata";
+import { derivePageDescription, derivePageTitle } from "~/lib/page-seo";
+import { resolveMedia } from "~/lib/resolve-media";
 import type { Page } from "~/payload-types";
 
-function deriveDescription(page: Page): string {
-  for (const block of page.layout ?? []) {
-    if (
-      (block.blockType === "hero" || block.blockType === "pageIntro") &&
-      block.lockup.subheading
-    ) {
-      return block.lockup.subheading;
-    }
-  }
-  return siteConfig.description;
-}
-
 export function pageToMetadata(page: Page, path: string): Metadata {
+  const { meta } = page;
+  const metaImage = resolveMedia(meta?.image);
+
   return pageMetadata({
-    description: deriveDescription(page),
+    description: meta?.description || derivePageDescription(page),
+    image: metaImage?.url ?? siteConfig.ogImage,
     path,
-    title: page.slug === "home" ? undefined : page.title,
+    title: meta?.title || derivePageTitle(page),
   });
 }
