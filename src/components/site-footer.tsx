@@ -1,10 +1,37 @@
-import { RiGithubFill, RiLinkedinBoxFill } from "@remixicon/react";
+import {
+  type RemixiconComponentType,
+  RiGithubFill,
+  RiLinkedinBoxFill,
+} from "@remixicon/react";
 import Link from "next/link";
 import { ButtonLink } from "~/components/button-link";
+import type { NavLink } from "~/components/site-header";
 import { Wordmark } from "~/components/wordmark";
-import { siteConfig, socialLinks } from "~/config/site";
+import { siteConfig } from "~/config/site";
 
-export function SiteFooter() {
+type SocialPlatform = "github" | "linkedin";
+
+export type SocialLink = {
+  platform: SocialPlatform;
+  url: string;
+};
+
+const socialIcons: Record<SocialPlatform, RemixiconComponentType> = {
+  github: RiGithubFill,
+  linkedin: RiLinkedinBoxFill,
+};
+
+const socialLabels: Record<SocialPlatform, string> = {
+  github: "GitHub",
+  linkedin: "LinkedIn",
+};
+
+type SiteFooterProps = {
+  items: ReadonlyArray<NavLink>;
+  socialLinks: ReadonlyArray<SocialLink>;
+};
+
+export function SiteFooter({ items, socialLinks }: SiteFooterProps) {
   const year = new Date().getFullYear();
 
   return (
@@ -15,35 +42,44 @@ export function SiteFooter() {
           <p className="max-w-xs text-sm text-text-muted">
             Full-stack developer building clean, professional web experiences.
           </p>
-          <Link
-            className="focus-ring mt-1 rounded-sm font-medium text-accent text-sm hover:underline"
-            href="/portfolio"
-          >
-            View portfolio →
-          </Link>
+          {items.length > 0 ? (
+            <nav aria-label="Footer" className="mt-2">
+              <ul className="flex flex-wrap gap-x-4 gap-y-1">
+                {items.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      className="focus-ring rounded-sm font-medium text-accent text-sm hover:underline"
+                      href={item.href}
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ) : null}
         </div>
 
         <div className="flex flex-col gap-3 sm:items-end">
-          <div className="flex items-center gap-1">
-            <ButtonLink
-              aria-label="Trevor Mathiak on GitHub"
-              href={socialLinks.github}
-              rel="noopener noreferrer"
-              target="_blank"
-              variant="icon"
-            >
-              <RiGithubFill aria-hidden="true" size={20} />
-            </ButtonLink>
-            <ButtonLink
-              aria-label="Trevor Mathiak on LinkedIn"
-              href={socialLinks.linkedin}
-              rel="noopener noreferrer"
-              target="_blank"
-              variant="icon"
-            >
-              <RiLinkedinBoxFill aria-hidden="true" size={20} />
-            </ButtonLink>
-          </div>
+          {socialLinks.length > 0 ? (
+            <div className="flex items-center gap-1">
+              {socialLinks.map((social) => {
+                const Icon = socialIcons[social.platform];
+                return (
+                  <ButtonLink
+                    aria-label={`Trevor Mathiak on ${socialLabels[social.platform]}`}
+                    href={social.url}
+                    key={social.platform}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    variant="icon"
+                  >
+                    <Icon aria-hidden="true" size={20} />
+                  </ButtonLink>
+                );
+              })}
+            </div>
+          ) : null}
           <p className="text-text-muted text-xs">
             © {year} {siteConfig.author}
           </p>

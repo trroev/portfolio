@@ -2,11 +2,18 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist, Space_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
-import { SiteFooter } from "~/components/site-footer";
-import { SiteHeader } from "~/components/site-header";
+import { SiteFooter, type SocialLink } from "~/components/site-footer";
+import {
+  type NavCta,
+  type NavLink,
+  SiteHeader,
+} from "~/components/site-header";
 import { ThemeProvider } from "~/components/theme-provider";
 import { siteConfig } from "~/config/site";
 import { cn } from "~/lib/cn";
+import { pageRelationshipHref } from "~/lib/page-href";
+import { getGlobal } from "~/lib/payload";
+import type { Footer, Navigation } from "~/payload-types";
 import "../globals.css";
 
 const fontSans = Geist({
@@ -47,11 +54,40 @@ export const metadata: Metadata = {
   },
 };
 
+function toNavLinks(
+  items: Navigation["items"] | Footer["items"]
+): Array<NavLink> {
+  return (items ?? []).flatMap((item) => {
+    const href = pageRelationshipHref(item.page);
+    return href ? [{ href, title: item.label }] : [];
+  });
+}
+
+function toNavCta(cta: Navigation["cta"]): NavCta | null {
+  const href = pageRelationshipHref(cta?.page);
+  if (!(cta?.label && href)) {
+    return null;
+  }
+  return { href, label: cta.label };
+}
+
+function toSocialLinks(links: Footer["socialLinks"]): Array<SocialLink> {
+  return (links ?? []).map((link) => ({
+    platform: link.platform,
+    url: link.url,
+  }));
+}
+
 type RootLayoutProps = {
   children: ReactNode;
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const [navigation, footer] = await Promise.all([
+    getGlobal({ slug: "navigation" }),
+    getGlobal({ slug: "footer" }),
+  ]);
+
   return (
     <html
       className={cn(fontSans.variable, fontDisplay.variable)}
@@ -65,9 +101,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
           disableTransitionOnChange
           enableSystem
         >
-          <SiteHeader />
+          <SiteHeader
+            cta={toNavCta(navigation.cta)}
+            items={toNavLinks(navigation.items)}
+          />
           <main className="flex flex-1 flex-col">{children}</main>
-          <SiteFooter />
+          <SiteFooter
+            items={toNavLinks(footer.items)}
+            socialLinks={toSocialLinks(footer.socialLinks)}
+          />
         </ThemeProvider>
         <Analytics />
       </body>

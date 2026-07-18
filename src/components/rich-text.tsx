@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "~/lib/cn";
+import { pageHref } from "~/lib/page-href";
 
 const headingClassNames: Record<SerializedHeadingNode["tag"], string> = {
   h1: "mt-8 font-display font-semibold text-3xl text-text-primary",
@@ -38,7 +39,7 @@ function internalDocHref(linkNode: SerializedLinkNode): string {
     "slug" in value &&
     typeof value.slug === "string"
   ) {
-    return value.slug === "home" ? "/" : `/${value.slug}`;
+    return pageHref({ slug: value.slug });
   }
   return "/";
 }

@@ -59,6 +59,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/fields/**",
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
@@ -104,6 +105,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/fields/**",
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
@@ -149,6 +151,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/fields/**",
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
@@ -194,6 +197,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/fields/**",
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
@@ -239,6 +243,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/fields/**",
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
@@ -284,6 +289,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/fields/**",
                       "~/access/**"
                     ],
                     "message": "Features must not import from the cms layer. Fetch CMS data through the feature's api/ folder using the Payload local API."
@@ -319,6 +325,7 @@
                       "~/app/**",
                       "~/collections/**",
                       "~/globals/**",
+                      "~/fields/**",
                       "~/access/**"
                     ],
                     "message": "Shared modules must not import from features, the app layer, or the cms layer (unidirectional flow: shared → features → app)."
@@ -354,6 +361,7 @@
                       "~/app/**",
                       "~/collections/**",
                       "~/globals/**",
+                      "~/fields/**",
                       "~/access/**"
                     ],
                     "message": "Shared modules must not import from features, the app layer, or the cms layer (unidirectional flow: shared → features → app)."
@@ -373,6 +381,7 @@
       "includes": [
         "src/collections/**",
         "src/globals/**",
+        "src/fields/**",
         "src/access/**",
         "src/payload.config.ts"
       ],
@@ -391,7 +400,7 @@
                       "~/components/**",
                       "~/config/**"
                     ],
-                    "message": "The cms layer (collections, globals, access, payload.config) may import only from ~/lib. See docs/adr/0002-architecture-import-boundaries.md."
+                    "message": "The cms layer (collections, globals, fields, access, payload.config) may import only from ~/lib. See docs/adr/0002-architecture-import-boundaries.md."
                   },
                   {
                     "group": ["../**"],

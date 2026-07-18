@@ -14,3 +14,7 @@ export function revalidatePaths(paths: ReadonlyArray<string>): void {
     revalidatePath(path);
   }
 }
+
+export function revalidateLayout(): void {
+  revalidatePath("/", "layout");
+}

@@ -10,4 +10,6 @@ Page content was modeled as one Payload global per page (Home, About, Services),
 ## Consequences
 
 - The cutover against the production database (local dev writes to prod Mongo) was done by populating Page documents from a local admin session before a single atomic deploy flipped the site; the retired globals' documents remain orphaned in Mongo.
-- Header/footer nav links are relationships to Pages, not URLs, so navigation follows slug changes.
+- Site chrome moved into `Navigation` and `Footer` globals; their nav links are relationships to Pages, not URLs, so navigation follows slug changes. The layout reads both globals and resolves each relationship to an href before handing plain data to the presentational header/footer.
+- Blocks render through a single app-layer registry (`src/app/(frontend)/_components/render-blocks.tsx`) that maps `blockType` to feature/shared components via a `ts-pattern` exhaustive match; page reads are app-layer helpers (`_lib/pages.ts`), not a synthetic feature.
+- Per-page SEO metadata is derived from page content (the Page `title` and the first hero/pageIntro copy) with `siteConfig` fallbacks. Editable per-page SEO via `@payloadcms/plugin-seo` is deferred to #32, which will layer an overridable `meta` group on top of these derived defaults.

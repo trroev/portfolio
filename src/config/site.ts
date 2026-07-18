@@ -19,19 +19,3 @@ export const siteConfig = {
 } as const;
 
 export type SiteConfig = typeof siteConfig;
-
-export type NavItem = Readonly<{ href: string; title: string }>;
-
-export type SocialLinks = Readonly<{ github: string; linkedin: string }>;
-
-export const mainNav = [
-  { href: "/", title: "Home" },
-  { href: "/about", title: "About" },
-  { href: "/services", title: "Services" },
-  { href: "/contact", title: "Contact" },
-] as const satisfies ReadonlyArray<NavItem>;
-
-export const socialLinks = {
-  github: "https://github.com/trroev",
-  linkedin: "https://linkedin.com/in/trevormathiak",
-} as const satisfies SocialLinks;

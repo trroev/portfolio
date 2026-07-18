@@ -1,19 +1,27 @@
 import { ButtonLink } from "~/components/button-link";
+import { RichText } from "~/components/rich-text";
+import type { HeroBlock } from "~/payload-types";
+
+type Lockup = HeroBlock["lockup"];
+type ResolvedCta = {
+  label: string;
+  href: string;
+};
 
 type HomeHeroProps = {
   eyebrow?: string | null;
   heading: string;
   subheading?: string | null;
-  primaryCtaLabel?: string | null;
-  secondaryCtaLabel?: string | null;
+  body?: Lockup["body"];
+  ctas: ReadonlyArray<ResolvedCta>;
 };
 
 export function HomeHero({
   eyebrow,
   heading,
   subheading,
-  primaryCtaLabel,
-  secondaryCtaLabel,
+  body,
+  ctas,
 }: HomeHeroProps) {
   return (
     <section className="flex flex-col items-center gap-6 py-20 text-center sm:py-28">
@@ -31,16 +39,22 @@ export function HomeHero({
           {subheading}
         </p>
       ) : null}
-      <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
-        {primaryCtaLabel ? (
-          <ButtonLink href="/contact">{primaryCtaLabel}</ButtonLink>
-        ) : null}
-        {secondaryCtaLabel ? (
-          <ButtonLink href="/portfolio" variant="secondary">
-            {secondaryCtaLabel} →
-          </ButtonLink>
-        ) : null}
-      </div>
+      {body ? <RichText className="max-w-xl text-center" data={body} /> : null}
+      {ctas.length > 0 ? (
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+          {ctas.map((cta, index) =>
+            index === 0 ? (
+              <ButtonLink href={cta.href} key={cta.href}>
+                {cta.label}
+              </ButtonLink>
+            ) : (
+              <ButtonLink href={cta.href} key={cta.href} variant="secondary">
+                {cta.label} →
+              </ButtonLink>
+            )
+          )}
+        </div>
+      ) : null}
     </section>
   );
 }

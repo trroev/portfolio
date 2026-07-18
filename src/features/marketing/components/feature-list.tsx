@@ -5,10 +5,11 @@ type FeatureListItem = {
 
 type FeatureListProps = {
   heading?: string | null;
+  intro?: string | null;
   items?: ReadonlyArray<FeatureListItem> | null;
 };
 
-export function FeatureList({ heading, items }: FeatureListProps) {
+export function FeatureList({ heading, intro, items }: FeatureListProps) {
   if (!items || items.length === 0) {
     return null;
   }
@@ -19,6 +20,11 @@ export function FeatureList({ heading, items }: FeatureListProps) {
         <h2 className="font-display font-semibold text-2xl sm:text-3xl">
           {heading}
         </h2>
+      ) : null}
+      {intro ? (
+        <p className="max-w-2xl text-balance text-lg text-text-muted">
+          {intro}
+        </p>
       ) : null}
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (

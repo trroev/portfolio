@@ -1,8 +1,8 @@
 import { RichText } from "~/components/rich-text";
-import type { About } from "~/payload-types";
+import type { StoryBlock } from "~/payload-types";
 
 type StoryProps = {
-  data: NonNullable<About["story"]>;
+  data: StoryBlock["content"];
 };
 
 export function Story({ data }: StoryProps) {

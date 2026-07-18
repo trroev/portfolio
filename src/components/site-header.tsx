@@ -8,20 +8,29 @@ import { Button } from "~/components/button";
 import { ButtonLink } from "~/components/button-link";
 import { ThemeToggle } from "~/components/theme-toggle";
 import { Wordmark } from "~/components/wordmark";
-import { mainNav, type NavItem } from "~/config/site";
 import { cn } from "~/lib/cn";
+
+export type NavLink = {
+  title: string;
+  href: string;
+};
+
+export type NavCta = {
+  label: string;
+  href: string;
+};
 
 function isActive({ pathname, href }: { pathname: string; href: string }) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }
 
 type NavLinkProps = {
-  item: NavItem;
+  item: NavLink;
   isCurrent: boolean;
   variant: "desktop" | "mobile";
 };
 
-function NavLink({ item, isCurrent, variant }: NavLinkProps) {
+function NavItemLink({ item, isCurrent, variant }: NavLinkProps) {
   if (variant === "mobile") {
     return (
       <Link
@@ -61,7 +70,12 @@ function NavLink({ item, isCurrent, variant }: NavLinkProps) {
   );
 }
 
-export function SiteHeader() {
+type SiteHeaderProps = {
+  items: ReadonlyArray<NavLink>;
+  cta: NavCta | null;
+};
+
+export function SiteHeader({ items, cta }: SiteHeaderProps) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -93,8 +107,8 @@ export function SiteHeader() {
         <Wordmark />
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
-          {mainNav.map((item) => (
-            <NavLink
+          {items.map((item) => (
+            <NavItemLink
               isCurrent={isActive({ href: item.href, pathname })}
               item={item}
               key={item.href}
@@ -105,9 +119,11 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <ButtonLink className="hidden md:inline-flex" href="/contact">
-            Get in touch
-          </ButtonLink>
+          {cta ? (
+            <ButtonLink className="hidden md:inline-flex" href={cta.href}>
+              {cta.label}
+            </ButtonLink>
+          ) : null}
           <Button
             aria-controls="mobile-nav"
             aria-expanded={isMenuOpen}
@@ -133,9 +149,9 @@ export function SiteHeader() {
           id="mobile-nav"
         >
           <ul className="flex flex-col gap-1">
-            {mainNav.map((item) => (
+            {items.map((item) => (
               <li key={item.href}>
-                <NavLink
+                <NavItemLink
                   isCurrent={isActive({ href: item.href, pathname })}
                   item={item}
                   variant="mobile"
@@ -143,9 +159,11 @@ export function SiteHeader() {
               </li>
             ))}
           </ul>
-          <ButtonLink className="mt-4 w-full" href="/contact">
-            Get in touch
-          </ButtonLink>
+          {cta ? (
+            <ButtonLink className="mt-4 w-full" href={cta.href}>
+              {cta.label}
+            </ButtonLink>
+          ) : null}
         </nav>
       ) : null}
     </header>

@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     admins: Admin;
     media: Media;
+    pages: Page;
     projects: Project;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -79,6 +80,7 @@ export interface Config {
   collectionsSelect: {
     admins: AdminsSelect<false> | AdminsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -90,14 +92,12 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
-    home: Home;
-    about: About;
-    services: Service;
+    navigation: Navigation;
+    footer: Footer;
   };
   globalsSelect: {
-    home: HomeSelect<false> | HomeSelect<true>;
-    about: AboutSelect<false> | AboutSelect<true>;
-    services: ServicesSelect<false> | ServicesSelect<true>;
+    navigation: NavigationSelect<false> | NavigationSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
   };
   locale: null;
   widgets: {
@@ -174,6 +174,208 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  title: string;
+  /**
+   * URL path for the page. The home page uses the "home" slug and renders at /.
+   */
+  slug: string;
+  layout?:
+    | (
+        | HeroBlock
+        | PageIntroBlock
+        | FeatureListBlock
+        | ProjectShowcaseBlock
+        | StoryBlock
+        | CtaBandBlock
+        | ContactFormBlock
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock".
+ */
+export interface HeroBlock {
+  lockup: {
+    eyebrow?: string | null;
+    heading: string;
+    subheading?: string | null;
+    body?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    ctas?:
+      | {
+          label?: string | null;
+          page?: (string | null) | Page;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageIntroBlock".
+ */
+export interface PageIntroBlock {
+  lockup: {
+    eyebrow?: string | null;
+    heading: string;
+    subheading?: string | null;
+    body?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    ctas?:
+      | {
+          label?: string | null;
+          page?: (string | null) | Page;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pageIntro';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureListBlock".
+ */
+export interface FeatureListBlock {
+  heading?: string | null;
+  intro?: string | null;
+  items?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featureList';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProjectShowcaseBlock".
+ */
+export interface ProjectShowcaseBlock {
+  heading?: string | null;
+  intro?: string | null;
+  /**
+   * Show only a featured subset (the first few by order) instead of every project.
+   */
+  featuredOnly?: boolean | null;
+  ctaLabel?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'projectShowcase';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StoryBlock".
+ */
+export interface StoryBlock {
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  portrait?: (string | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'story';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaBandBlock".
+ */
+export interface CtaBandBlock {
+  lockup: {
+    eyebrow?: string | null;
+    heading: string;
+    subheading?: string | null;
+    body?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    ctas?:
+      | {
+          label?: string | null;
+          page?: (string | null) | Page;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ctaBand';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactFormBlock".
+ */
+export interface ContactFormBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactForm';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "projects".
  */
 export interface Project {
@@ -229,6 +431,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
       } | null)
     | ({
         relationTo: 'projects';
@@ -319,6 +525,144 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  layout?:
+    | T
+    | {
+        hero?: T | HeroBlockSelect<T>;
+        pageIntro?: T | PageIntroBlockSelect<T>;
+        featureList?: T | FeatureListBlockSelect<T>;
+        projectShowcase?: T | ProjectShowcaseBlockSelect<T>;
+        story?: T | StoryBlockSelect<T>;
+        ctaBand?: T | CtaBandBlockSelect<T>;
+        contactForm?: T | ContactFormBlockSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock_select".
+ */
+export interface HeroBlockSelect<T extends boolean = true> {
+  lockup?:
+    | T
+    | {
+        eyebrow?: T;
+        heading?: T;
+        subheading?: T;
+        body?: T;
+        ctas?:
+          | T
+          | {
+              label?: T;
+              page?: T;
+              id?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageIntroBlock_select".
+ */
+export interface PageIntroBlockSelect<T extends boolean = true> {
+  lockup?:
+    | T
+    | {
+        eyebrow?: T;
+        heading?: T;
+        subheading?: T;
+        body?: T;
+        ctas?:
+          | T
+          | {
+              label?: T;
+              page?: T;
+              id?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureListBlock_select".
+ */
+export interface FeatureListBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProjectShowcaseBlock_select".
+ */
+export interface ProjectShowcaseBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  featuredOnly?: T;
+  ctaLabel?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StoryBlock_select".
+ */
+export interface StoryBlockSelect<T extends boolean = true> {
+  content?: T;
+  portrait?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaBandBlock_select".
+ */
+export interface CtaBandBlockSelect<T extends boolean = true> {
+  lockup?:
+    | T
+    | {
+        eyebrow?: T;
+        heading?: T;
+        subheading?: T;
+        body?: T;
+        ctas?:
+          | T
+          | {
+              label?: T;
+              page?: T;
+              id?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactFormBlock_select".
+ */
+export interface ContactFormBlockSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "projects_select".
  */
 export interface ProjectsSelect<T extends boolean = true> {
@@ -375,248 +719,90 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "home".
+ * via the `definition` "navigation".
  */
-export interface Home {
+export interface Navigation {
   id: string;
-  hero: {
-    eyebrow?: string | null;
-    heading: string;
-    subheading?: string | null;
-    primaryCtaLabel?: string | null;
-    secondaryCtaLabel?: string | null;
-  };
-  valueProp?: {
-    heading?: string | null;
-    intro?: string | null;
-    points?:
-      | {
-          title: string;
-          description: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  featuredWork?: {
-    heading?: string | null;
-    intro?: string | null;
-    ctaLabel?: string | null;
-  };
-  _status?: ('draft' | 'published') | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "about".
- */
-export interface About {
-  id: string;
-  eyebrow?: string | null;
-  heading: string;
-  lead?: string | null;
-  /**
-   * Optional portrait shown alongside the story.
-   */
-  portrait?: (string | null) | Media;
-  /**
-   * The chef-to-developer story, in your own words.
-   */
-  story?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  values?: {
-    heading?: string | null;
-    items?:
-      | {
-          title: string;
-          description: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  howIWork?: {
-    heading?: string | null;
-    items?:
-      | {
-          title: string;
-          description: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  _status?: ('draft' | 'published') | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services".
- */
-export interface Service {
-  id: string;
-  eyebrow?: string | null;
-  heading: string;
-  intro?: string | null;
-  capabilities?: {
-    heading?: string | null;
-    items?:
-      | {
-          title: string;
-          description: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  approach?: {
-    heading?: string | null;
-    items?:
-      | {
-          title: string;
-          description: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
+  items?:
+    | {
+        label: string;
+        page: string | Page;
+        id?: string | null;
+      }[]
+    | null;
   cta?: {
-    heading?: string | null;
-    body?: string | null;
-    ctaLabel?: string | null;
+    label?: string | null;
+    page?: (string | null) | Page;
+    id?: string | null;
   };
-  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "home_select".
+ * via the `definition` "footer".
  */
-export interface HomeSelect<T extends boolean = true> {
-  hero?:
-    | T
+export interface Footer {
+  id: string;
+  items?:
     | {
-        eyebrow?: T;
-        heading?: T;
-        subheading?: T;
-        primaryCtaLabel?: T;
-        secondaryCtaLabel?: T;
-      };
-  valueProp?:
-    | T
+        label: string;
+        page: string | Page;
+        id?: string | null;
+      }[]
+    | null;
+  socialLinks?:
     | {
-        heading?: T;
-        intro?: T;
-        points?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              id?: T;
-            };
-      };
-  featuredWork?:
-    | T
-    | {
-        heading?: T;
-        intro?: T;
-        ctaLabel?: T;
-      };
-  _status?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
+        platform: 'github' | 'linkedin';
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "about_select".
+ * via the `definition` "navigation_select".
  */
-export interface AboutSelect<T extends boolean = true> {
-  eyebrow?: T;
-  heading?: T;
-  lead?: T;
-  portrait?: T;
-  story?: T;
-  values?:
+export interface NavigationSelect<T extends boolean = true> {
+  items?:
     | T
     | {
-        heading?: T;
-        items?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              id?: T;
-            };
-      };
-  howIWork?:
-    | T
-    | {
-        heading?: T;
-        items?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              id?: T;
-            };
-      };
-  _status?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services_select".
- */
-export interface ServicesSelect<T extends boolean = true> {
-  eyebrow?: T;
-  heading?: T;
-  intro?: T;
-  capabilities?:
-    | T
-    | {
-        heading?: T;
-        items?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              id?: T;
-            };
-      };
-  approach?:
-    | T
-    | {
-        heading?: T;
-        items?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              id?: T;
-            };
+        label?: T;
+        page?: T;
+        id?: T;
       };
   cta?:
     | T
     | {
-        heading?: T;
-        body?: T;
-        ctaLabel?: T;
+        label?: T;
+        page?: T;
+        id?: T;
       };
-  _status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        label?: T;
+        page?: T;
+        id?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

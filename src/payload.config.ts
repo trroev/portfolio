@@ -7,10 +7,10 @@ import { buildConfig, type SharpDependency } from "payload";
 import sharp from "sharp";
 import { Admins } from "./collections/admins";
 import { Media } from "./collections/media";
+import { Pages } from "./collections/pages";
 import { Projects } from "./collections/projects";
-import { About } from "./globals/about";
-import { Home } from "./globals/home";
-import { Services } from "./globals/services";
+import { Footer } from "./globals/footer";
+import { Navigation } from "./globals/navigation";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -22,12 +22,12 @@ export default buildConfig({
     },
     user: Admins.slug,
   },
-  collections: [Admins, Media, Projects],
+  collections: [Admins, Media, Pages, Projects],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI ?? "",
   }),
   editor: lexicalEditor(),
-  globals: [Home, About, Services],
+  globals: [Navigation, Footer],
   plugins: [
     vercelBlobStorage({
       collections: {
