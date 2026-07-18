@@ -59,6 +59,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/blocks/**",
                       "~/fields/**",
                       "~/access/**"
                     ],
@@ -105,6 +106,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/blocks/**",
                       "~/fields/**",
                       "~/access/**"
                     ],
@@ -151,6 +153,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/blocks/**",
                       "~/fields/**",
                       "~/access/**"
                     ],
@@ -197,6 +200,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/blocks/**",
                       "~/fields/**",
                       "~/access/**"
                     ],
@@ -243,6 +247,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/blocks/**",
                       "~/fields/**",
                       "~/access/**"
                     ],
@@ -289,6 +294,7 @@
                     "group": [
                       "~/collections/**",
                       "~/globals/**",
+                      "~/blocks/**",
                       "~/fields/**",
                       "~/access/**"
                     ],
@@ -325,6 +331,7 @@
                       "~/app/**",
                       "~/collections/**",
                       "~/globals/**",
+                      "~/blocks/**",
                       "~/fields/**",
                       "~/access/**"
                     ],
@@ -361,6 +368,7 @@
                       "~/app/**",
                       "~/collections/**",
                       "~/globals/**",
+                      "~/blocks/**",
                       "~/fields/**",
                       "~/access/**"
                     ],
@@ -381,6 +389,7 @@
       "includes": [
         "src/collections/**",
         "src/globals/**",
+        "src/blocks/**",
         "src/fields/**",
         "src/access/**",
         "src/payload.config.ts"

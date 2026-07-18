@@ -9,7 +9,7 @@ The zones block both alias imports (`~/features/other-feature/...`) and relative
 - **shared** (`src/components`, `src/lib`, `src/config`) — may import only other shared modules. Never features, app, or cms.
 - **features** (`src/features/<name>`) — may import shared modules and their own feature. Never another feature, the app layer, or the cms layer. CMS data is fetched through the feature's `api/` folder via the Payload local API (typed by `payload-types.ts`, which is generated and belongs to no layer).
 - **app** (`src/app`) — composes everything: may import features and shared. Nothing imports app.
-- **cms** (`src/collections`, `src/globals`, `src/fields`, `src/access`, `src/payload.config.ts`) — Payload's declarative backend configuration, including reusable field builders in `src/fields` (e.g. `lockupField`, `linkField`, `titledItems`, which compose with `deepMergeWithSourceArrays` for per-use overrides). May import only from `src/lib` (e.g. revalidation helpers) and within itself. Features and shared modules never import from it; the app layer reaches it only through Payload's own routes.
+- **cms** (`src/collections`, `src/globals`, `src/blocks`, `src/fields`, `src/access`, `src/payload.config.ts`) — Payload's declarative backend configuration. `src/blocks` holds the reusable block configs a Page's `layout` is composed from; `src/fields` holds reusable field builders (e.g. `lockupField`, `linkField`, `titledItems`, which compose with `deepMergeWithSourceArrays` for per-use overrides). May import only from `src/lib` (e.g. revalidation helpers) and within itself. Features and shared modules never import from it; the app layer reaches it only through Payload's own routes.
 
 ## Considered Options
 

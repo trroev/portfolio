@@ -1,13 +1,13 @@
 import type { CollectionConfig } from "payload";
 import { authenticated } from "~/access/authenticated";
 import { authenticatedOrPublished } from "~/access/authenticated-or-published";
-import { ContactFormBlock } from "./blocks/contact-form";
-import { CtaBandBlock } from "./blocks/cta-band";
-import { FeatureListBlock } from "./blocks/feature-list";
-import { HeroBlock } from "./blocks/hero";
-import { PageIntroBlock } from "./blocks/page-intro";
-import { ProjectShowcaseBlock } from "./blocks/project-showcase";
-import { StoryBlock } from "./blocks/story";
+import { ContactFormBlock } from "~/blocks/contact-form";
+import { CtaBandBlock } from "~/blocks/cta-band";
+import { FeatureListBlock } from "~/blocks/feature-list";
+import { HeroBlock } from "~/blocks/hero";
+import { PageIntroBlock } from "~/blocks/page-intro";
+import { ProjectShowcaseBlock } from "~/blocks/project-showcase";
+import { StoryBlock } from "~/blocks/story";
 import { revalidatePage } from "./hooks/revalidate-page";
 
 export const Pages: CollectionConfig = {
