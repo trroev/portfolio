@@ -180,8 +180,9 @@ export interface Page {
   id: string;
   title: string;
   /**
-   * URL path for the page. The home page uses the "home" slug and renders at /.
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
+  generateSlug?: boolean | null;
   slug: string;
   layout?:
     | (
@@ -529,6 +530,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
+  generateSlug?: T;
   slug?: T;
   layout?:
     | T
@@ -733,7 +735,6 @@ export interface Navigation {
   cta?: {
     label?: string | null;
     page?: (string | null) | Page;
-    id?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -778,7 +779,6 @@ export interface NavigationSelect<T extends boolean = true> {
     | {
         label?: T;
         page?: T;
-        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;

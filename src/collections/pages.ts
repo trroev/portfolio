@@ -1,4 +1,4 @@
-import type { CollectionConfig } from "payload";
+import { type CollectionConfig, slugField } from "payload";
 import { authenticated } from "~/access/authenticated";
 import { authenticatedOrPublished } from "~/access/authenticated-or-published";
 import { blocksField } from "~/fields/blocks";
@@ -23,18 +23,7 @@ export const Pages: CollectionConfig = {
       required: true,
       type: "text",
     },
-    {
-      admin: {
-        description:
-          'URL path for the page. The home page uses the "home" slug and renders at /.',
-        position: "sidebar",
-      },
-      index: true,
-      name: "slug",
-      required: true,
-      type: "text",
-      unique: true,
-    },
+    slugField(),
     blocksField(),
   ],
   hooks: {
