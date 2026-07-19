@@ -4,7 +4,7 @@ The website for **trroev development** — Trevor Mathiak's personal developer b
 
 **Check it out:** [trevormathiak.dev](https://trevormathiak.dev)
 
-![page preview image](/portfolio_splash.jpg)
+![page preview image](public/portfolio_splash.jpg)
 
 ## Stack
 
