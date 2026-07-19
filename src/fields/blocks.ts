@@ -19,7 +19,7 @@ const BLOCKS: ReadonlyArray<Block> = [
   PageIntroBlock,
   ProjectShowcaseBlock,
   StoryBlock,
-] as const
+] as const;
 
 /**
  * The block-based page layout field — the full set of blocks a Page is
