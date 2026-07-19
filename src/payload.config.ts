@@ -9,6 +9,7 @@ import { Admins } from "./collections/admins";
 import { Media } from "./collections/media";
 import { Pages } from "./collections/pages";
 import { Projects } from "./collections/projects";
+import { Technologies } from "./collections/technologies";
 import { Footer } from "./globals/footer";
 import { Navigation } from "./globals/navigation";
 import { seo } from "./plugins/seo";
@@ -23,7 +24,7 @@ export default buildConfig({
     },
     user: Admins.slug,
   },
-  collections: [Admins, Media, Pages, Projects],
+  collections: [Admins, Media, Pages, Projects, Technologies],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI ?? "",
   }),

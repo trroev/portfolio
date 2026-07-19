@@ -60,8 +60,9 @@ export const Projects: CollectionConfig = {
     {
       hasMany: true,
       name: "tech",
+      relationTo: "technologies",
       required: true,
-      type: "text",
+      type: "relationship",
     },
     {
       admin: {

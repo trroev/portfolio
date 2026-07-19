@@ -1,7 +1,7 @@
 import { RiExternalLinkLine, RiGithubFill } from "@remixicon/react";
 import Image from "next/image";
 import { resolveMedia } from "~/lib/resolve-media";
-import type { Project } from "~/payload-types";
+import type { Project, Technology } from "~/payload-types";
 
 type ProjectCardProps = {
   project: Project;
@@ -10,8 +10,27 @@ type ProjectCardProps = {
 const projectLink =
   "focus-ring inline-flex items-center gap-1.5 rounded-sm font-medium text-accent text-sm transition-colors hover:underline";
 
+const CATEGORY_ORDER: Record<Technology["category"], number> = {
+  data: 2,
+  design: 5,
+  framework: 1,
+  infra: 4,
+  language: 0,
+  tooling: 3,
+};
+
+function resolveTech(tech: Project["tech"]): Array<Technology> {
+  const docs = (tech ?? []).filter(
+    (item): item is Technology => typeof item === "object" && item !== null
+  );
+  return docs.toSorted(
+    (a, b) => CATEGORY_ORDER[a.category] - CATEGORY_ORDER[b.category]
+  );
+}
+
 export function ProjectCard({ project }: ProjectCardProps) {
   const screenshot = resolveMedia(project.screenshot);
+  const tech = resolveTech(project.tech);
 
   return (
     <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-surface transition-colors hover:border-accent">
@@ -32,12 +51,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.description}
         </p>
         <ul className="mt-1 flex flex-wrap gap-2">
-          {project.tech.map((tech) => (
+          {tech.map((item) => (
             <li
               className="rounded-full border border-border px-2.5 py-0.5 text-text-muted text-xs"
-              key={tech}
+              key={item.id}
             >
-              {tech}
+              {item.name}
             </li>
           ))}
         </ul>
