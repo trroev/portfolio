@@ -70,6 +70,36 @@ logged in.
 - REST API: `/api`
 - GraphQL: `/api/graphql` (playground at `/api/graphql-playground`)
 
+### Content model
+
+Every public route is a document in the **Pages** collection, composed from
+reusable blocks and rendered by a single dynamic slug route (`src/app/(frontend)/[slug]`);
+the `home` page backs the root route. Pages support drafts and publishing, and
+publishing revalidates the affected path. The
+[SEO plugin](https://payloadcms.com/docs/plugins/seo) adds an editable metadata tab
+to each Page, falling back to the site defaults in `src/config/site.ts`.
+
+**Collections**
+
+| Collection     | Purpose                                                       |
+| -------------- | ------------------------------------------------------------- |
+| `Pages`        | Block-built pages; one document per public route             |
+| `Projects`     | Portfolio projects surfaced by the project-showcase block    |
+| `Technologies` | Tech tags referenced by projects                             |
+| `Media`        | Uploaded images (stored in Vercel Blob)                      |
+| `Admins`       | Admin users for the CMS                                       |
+
+**Globals**
+
+| Global       | Purpose                                                        |
+| ------------ | ------------------------------------------------------------- |
+| `Navigation` | Header nav items and CTA — links are relationships to Pages   |
+| `Footer`     | Footer links and social links                                 |
+
+**Blocks** — the layout building blocks a Page is composed from: `hero`,
+`pageIntro`, `featureList`, `projectShowcase` (with a featured-only mode), `story`
+(rich text + optional portrait), `ctaBand`, and `contactForm`.
+
 ## Scripts
 
 | Command          | Description                          |
