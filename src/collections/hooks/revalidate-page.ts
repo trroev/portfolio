@@ -10,13 +10,19 @@ export const revalidatePage: CollectionAfterChangeHook = ({
   if (context.disableRevalidate) {
     return doc;
   }
+  const paths = new Set<string>();
   if (isPublished(doc)) {
-    const path = pageHref(doc);
-    payload.logger.info(`Revalidating page at ${path}`);
-    revalidatePaths([path]);
+    paths.add(pageHref(doc));
   }
-  if (isPublished(previousDoc) && previousDoc.slug !== doc.slug) {
-    revalidatePaths([pageHref(previousDoc)]);
+  const wasPublicPathRetired =
+    isPublished(previousDoc) &&
+    (previousDoc.slug !== doc.slug || !isPublished(doc));
+  if (wasPublicPathRetired) {
+    paths.add(pageHref(previousDoc));
+  }
+  if (paths.size > 0) {
+    payload.logger.info(`Revalidating pages at ${[...paths].join(", ")}`);
+    revalidatePaths([...paths]);
   }
   return doc;
 };
