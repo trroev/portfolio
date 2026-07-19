@@ -10,11 +10,6 @@ type TitledItemsOptions = {
   overrides?: Partial<ArrayField>;
 };
 
-/**
- * A repeatable list of title + description items — the shape behind value
- * props, values, how-I-work, capabilities, and approach sections. `overrides`
- * merge over the defaults (nested arrays replace).
- */
 export function titledItems({
   defaultValue = [],
   overrides = {},

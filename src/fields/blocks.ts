@@ -21,11 +21,6 @@ const BLOCKS: ReadonlyArray<Block> = [
   StoryBlock,
 ] as const;
 
-/**
- * The block-based page layout field — the full set of blocks a Page is
- * composed from. `overrides` tune the field (name, admin, …); the block list
- * is replaced wholesale if overridden (see `deepMergeWithSourceArrays`).
- */
 export function blocksField(overrides: Partial<BlocksField> = {}): BlocksField {
   return deepMergeWithSourceArrays<BlocksField>(
     {
