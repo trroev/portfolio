@@ -1,0 +1,171 @@
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  /* COLORS — neutral scale (warm-tinted) */
+  --color-neutral-50: oklch(0.985 0.003 80);
+  --color-neutral-100: oklch(0.96 0.005 80);
+  --color-neutral-200: oklch(0.92 0.006 80);
+  --color-neutral-300: oklch(0.86 0.007 80);
+  --color-neutral-400: oklch(0.72 0.008 75);
+  --color-neutral-500: oklch(0.55 0.009 70);
+  --color-neutral-600: oklch(0.46 0.009 65);
+  --color-neutral-700: oklch(0.36 0.008 60);
+  --color-neutral-800: oklch(0.25 0.007 60);
+  --color-neutral-900: oklch(0.16 0.006 60);
+
+  /* COLORS — accent scale (v2: vivid bluish indigo, hue 264) */
+  --color-accent-50: oklch(0.97 0.015 264);
+  --color-accent-100: oklch(0.93 0.035 264);
+  --color-accent-200: oklch(0.87 0.065 264);
+  --color-accent-300: oklch(0.78 0.13 264);
+  --color-accent-400: oklch(0.69 0.18 264);
+  --color-accent-500: oklch(0.6 0.2 264);
+  --color-accent-600: oklch(0.52 0.22 264);
+  --color-accent-700: oklch(0.45 0.2 264);
+  --color-accent-800: oklch(0.38 0.16 264);
+  --color-accent-900: oklch(0.3 0.11 264);
+
+  /* COLORS — cyan secondary (v2: bright sky-cyan, hue 212) */
+  --color-cyan-50: oklch(0.98 0.012 212);
+  --color-cyan-100: oklch(0.95 0.035 212);
+  --color-cyan-200: oklch(0.9 0.07 212);
+  --color-cyan-300: oklch(0.86 0.13 212);
+  --color-cyan-400: oklch(0.78 0.15 212);
+  --color-cyan-500: oklch(0.68 0.135 212);
+  --color-cyan-600: oklch(0.56 0.115 212);
+  --color-cyan-700: oklch(0.48 0.098 212);
+  --color-cyan-800: oklch(0.4 0.08 212);
+  --color-cyan-900: oklch(0.31 0.06 212);
+
+  /* TYPOGRAPHY — families (CSS vars wired via next/font) */
+  --font-display: var(--font-space-grotesk), var(--font-geist), sans-serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Menlo", monospace;
+
+  /* TYPOGRAPHY — weights (variable-font values) */
+  --font-weight-medium: 510;
+  --font-weight-semibold: 590;
+  --font-weight-bold: 680;
+
+  /* TYPOGRAPHY — scale */
+  --text-display: 4.5rem;
+  --text-display--line-height: 1.05;
+  --text-heading-xl: 3rem;
+  --text-heading-xl--line-height: 1.1;
+  --text-heading-lg: 2.25rem;
+  --text-heading-lg--line-height: 1.15;
+  --text-heading-md: 1.5rem;
+  --text-heading-md--line-height: 1.25;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.55;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.5;
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.4;
+
+  /*
+    SPACING — uses Tailwind v4's default 0.25rem multiplier, which yields
+    every step the design system needs: p-1 (4) · p-2 (8) · p-3 (12) ·
+    p-4 (16) · p-6 (24) · p-8 (32) · p-12 (48) · p-16 (64) · p-24 (96) ·
+    p-32 (128) · p-40 (160). Named --spacing-* tokens are intentionally
+    omitted because they collide with v4's --container-* scale used by
+    max-w-* (e.g., --spacing-5xl would override --container-5xl).
+  */
+  --spacing-page-margin: clamp(1rem, -2rem + 8vw, 5rem);
+
+  /* RADIUS */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+:root {
+  /* SEMANTIC — light */
+  --semantic-background: var(--color-neutral-50);
+  --semantic-surface: oklch(1 0 0);
+  --semantic-surface-raised: oklch(0.99 0.003 80);
+  --semantic-text-primary: var(--color-neutral-900);
+  --semantic-text-secondary: var(--color-neutral-700);
+  --semantic-text-muted: var(--color-neutral-500);
+  --semantic-border: var(--color-neutral-200);
+  --semantic-border-strong: var(--color-neutral-400);
+  --semantic-accent: var(--color-accent-600);
+  --semantic-accent-hover: var(--color-accent-700);
+  --semantic-accent-foreground: var(--color-neutral-50);
+  --semantic-secondary: var(--color-cyan-600);
+  --semantic-secondary-hover: var(--color-cyan-700);
+  --semantic-secondary-foreground: var(--color-neutral-50);
+  --semantic-destructive: oklch(0.57 0.23 27);
+  --semantic-destructive-hover: oklch(0.5 0.22 27);
+  --semantic-destructive-foreground: var(--color-neutral-50);
+  --semantic-success: oklch(0.57 0.18 150);
+  --semantic-success-hover: oklch(0.5 0.17 150);
+  --semantic-success-foreground: var(--color-neutral-50);
+  --semantic-warning: oklch(0.76 0.17 75);
+  --semantic-warning-hover: oklch(0.69 0.17 75);
+  --semantic-warning-foreground: var(--color-neutral-900);
+  --semantic-info: var(--semantic-secondary);
+  --semantic-info-hover: var(--semantic-secondary-hover);
+  --semantic-info-foreground: var(--semantic-secondary-foreground);
+}
+
+[data-theme="dark"] {
+  --semantic-background: var(--color-neutral-900);
+  --semantic-surface: var(--color-neutral-800);
+  --semantic-surface-raised: var(--color-neutral-700);
+  --semantic-text-primary: var(--color-neutral-50);
+  --semantic-text-secondary: var(--color-neutral-200);
+  --semantic-text-muted: var(--color-neutral-400);
+  --semantic-border: var(--color-neutral-700);
+  --semantic-border-strong: var(--color-neutral-500);
+  --semantic-accent: var(--color-accent-500);
+  --semantic-accent-hover: var(--color-accent-600);
+  --semantic-accent-foreground: var(--color-neutral-50);
+  --semantic-secondary: var(--color-cyan-400);
+  --semantic-secondary-hover: var(--color-cyan-300);
+  --semantic-secondary-foreground: var(--color-neutral-900);
+  --semantic-destructive: oklch(0.68 0.2 27);
+  --semantic-destructive-hover: oklch(0.74 0.18 27);
+  --semantic-destructive-foreground: var(--color-neutral-900);
+  --semantic-success: oklch(0.74 0.18 150);
+  --semantic-success-hover: oklch(0.8 0.16 150);
+  --semantic-success-foreground: var(--color-neutral-900);
+  --semantic-warning: oklch(0.82 0.16 75);
+  --semantic-warning-hover: oklch(0.86 0.15 75);
+  --semantic-warning-foreground: var(--color-neutral-900);
+}
+
+@theme inline {
+  /* COLORS — semantic (re-exported so they remain reactive to [data-theme="dark"]) */
+  --color-background: var(--semantic-background);
+  --color-surface: var(--semantic-surface);
+  --color-surface-raised: var(--semantic-surface-raised);
+  --color-text-primary: var(--semantic-text-primary);
+  --color-text-secondary: var(--semantic-text-secondary);
+  --color-text-muted: var(--semantic-text-muted);
+  --color-border: var(--semantic-border);
+  --color-border-strong: var(--semantic-border-strong);
+  --color-accent: var(--semantic-accent);
+  --color-accent-hover: var(--semantic-accent-hover);
+  --color-accent-foreground: var(--semantic-accent-foreground);
+  --color-secondary: var(--semantic-secondary);
+  --color-secondary-hover: var(--semantic-secondary-hover);
+  --color-secondary-foreground: var(--semantic-secondary-foreground);
+  --color-destructive: var(--semantic-destructive);
+  --color-destructive-hover: var(--semantic-destructive-hover);
+  --color-destructive-foreground: var(--semantic-destructive-foreground);
+  --color-success: var(--semantic-success);
+  --color-success-hover: var(--semantic-success-hover);
+  --color-success-foreground: var(--semantic-success-foreground);
+  --color-warning: var(--semantic-warning);
+  --color-warning-hover: var(--semantic-warning-hover);
+  --color-warning-foreground: var(--semantic-warning-foreground);
+  --color-info: var(--semantic-info);
+  --color-info-hover: var(--semantic-info-hover);
+  --color-info-foreground: var(--semantic-info-foreground);
+}
