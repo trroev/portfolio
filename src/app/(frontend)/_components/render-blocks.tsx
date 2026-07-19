@@ -9,7 +9,7 @@ import { FeatureList } from "~/features/marketing/components/feature-list";
 import { HomeHero } from "~/features/marketing/components/home-hero";
 import { Story } from "~/features/marketing/components/story";
 import { ProjectShowcase } from "~/features/portfolio/components/project-showcase";
-import { type ResolvedCta, resolveLink } from "~/lib/page-href";
+import { type ResolvedCta, resolveCta } from "~/lib/page-href";
 import { resolveMedia } from "~/lib/resolve-media";
 import type { HeroBlock, Page, StoryBlock } from "~/payload-types";
 
@@ -18,10 +18,8 @@ type Lockup = HeroBlock["lockup"];
 
 function resolveCtas(ctas: Lockup["ctas"]): Array<ResolvedCta> {
   return (ctas ?? []).flatMap((cta) => {
-    const link = resolveLink(cta);
-    return cta.label && link
-      ? [{ download: link.download, href: link.href, label: cta.label }]
-      : [];
+    const resolved = resolveCta(cta);
+    return resolved ? [resolved] : [];
   });
 }
 

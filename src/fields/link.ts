@@ -14,17 +14,6 @@ const validateDownloadFile: UploadFieldSingleValidation = (
     ? "Add a file to download."
     : true;
 
-/**
- * The subfields of a link: a label plus a target. A link points either at a
- * Page (so it follows slug changes rather than rotting) or at a file in the
- * Media collection rendered as a download (e.g. a resume). External URLs are
- * still out of scope until a real need appears (issue #23).
- *
- * Returned fresh per call rather than shared from a constant: because
- * `deepMergeWithSourceArrays` aliases array values by reference (it does not
- * clone them), a shared constant would leave every link field in the schema
- * pointing at the same mutable field objects, which Payload sanitizes in place.
- */
 function linkFields(): Array<Field> {
   return [
     {
@@ -64,11 +53,6 @@ function linkFields(): Array<Field> {
   ];
 }
 
-/**
- * A single link as a named group (a Page or a file download). Pass `overrides`
- * to rename it, mark it required, or add admin config; nested arrays in the
- * override replace the defaults (see `deepMergeWithSourceArrays`).
- */
 export function linkField(overrides: Partial<GroupField> = {}): GroupField {
   return deepMergeWithSourceArrays<GroupField>(
     {
@@ -80,10 +64,6 @@ export function linkField(overrides: Partial<GroupField> = {}): GroupField {
   );
 }
 
-/**
- * A repeatable list of links (zero or more), e.g. the calls-to-action of a
- * lockup. `overrides` tune the array (name, minRows, admin, …).
- */
 export function linksField(overrides: Partial<ArrayField> = {}): ArrayField {
   return deepMergeWithSourceArrays<ArrayField>(
     {

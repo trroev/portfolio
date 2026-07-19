@@ -9,29 +9,24 @@ import { CtaButton } from "~/components/cta-button";
 import { ThemeToggle } from "~/components/theme-toggle";
 import { Wordmark } from "~/components/wordmark";
 import { cn } from "~/lib/cn";
+import type { ResolvedCta } from "~/lib/page-href";
 
 export type NavLink = {
   title: string;
   href: string;
 };
 
-export type NavCta = {
-  label: string;
-  href: string;
-  download: boolean;
-};
-
 function isActive({ pathname, href }: { pathname: string; href: string }) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }
 
-type NavLinkProps = {
+type NavItemLinkProps = {
   item: NavLink;
   isCurrent: boolean;
   variant: "desktop" | "mobile";
 };
 
-function NavItemLink({ item, isCurrent, variant }: NavLinkProps) {
+function NavItemLink({ item, isCurrent, variant }: NavItemLinkProps) {
   if (variant === "mobile") {
     return (
       <Link
@@ -73,7 +68,7 @@ function NavItemLink({ item, isCurrent, variant }: NavLinkProps) {
 
 type SiteHeaderProps = {
   items: ReadonlyArray<NavLink>;
-  cta: NavCta | null;
+  cta: ResolvedCta | null;
 };
 
 export function SiteHeader({ items, cta }: SiteHeaderProps) {

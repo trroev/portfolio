@@ -1,6 +1,7 @@
 import type { GlobalConfig } from "payload";
 import { anyone } from "~/access/anyone";
 import { authenticated } from "~/access/authenticated";
+import { navItemsField } from "~/fields/nav-items";
 import { revalidateChrome } from "./hooks/revalidate-layout";
 
 export const Footer: GlobalConfig = {
@@ -12,23 +13,7 @@ export const Footer: GlobalConfig = {
     group: "Site chrome",
   },
   fields: [
-    {
-      fields: [
-        {
-          name: "label",
-          required: true,
-          type: "text",
-        },
-        {
-          name: "page",
-          relationTo: "pages",
-          required: true,
-          type: "relationship",
-        },
-      ],
-      name: "items",
-      type: "array",
-    },
+    navItemsField(),
     {
       fields: [
         {
