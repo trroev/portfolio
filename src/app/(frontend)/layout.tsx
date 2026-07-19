@@ -3,15 +3,11 @@ import type { Metadata } from "next";
 import { Geist, Space_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
 import { SiteFooter, type SocialLink } from "~/components/site-footer";
-import {
-  type NavCta,
-  type NavLink,
-  SiteHeader,
-} from "~/components/site-header";
+import { type NavLink, SiteHeader } from "~/components/site-header";
 import { ThemeProvider } from "~/components/theme-provider";
 import { siteConfig } from "~/config/site";
 import { cn } from "~/lib/cn";
-import { pageRelationshipHref, resolveLink } from "~/lib/page-href";
+import { pageRelationshipHref, resolveCta } from "~/lib/page-href";
 import { getGlobal } from "~/lib/payload";
 import type { Footer, Navigation } from "~/payload-types";
 import "../globals.css";
@@ -63,14 +59,6 @@ function toNavLinks(
   });
 }
 
-function toNavCta(cta: Navigation["cta"]): NavCta | null {
-  const link = resolveLink(cta);
-  if (!(cta?.label && link)) {
-    return null;
-  }
-  return { download: link.download, href: link.href, label: cta.label };
-}
-
 function toSocialLinks(links: Footer["socialLinks"]): Array<SocialLink> {
   return (links ?? []).map((link) => ({
     platform: link.platform,
@@ -102,7 +90,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           enableSystem
         >
           <SiteHeader
-            cta={toNavCta(navigation.cta)}
+            cta={resolveCta(navigation.cta)}
             items={toNavLinks(navigation.items)}
           />
           <main className="flex flex-1 flex-col">{children}</main>

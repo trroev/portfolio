@@ -68,3 +68,21 @@ export function resolveLink(
   const href = pageRelationshipHref(link?.page);
   return href ? { download: false, href } : null;
 }
+
+type CtaValue = LinkValue & {
+  label?: string | null;
+};
+
+/**
+ * Resolves a CTA field — a link plus its label — to a rendered CTA, or null
+ * when the link can't be resolved or the label is missing.
+ */
+export function resolveCta(
+  cta: CtaValue | null | undefined
+): ResolvedCta | null {
+  const link = resolveLink(cta);
+  if (!(cta?.label && link)) {
+    return null;
+  }
+  return { ...link, label: cta.label };
+}
