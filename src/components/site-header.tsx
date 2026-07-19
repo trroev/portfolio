@@ -20,13 +20,13 @@ function isActive({ pathname, href }: { pathname: string; href: string }) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }
 
-type NavLinkProps = {
+type NavItemLinkProps = {
   item: NavLink;
   isCurrent: boolean;
   variant: "desktop" | "mobile";
 };
 
-function NavItemLink({ item, isCurrent, variant }: NavLinkProps) {
+function NavItemLink({ item, isCurrent, variant }: NavItemLinkProps) {
   if (variant === "mobile") {
     return (
       <Link
