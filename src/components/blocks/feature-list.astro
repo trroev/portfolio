@@ -1,0 +1,35 @@
+---
+export type FeatureListItem = {
+  title: string;
+  description: string;
+};
+
+type Props = {
+  heading?: string;
+  intro?: string;
+  items: ReadonlyArray<FeatureListItem>;
+};
+
+const { heading, intro, items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <section class="flex flex-col gap-6">
+    {heading && (
+      <h2 class="font-display text-2xl font-semibold sm:text-3xl">{heading}</h2>
+    )}
+    {intro && (
+      <p class="max-w-2xl text-lg text-balance text-text-muted">{intro}</p>
+    )}
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((item) => (
+        <li class="flex flex-col gap-2 rounded-lg border border-border bg-surface p-6">
+          <h3 class="font-display text-lg font-semibold">{item.title}</h3>
+          <p class="text-sm leading-relaxed text-text-muted">
+            {item.description}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

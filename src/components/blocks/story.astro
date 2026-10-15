@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Prose from "~/components/prose.astro";
+
+type Portrait = {
+  src: ImageMetadata;
+  alt: string;
+};
+
+type Props = {
+  portrait?: Portrait;
+};
+
+const { portrait } = Astro.props;
+---
+
+<section class="flex flex-col gap-8 sm:flex-row sm:items-start">
+  {portrait && (
+    <div class="relative aspect-4/5 w-full max-w-xs shrink-0 overflow-hidden rounded-lg border border-border bg-surface">
+      <Image
+        alt={portrait.alt}
+        class="absolute inset-0 size-full object-cover"
+        sizes="(min-width: 640px) 20rem, 100vw"
+        src={portrait.src}
+        widths={[320, 640]}
+      />
+    </div>
+  )}
+  <Prose class="max-w-2xl">
+    <slot />
+  </Prose>
+</section>

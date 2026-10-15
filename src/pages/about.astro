@@ -1,0 +1,78 @@
+---
+import BlockStack from "~/components/block-stack.astro";
+import FeatureList from "~/components/blocks/feature-list.astro";
+import PageIntro from "~/components/blocks/page-intro.astro";
+import Story from "~/components/blocks/story.astro";
+import BaseLayout from "~/layouts/base-layout.astro";
+
+const subheading =
+  "I'm Trevor – a full-stack developer who took the long way here, and is better for it.";
+---
+
+<BaseLayout description={subheading} title="About">
+  <BlockStack>
+    <PageIntro
+      eyebrow="About"
+      heading="From the kitchen to the codebase"
+      subheading={subheading}
+    />
+    <Story>
+      <p>
+        For years, my workplace was a Michelin-starred professional kitchen. It
+        taught me to work under pressure, to care about details nobody else
+        notices, and that a hundred small things done right add up to something
+        people remember. Those lessons didn't stay in the kitchen.
+      </p>
+      <p>
+        When I dove into software development, it clicked – the same craft of
+        mise en place, timing, and consistency mapped straight onto building for
+        the web. I taught myself to code, then went deep: the interface, the
+        server, the data underneath, and the deploy at the end.
+      </p>
+      <p>
+        I'm still the person who sweats the details. I just do it in a codebase
+        now.
+      </p>
+    </Story>
+    <FeatureList
+      heading="What I value"
+      items={[
+        {
+          description:
+            "The kitchen taught me that the details are the work. I sweat them.",
+          title: "Craft",
+        },
+        {
+          description:
+            "Clear communication and dependable delivery. Every time.",
+          title: "Reliability",
+        },
+        {
+          description:
+            "There's always a better way to do it. I keep looking for it.",
+          title: "Curiosity",
+        },
+      ]}
+    />
+    <FeatureList
+      heading="How I work"
+      items={[
+        {
+          description:
+            "I start by understanding the goal, then work in small, reviewable steps.",
+          title: "Ship in small steps",
+        },
+        {
+          description:
+            "I keep you in the loop and make the trade-offs visible as we go.",
+          title: "Communicate Openly",
+        },
+        {
+          description:
+            "I care about the handoff – clean code, clear docs, easy to maintain.",
+          title: "Leave it better",
+        },
+      ]}
+    />
+  </BlockStack>
+</BaseLayout>

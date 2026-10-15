@@ -1,0 +1,74 @@
+---
+import { RiMenuLine } from "@remixicon/react";
+import { buttonStyles } from "~/components/button";
+import CtaLink from "~/components/cta-link.astro";
+import Wordmark from "~/components/wordmark.astro";
+import { pageHref } from "~/config/pages";
+import { siteChrome } from "~/config/site-chrome";
+import { cn } from "~/lib/cn";
+
+type Props = {
+  currentPath: string;
+};
+
+const { currentPath } = Astro.props;
+const { navCta } = siteChrome;
+
+function isActive(href: string): boolean {
+  return href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+}
+
+const items = siteChrome.navItems.map((item) => {
+  const href = pageHref(item.page);
+  return { href, isCurrent: isActive(href), label: item.label };
+});
+---
+
+<header class="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
+  <div class="mx-auto flex h-16 w-full max-w-5xl items-center justify-between gap-4 px-6">
+    <Wordmark />
+
+    <nav aria-label="Main" class="hidden items-center gap-1 md:flex">
+      {items.map((item) => (
+        <a
+          aria-current={item.isCurrent ? "page" : undefined}
+          class={cn(
+            "focus-ring relative rounded-sm px-3 py-2 text-sm font-medium transition-colors",
+            item.isCurrent
+              ? "text-text-primary"
+              : "text-text-muted hover:text-text-primary",
+          )}
+          href={item.href}
+        >
+          {item.label}
+          {item.isCurrent && (
+            <span
+              aria-hidden="true"
+              class="absolute inset-x-3 -bottom-px h-0.5 rounded bg-accent"
+            />
+          )}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button
+        aria-label="Toggle theme"
+        class={buttonStyles({ variant: "icon" })}
+        disabled
+        type="button"
+      >
+        <span class="size-5"></span>
+      </button>
+      {navCta && <CtaLink class="hidden md:inline-flex" cta={navCta} />}
+      <button
+        aria-label="Open menu"
+        class={buttonStyles({ className: "md:hidden", variant: "icon" })}
+        disabled
+        type="button"
+      >
+        <RiMenuLine aria-hidden="true" size={22} />
+      </button>
+    </div>
+  </div>
+</header>

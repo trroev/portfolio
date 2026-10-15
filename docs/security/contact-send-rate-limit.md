@@ -4,14 +4,14 @@ The contact form's send endpoint (`POST /contact/send`) sends an email per reque
 
 ## WAF rule: "Rate limit contact send"
 
-| Setting | Value |
-| --- | --- |
-| Conditions | `path` equals `/contact/send` AND `method` equals `POST` |
-| Action | `rate_limit` |
-| Window | 60 seconds (fixed window) |
-| Max requests | 5 per window |
-| Counting key | `ip` |
-| If exceeded | `rate_limit` (HTTP 429) |
+| Setting      | Value                                                    |
+| ------------ | -------------------------------------------------------- |
+| Conditions   | `path` equals `/contact/send` AND `method` equals `POST` |
+| Action       | `rate_limit`                                             |
+| Window       | 60 seconds (fixed window)                                |
+| Max requests | 5 per window                                             |
+| Counting key | `ip`                                                     |
+| If exceeded  | `rate_limit` (HTTP 429)                                  |
 
 A legitimate visitor sends at most one or two messages in a minute, so 5/60s per IP leaves generous headroom while stopping scripted floods. When the limit trips, the client shows a "please wait a minute and try again" message (`src/features/contact/api/send-message.ts` handles the 429).
 

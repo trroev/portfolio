@@ -44,7 +44,7 @@ from Vercel in preview/production — pull them locally with `vercel env pull`.
 | `PAYLOAD_SECRET`        | yes      | Long random string used to sign/encrypt Payload tokens. Generate with `openssl rand -hex 32`.                |
 | `DATABASE_URI`          | yes      | MongoDB Atlas connection string (`mongodb+srv://…`). The Payload datastore.                                  |
 | `BLOB_READ_WRITE_TOKEN` | yes      | Vercel Blob read/write token for media uploads. Auto-provisioned when a Blob store is linked to the project. |
-| `RESEND_API_KEY`        | yes      | [Resend](https://resend.com) API key used by the contact form to deliver messages.                          |
+| `RESEND_API_KEY`        | yes      | [Resend](https://resend.com) API key used by the contact form to deliver messages.                           |
 | `CONTACT_TO_EMAIL`      | yes      | Inbox that contact-form submissions are delivered to.                                                        |
 
 ```sh
@@ -81,20 +81,20 @@ to each Page, falling back to the site defaults in `src/config/site.ts`.
 
 **Collections**
 
-| Collection     | Purpose                                                       |
-| -------------- | ------------------------------------------------------------- |
-| `Pages`        | Block-built pages; one document per public route             |
-| `Projects`     | Portfolio projects surfaced by the project-showcase block    |
-| `Technologies` | Tech tags referenced by projects                             |
-| `Media`        | Uploaded images (stored in Vercel Blob)                      |
-| `Admins`       | Admin users for the CMS                                       |
+| Collection     | Purpose                                                   |
+| -------------- | --------------------------------------------------------- |
+| `Pages`        | Block-built pages; one document per public route          |
+| `Projects`     | Portfolio projects surfaced by the project-showcase block |
+| `Technologies` | Tech tags referenced by projects                          |
+| `Media`        | Uploaded images (stored in Vercel Blob)                   |
+| `Admins`       | Admin users for the CMS                                   |
 
 **Globals**
 
-| Global       | Purpose                                                        |
-| ------------ | ------------------------------------------------------------- |
-| `Navigation` | Header nav items and CTA — links are relationships to Pages   |
-| `Footer`     | Footer links and social links                                 |
+| Global       | Purpose                                                     |
+| ------------ | ----------------------------------------------------------- |
+| `Navigation` | Header nav items and CTA — links are relationships to Pages |
+| `Footer`     | Footer links and social links                               |
 
 **Blocks** — the layout building blocks a Page is composed from: `hero`,
 `pageIntro`, `featureList`, `projectShowcase` (with a featured-only mode), `story`
@@ -102,13 +102,12 @@ to each Page, falling back to the site defaults in `src/config/site.ts`.
 
 ## Scripts
 
-| Command          | Description                          |
-| ---------------- | ------------------------------------ |
-| `pnpm dev`       | Start the development server         |
-| `pnpm build`     | Build for production (`next build`)  |
-| `pnpm start`     | Serve the production build           |
-| `pnpm lint`      | Lint with Biome (via Ultracite)      |
-| `pnpm format`    | Format & auto-fix with Ultracite     |
-| `pnpm typecheck` | Type-check with the TypeScript compiler |
+| Command                   | Description                                               |
+| ------------------------- | --------------------------------------------------------- |
+| `pnpm dev`                | Start the development server                              |
+| `pnpm build`              | Build for production (`astro build`)                      |
+| `pnpm lint`               | Lint with Biome (Ultracite preset, formatter off)         |
+| `pnpm format`             | Format every file with Prettier                           |
+| `pnpm typecheck`          | Type-check with `astro check`                             |
 | `pnpm generate:types`     | Regenerate `src/payload-types.ts` from the Payload config |
 | `pnpm generate:importmap` | Regenerate the admin panel import map                     |

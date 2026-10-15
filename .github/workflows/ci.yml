@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, dev]
+    branches: [main, astro]
   pull_request:
-    branches: [main, dev]
+    branches: [main, astro]
 
 jobs:
   checks:
@@ -28,4 +28,5 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
-      # `pnpm test` joins here once the test foundation lands (#18).
+      - name: Build
+        run: pnpm build

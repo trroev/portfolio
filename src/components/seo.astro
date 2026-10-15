@@ -1,0 +1,42 @@
+---
+import { siteConfig } from "~/config/site";
+
+export type SeoProps = {
+  title?: string;
+  description?: string;
+  image?: string;
+};
+
+type Props = SeoProps;
+
+const {
+  title,
+  description = siteConfig.description,
+  image = siteConfig.ogImage,
+} = Astro.props;
+
+const fullTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.title;
+const canonicalUrl = new URL(Astro.url.pathname, siteConfig.url).href;
+const imageUrl = new URL(image, siteConfig.url).href;
+---
+
+<title>{fullTitle}</title>
+<meta content={description} name="description" />
+<link href={canonicalUrl} rel="canonical" />
+<link href={siteConfig.url} rel="author" />
+<meta content={siteConfig.author} name="author" />
+<meta content={siteConfig.author} name="creator" />
+<meta content={siteConfig.keywords.join(",")} name="keywords" />
+
+<meta content={fullTitle} property="og:title" />
+<meta content={description} property="og:description" />
+<meta content={canonicalUrl} property="og:url" />
+<meta content={siteConfig.name} property="og:site_name" />
+<meta content="en_US" property="og:locale" />
+<meta content={imageUrl} property="og:image" />
+<meta content="website" property="og:type" />
+
+<meta content="summary_large_image" name="twitter:card" />
+<meta content={fullTitle} name="twitter:title" />
+<meta content={description} name="twitter:description" />
+<meta content={imageUrl} name="twitter:image" />

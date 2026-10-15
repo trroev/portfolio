@@ -1,35 +1,44 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "jsx": "react-jsx",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "jsxImportSource": "react",
     "paths": {
-      "~/*": ["./src/*"],
-      "@payload-config": ["./src/payload.config.ts"]
+      "~/*": ["./src/*"]
     }
   },
-  "include": [
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": [
+    "dist",
+    ".vercel",
+    ".next",
+    "next.config.ts",
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+    "src/access",
+    "src/app",
+    "src/blocks",
+    "src/collections",
+    "src/features",
+    "src/fields",
+    "src/globals",
+    "src/plugins",
+    "src/payload.config.ts",
+    "src/payload-types.ts",
+    "src/components/button-link.tsx",
+    "src/components/cta-band.tsx",
+    "src/components/cta-button.tsx",
+    "src/components/page-intro.tsx",
+    "src/components/rich-text.tsx",
+    "src/components/site-footer.tsx",
+    "src/components/site-header.tsx",
+    "src/components/theme-provider.tsx",
+    "src/components/theme-toggle.tsx",
+    "src/components/wordmark.tsx",
+    "src/lib/metadata.ts",
+    "src/lib/page-href.ts",
+    "src/lib/page-seo.ts",
+    "src/lib/payload.ts",
+    "src/lib/resolve-media.ts",
+    "src/lib/revalidate.ts"
+  ]
 }
