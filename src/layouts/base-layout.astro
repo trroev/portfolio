@@ -2,8 +2,9 @@
 import { Font } from "astro:assets";
 import Seo, { type SeoProps } from "~/components/seo.astro";
 import SiteFooter from "~/components/site-footer.astro";
-import SiteHeader from "~/components/site-header.astro";
+import { SiteHeader } from "~/components/site-header";
 import ThemeScript from "~/components/theme-script.astro";
+import { siteChrome } from "~/config/site-chrome";
 import "~/styles/global.css";
 
 type Props = SeoProps;
@@ -31,7 +32,12 @@ const { title, description, image } = Astro.props;
     <Font cssVariable="--font-space-grotesk" preload />
   </head>
   <body class="flex min-h-screen flex-col antialiased">
-    <SiteHeader currentPath={Astro.url.pathname} />
+    <SiteHeader
+      currentPath={Astro.url.pathname}
+      navCta={siteChrome.navCta}
+      navItems={siteChrome.navItems}
+      client:load
+    />
     <main class="flex flex-1 flex-col">
       <slot />
     </main>

@@ -1,57 +1,45 @@
-"use client";
-
 import { RiMoonLine, RiSunLine } from "@remixicon/react";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Button } from "~/components/button";
+import { readTheme, setTheme, subscribeToTheme } from "~/lib/theme";
 
-type ThemeIconProps = {
-  isMounted: boolean;
-  isDark: boolean;
-};
-
-function ThemeIcon({ isMounted, isDark }: ThemeIconProps) {
-  if (!isMounted) {
-    return <span className="size-5" />;
-  }
-  return isDark ? (
-    <RiSunLine aria-hidden="true" size={20} />
-  ) : (
-    <RiMoonLine aria-hidden="true" size={20} />
-  );
+function getServerSnapshot(): null {
+  return null;
 }
 
 export function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const [isMounted, setIsMounted] = useState(false);
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    readTheme,
+    getServerSnapshot
+  );
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  if (theme === null) {
+    return (
+      <Button aria-label="Toggle theme" type="button" variant="icon">
+        <span className="size-5" />
+      </Button>
+    );
+  }
 
-  const isDark = resolvedTheme === "dark";
+  const isDark = theme === "dark";
 
   function handleToggleTheme() {
     setTheme(isDark ? "light" : "dark");
   }
 
-  function resolveLabel() {
-    if (!isMounted) {
-      return "Toggle theme";
-    }
-    return isDark ? "Switch to light theme" : "Switch to dark theme";
-  }
-
-  const label = resolveLabel();
-
   return (
     <Button
-      aria-label={label}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       onClick={handleToggleTheme}
       type="button"
       variant="icon"
     >
-      <ThemeIcon isDark={isDark} isMounted={isMounted} />
+      {isDark ? (
+        <RiSunLine aria-hidden="true" size={20} />
+      ) : (
+        <RiMoonLine aria-hidden="true" size={20} />
+      )}
     </Button>
   );
 }

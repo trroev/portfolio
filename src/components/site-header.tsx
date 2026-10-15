@@ -1,84 +1,107 @@
-"use client";
-
 import { RiCloseLine, RiMenuLine } from "@remixicon/react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "~/components/button";
-import { CtaButton } from "~/components/cta-button";
+import { CtaLink } from "~/components/cta-link";
 import { ThemeToggle } from "~/components/theme-toggle";
 import { Wordmark } from "~/components/wordmark";
-import { cn } from "~/lib/cn";
-import type { ResolvedCta } from "~/lib/page-href";
+import { pageHref } from "~/config/pages";
+import type { NavItem } from "~/config/site-chrome";
+import type { Cta } from "~/lib/cta";
+import { tv } from "~/lib/tv";
 
-export type NavLink = {
-  title: string;
+function isActive({
+  currentPath,
+  href,
+}: {
+  currentPath: string;
   href: string;
-};
-
-function isActive({ pathname, href }: { pathname: string; href: string }) {
-  return href === "/" ? pathname === "/" : pathname.startsWith(href);
+}): boolean {
+  return href === "/" ? currentPath === "/" : currentPath.startsWith(href);
 }
 
 type NavItemLinkProps = {
-  item: NavLink;
-  isCurrent: boolean;
+  item: NavItem;
+  currentPath: string;
   variant: "desktop" | "mobile";
+  onNavigate?: () => void;
 };
 
-function NavItemLink({ item, isCurrent, variant }: NavItemLinkProps) {
-  if (variant === "mobile") {
-    return (
-      <Link
-        aria-current={isCurrent ? "page" : undefined}
-        className={cn(
-          "focus-ring block rounded-md px-3 py-2.5 font-medium text-base transition-colors",
-          isCurrent
-            ? "bg-surface text-text-primary"
-            : "text-text-muted hover:bg-surface hover:text-text-primary"
-        )}
-        href={item.href}
-      >
-        {item.title}
-      </Link>
-    );
-  }
+const navLinkStyles = tv({
+  base: "focus-ring font-medium transition-colors",
+  compoundVariants: [
+    {
+      className: "text-text-muted hover:text-text-primary",
+      isCurrent: false,
+      variant: "desktop",
+    },
+    {
+      className: "text-text-muted hover:bg-surface hover:text-text-primary",
+      isCurrent: false,
+      variant: "mobile",
+    },
+    {
+      className: "bg-surface",
+      isCurrent: true,
+      variant: "mobile",
+    },
+  ],
+  variants: {
+    isCurrent: {
+      false: "",
+      true: "text-text-primary",
+    },
+    variant: {
+      desktop: "relative rounded-sm px-3 py-2 text-sm",
+      mobile: "block rounded-md px-3 py-2.5 text-base",
+    },
+  },
+});
+
+function NavItemLink({
+  item,
+  currentPath,
+  variant,
+  onNavigate,
+}: NavItemLinkProps) {
+  const href = pageHref(item.page);
+  const isCurrent = isActive({ currentPath, href });
 
   return (
-    <Link
+    <a
       aria-current={isCurrent ? "page" : undefined}
-      className={cn(
-        "focus-ring relative rounded-sm px-3 py-2 font-medium text-sm transition-colors",
-        isCurrent
-          ? "text-text-primary"
-          : "text-text-muted hover:text-text-primary"
-      )}
-      href={item.href}
+      className={navLinkStyles({ isCurrent, variant })}
+      href={href}
+      onClick={onNavigate}
     >
-      {item.title}
-      {isCurrent ? (
+      {item.label}
+      {variant === "desktop" && isCurrent ? (
         <span
           aria-hidden="true"
           className="absolute inset-x-3 -bottom-px h-0.5 rounded bg-accent"
         />
       ) : null}
-    </Link>
+    </a>
   );
 }
 
 type SiteHeaderProps = {
-  items: ReadonlyArray<NavLink>;
-  cta: ResolvedCta | null;
+  navItems: ReadonlyArray<NavItem>;
+  navCta: Cta | null;
+  currentPath: string;
 };
 
-export function SiteHeader({ items, cta }: SiteHeaderProps) {
-  const pathname = usePathname();
+export function SiteHeader({ navItems, navCta, currentPath }: SiteHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: close the menu on every route change — pathname is the trigger, not a value the effect reads.
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
+    function handlePageShow(event: PageTransitionEvent) {
+      if (event.persisted) {
+        setIsMenuOpen(false);
+      }
+    }
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, []);
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -97,17 +120,21 @@ export function SiteHeader({ items, cta }: SiteHeaderProps) {
     setIsMenuOpen((value) => !value);
   }
 
+  function handleCloseMenu() {
+    setIsMenuOpen(false);
+  }
+
   return (
-    <header className="sticky top-0 z-50 border-border border-b bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between gap-4 px-6">
         <Wordmark />
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
-          {items.map((item) => (
+          {navItems.map((item) => (
             <NavItemLink
-              isCurrent={isActive({ href: item.href, pathname })}
+              currentPath={currentPath}
               item={item}
-              key={item.href}
+              key={item.page}
               variant="desktop"
             />
           ))}
@@ -115,14 +142,8 @@ export function SiteHeader({ items, cta }: SiteHeaderProps) {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          {cta ? (
-            <CtaButton
-              className="hidden md:inline-flex"
-              download={cta.download}
-              href={cta.href}
-            >
-              {cta.label}
-            </CtaButton>
+          {navCta ? (
+            <CtaLink className="hidden md:inline-flex" cta={navCta} />
           ) : null}
           <Button
             aria-controls="mobile-nav"
@@ -145,29 +166,22 @@ export function SiteHeader({ items, cta }: SiteHeaderProps) {
       {isMenuOpen ? (
         <nav
           aria-label="Mobile"
-          className="border-border border-t bg-background px-6 py-4 md:hidden"
+          className="border-t border-border bg-background px-6 py-4 md:hidden"
           id="mobile-nav"
         >
           <ul className="flex flex-col gap-1">
-            {items.map((item) => (
-              <li key={item.href}>
+            {navItems.map((item) => (
+              <li key={item.page}>
                 <NavItemLink
-                  isCurrent={isActive({ href: item.href, pathname })}
+                  currentPath={currentPath}
                   item={item}
+                  onNavigate={handleCloseMenu}
                   variant="mobile"
                 />
               </li>
             ))}
           </ul>
-          {cta ? (
-            <CtaButton
-              className="mt-4 w-full"
-              download={cta.download}
-              href={cta.href}
-            >
-              {cta.label}
-            </CtaButton>
-          ) : null}
+          {navCta ? <CtaLink className="mt-4 w-full" cta={navCta} /> : null}
         </nav>
       ) : null}
     </header>
