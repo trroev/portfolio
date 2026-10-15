@@ -1,5 +1,7 @@
 # Payload CMS backed by MongoDB Atlas, media on Vercel Blob
 
+**Superseded by [0004](./0004-static-astro-content-in-repo.md).**
+
 All site content — the `/portfolio` projects and the marketing page copy/media (Home, About, Services) — is managed in **Payload CMS**, installed natively into the Next.js App Router app. Payload is backed by **MongoDB Atlas** (Mongoose adapter) with uploaded media stored in **Vercel Blob**. We chose this over keeping content in MDX/code so the whole site is editable without a deploy, and because building on Payload also demonstrates the skill on the site itself.
 
 ## Considered Options

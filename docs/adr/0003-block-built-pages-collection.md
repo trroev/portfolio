@@ -1,5 +1,7 @@
 # Every public route is a block-built Page
 
+**Superseded by [0004](./0004-static-astro-content-in-repo.md).**
+
 Page content was modeled as one Payload global per page (Home, About, Services), which froze the set of pages and their section layout at deploy time, while portfolio and contact stayed hardcoded feature routes. We replaced the globals with a single Pages collection whose documents are composed from a small set of blocks, rendered by one dynamic slug route — including contact (the form mounts as a block) and portfolio (a project-showcase block queries the Projects collection), so there are no hardcoded content routes left.
 
 ## Considered Options
