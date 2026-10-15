@@ -1,4 +1,5 @@
 import { siteConfig } from "~/config/site";
+import { absoluteUrl } from "~/lib/metadata";
 import { pageHref } from "~/lib/page-href";
 import type { Page } from "~/payload-types";
 
@@ -28,5 +29,5 @@ export function derivePageDescription(page: PageSeoSource): string {
 }
 
 export function derivePageUrl(page: PageSeoSource): string {
-  return `${siteConfig.url}${pageHref(page)}`;
+  return absoluteUrl(pageHref(page));
 }

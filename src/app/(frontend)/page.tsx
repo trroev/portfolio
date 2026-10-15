@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { pageHref } from "~/lib/page-href";
 import { RenderBlocks } from "./_components/render-blocks";
 import { pageToMetadata } from "./_lib/derive-metadata";
 import { getPage } from "./_lib/pages";
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPage("home");
-  return page ? pageToMetadata(page, "/") : {};
+  return page ? pageToMetadata(page, pageHref(page)) : {};
 }
 
 export default async function HomePage() {
