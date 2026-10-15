@@ -1,0 +1,50 @@
+---
+import BlockStack from "~/components/block-stack.astro";
+import FeatureList from "~/components/blocks/feature-list.astro";
+import Hero from "~/components/blocks/hero.astro";
+import ProjectShowcase from "~/components/blocks/project-showcase.astro";
+import BaseLayout from "~/layouts/base-layout.astro";
+
+const subheading =
+  "A full-stack developer building clean, professional web experiences – from marketing sites to CMS-backed applications.";
+---
+
+<BaseLayout description={subheading}>
+  <BlockStack>
+    <Hero
+      ctas={[
+        { kind: "page", label: "Get in touch", page: "contact" },
+        { kind: "page", label: "View portfolio", page: "portfolio" },
+      ]}
+      eyebrow="trroev development"
+      heading="I'm Trevor Mathiak"
+      subheading={subheading}
+    />
+    <FeatureList
+      heading="What I bring"
+      intro="I design and build the whole stack, so the details line up – from the data model to the final pixel."
+      items={[
+        {
+          description:
+            "Fast, accessible, responsive interfaces built with modern tooling.",
+          title: "Front to back",
+        },
+        {
+          description: "APIs, databases, and content models that scale.",
+          title: "Solid foundations",
+        },
+        {
+          description:
+            "Clean, maintainable code and a professional finish on every detail.",
+          title: "Built to last",
+        },
+      ]}
+    />
+    <ProjectShowcase
+      ctaLabel="View portfolio"
+      featuredOnly
+      heading="Selected work"
+      intro="A few projects I've designed and built. See the full set on the portfolio."
+    />
+  </BlockStack>
+</BaseLayout>
