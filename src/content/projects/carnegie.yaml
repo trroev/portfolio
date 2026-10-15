@@ -1,0 +1,14 @@
+title: "Carnegie Endowment for International Peace"
+description: "Website for a leading global think tank publishing independent foreign-policy research. A major part of my work was migrating the platform from a legacy JavaScript/Vue/Nuxt + Payload v2 stack to TypeScript, React/Next.js, and Payload v3 – with significant performance optimization along the way."
+tech:
+  - "TypeScript"
+  - "Next.js"
+  - "Payload CMS"
+  - "TanStack Query"
+  - "Tailwind CSS"
+  - "Radix UI"
+  - "Storybook"
+liveUrl: "https://carnegieendowment.org"
+screenshot: ./carnegie.png
+alt: "Carnegie Endowment for International Peace"
+order: 10

@@ -1,0 +1,14 @@
+title: "Arcesium"
+description: "Marketing site for a fintech company’s suite of investment-operations and data platforms. My work centered on tech-debt cleanup: consolidating the codebase into a monorepo, upgrading aging dependencies, and refactoring toward consistent, best-practice, performance-minded code."
+tech:
+  - "Next.js"
+  - "TypeScript"
+  - "Builder.io"
+  - "Storybook"
+  - "Figma"
+  - "TanStack Query"
+  - "Vercel"
+liveUrl: "https://www.arcesium.com"
+screenshot: ./arcesium.png
+alt: "Arcesium"
+order: 60
