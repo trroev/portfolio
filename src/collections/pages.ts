@@ -2,7 +2,7 @@ import { type CollectionConfig, slugField } from "payload";
 import { authenticated } from "~/access/authenticated";
 import { authenticatedOrPublished } from "~/access/authenticated-or-published";
 import { blocksField } from "~/fields/blocks";
-import { revalidatePage } from "./hooks/revalidate-page";
+import { revalidatePage, revalidatePageDelete } from "./hooks/revalidate-page";
 
 export const Pages: CollectionConfig = {
   access: {
@@ -28,6 +28,7 @@ export const Pages: CollectionConfig = {
   ],
   hooks: {
     afterChange: [revalidatePage],
+    afterDelete: [revalidatePageDelete],
   },
   slug: "pages",
   versions: {

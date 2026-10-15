@@ -8,13 +8,21 @@ type PageMetadataOptions = {
   image: string;
 };
 
+export const SITEMAP_PATH = "/sitemap.xml";
+
+export function absoluteUrl(path: string): string {
+  return `${siteConfig.url}${path}`;
+}
+
 export function pageMetadata({
   title,
   description,
   path,
   image,
 }: PageMetadataOptions): Metadata {
+  const url = absoluteUrl(path);
   return {
+    alternates: { canonical: url },
     description,
     openGraph: {
       description,
@@ -23,7 +31,7 @@ export function pageMetadata({
       siteName: siteConfig.name,
       title,
       type: "website",
-      url: `${siteConfig.url}${path}`,
+      url,
     },
     title: { absolute: title },
     twitter: {
