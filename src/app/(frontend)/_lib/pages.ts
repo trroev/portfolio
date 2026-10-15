@@ -20,19 +20,28 @@ export const getPage = cache(async (slug: string): Promise<Page | null> => {
   }
 });
 
-export const getPageSlugs = cache(async (): Promise<Array<string>> => {
-  try {
-    const payload = await getPayloadClient();
-    const { docs } = await payload.find({
-      collection: "pages",
-      depth: 0,
-      limit: 100,
-      select: { slug: true },
-      where: { _status: { equals: "published" } },
-    });
-    return docs.map((doc) => doc.slug);
-  } catch (error) {
-    console.error("Failed to load page slugs from the CMS:", error);
-    throw error;
+export type PublishedPageRef = Pick<Page, "slug" | "updatedAt">;
+
+export const getPublishedPageRefs = cache(
+  async (): Promise<Array<PublishedPageRef>> => {
+    try {
+      const payload = await getPayloadClient();
+      const { docs } = await payload.find({
+        collection: "pages",
+        depth: 0,
+        limit: 100,
+        select: { slug: true, updatedAt: true },
+        where: { _status: { equals: "published" } },
+      });
+      return docs.map(({ slug, updatedAt }) => ({ slug, updatedAt }));
+    } catch (error) {
+      console.error("Failed to load page refs from the CMS:", error);
+      throw error;
+    }
   }
+);
+
+export const getPageSlugs = cache(async (): Promise<Array<string>> => {
+  const refs = await getPublishedPageRefs();
+  return refs.map((ref) => ref.slug);
 });

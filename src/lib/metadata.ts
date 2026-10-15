@@ -8,6 +8,8 @@ type PageMetadataOptions = {
   image: string;
 };
 
+export const SITEMAP_PATH = "/sitemap.xml";
+
 export function absoluteUrl(path: string): string {
   return `${siteConfig.url}${path}`;
 }
