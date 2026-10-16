@@ -1,0 +1,70 @@
+---
+import BlockStack from "~/components/block-stack.astro";
+import CtaBand from "~/components/blocks/cta-band.astro";
+import FeatureList from "~/components/blocks/feature-list.astro";
+import PageIntro from "~/components/blocks/page-intro.astro";
+import BaseLayout from "~/layouts/base-layout.astro";
+---
+
+<BaseLayout
+  description="I take projects from idea to production – the interface, the server, the content model, and the deploy. Here's where I can help."
+  title="Services"
+>
+  <BlockStack>
+    <PageIntro
+      eyebrow="Services"
+      heading="What I can build for you"
+      subheading="I take projects from idea to production – the interface, the server, the content model, and the deploy. Here's where I can help:"
+    />
+    <FeatureList
+      heading="Capabilities"
+      items={[
+        {
+          description:
+            "Marketing sites that load fast and read well on every screen",
+          title: "Websites",
+        },
+        {
+          description:
+            "Full-stack web applications with real data, authentication, and an admin behind them",
+          title: "Web apps",
+        },
+        {
+          description:
+            "CMS-backed content so you can update copy and media without waiting on a developer",
+          title: "Content Management",
+        },
+        {
+          description:
+            "APIs and integrations that connect your app to the services it depends on.",
+          title: "APIs & integrations",
+        },
+      ]}
+    />
+    <FeatureList
+      heading="How it works"
+      items={[
+        {
+          description:
+            "We talk through what you need and agree on the shape of the work.",
+          title: "Scope",
+        },
+        {
+          description:
+            "I build in small, reviewable steps so you always see progress.",
+          title: "Build",
+        },
+        {
+          description:
+            "I ship it, hand it over clean, and stay available for what's next.",
+          title: "Launch",
+        },
+      ]}
+    />
+    <CtaBand
+      ctas={[{ kind: "page", label: "Get in touch", page: "contact" }]}
+      heading="Have a project in mind?"
+      subheading="Tell me what you're building and I'll get back to you."
+    />
+  </BlockStack>
+</BaseLayout>
