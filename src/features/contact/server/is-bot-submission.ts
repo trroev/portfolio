@@ -1,5 +1,3 @@
-import "server-only";
-
 export function isBotSubmission(body: unknown): boolean {
   if (typeof body !== "object" || body === null) {
     return false;
