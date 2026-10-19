@@ -1,0 +1,21 @@
+---
+import PageIntro from "~/components/blocks/page-intro.astro";
+import { CtaLink } from "~/components/cta-link";
+import BaseLayout from "~/layouts/base-layout.astro";
+
+const subheading =
+  "The page you're looking for doesn't exist or has moved. Head back to the home page, or take a look at my work.";
+---
+
+<BaseLayout description={subheading} title="Page not found">
+  <div class="mx-auto w-full max-w-2xl px-6 py-16 sm:py-20">
+    <PageIntro eyebrow="404" heading="Page not found" subheading={subheading} />
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <CtaLink cta={{ kind: "page", label: "Back to home", page: "home" }} />
+      <CtaLink
+        cta={{ kind: "page", label: "View portfolio", page: "portfolio" }}
+        variant="secondary"
+      />
+    </div>
+  </div>
+</BaseLayout>

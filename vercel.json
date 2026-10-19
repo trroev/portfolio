@@ -2,5 +2,16 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "astro",
   "installCommand": "corepack pnpm install --frozen-lockfile",
-  "buildCommand": "corepack pnpm run build"
+  "buildCommand": "corepack pnpm run build",
+  "headers": [
+    {
+      "source": "/pdf/:path*",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://trevormathiak.dev/pdf/:path*>; rel=\"canonical\""
+        }
+      ]
+    }
+  ]
 }

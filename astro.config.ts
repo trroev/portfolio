@@ -1,4 +1,5 @@
 import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField, fontProviders } from "astro/config";
@@ -38,8 +39,11 @@ export default defineConfig({
       weights: ["300 700"],
     },
   ],
-  integrations: [react()],
+  integrations: [react(), sitemap()],
   output: "static",
+  redirects: {
+    "/sitemap.xml": "/sitemap-index.xml",
+  },
   site: siteConfig.url,
   trailingSlash: "never",
   vite: {

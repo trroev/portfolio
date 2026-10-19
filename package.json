@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@astrojs/react": "~7.0.1",
+    "@astrojs/sitemap": "~3.7.4",
     "@astrojs/vercel": "~11.0.14",
     "@hookform/resolvers": "^5.4.0",
     "@payloadcms/db-mongodb": "^3.86.0",
