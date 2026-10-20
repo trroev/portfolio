@@ -8,9 +8,7 @@ import { type ContactFormInput, contactFormSchema } from "../schema";
 import { FormField } from "./form-field";
 
 type FormState =
-  | { kind: "idle" }
-  | { kind: "success" }
-  | { kind: "error"; message: string };
+  { kind: "idle" } | { kind: "success" } | { kind: "error"; message: string };
 
 const fieldControl =
   "focus-ring rounded-md border border-border bg-background px-3 py-2 text-sm transition-colors placeholder:text-text-muted aria-[invalid=true]:border-destructive";
@@ -44,12 +42,12 @@ export function ContactForm() {
         className="flex flex-col gap-2 rounded-lg border border-border bg-surface px-6 py-8 text-center"
         role="status"
       >
-        <h2 className="font-display font-semibold text-xl">Message sent</h2>
+        <h2 className="font-display text-xl font-semibold">Message sent</h2>
         <p className="text-text-muted">
           Thanks for reaching out — I'll get back to you soon.
         </p>
         <button
-          className="focus-ring mt-2 self-center rounded-sm font-medium text-accent text-sm hover:underline"
+          className="mt-2 self-center rounded-sm text-sm font-medium text-accent focus-ring hover:underline"
           onClick={() => setFormState({ kind: "idle" })}
           type="button"
         >
@@ -67,7 +65,7 @@ export function ContactForm() {
     >
       {formState.kind === "error" ? (
         <p
-          className="rounded-md border border-destructive/40 bg-destructive/10 px-4 py-3 text-destructive text-sm"
+          className="rounded-md border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive"
           role="alert"
         >
           {formState.message}

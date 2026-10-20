@@ -11,7 +11,7 @@ export function ThemeToggle() {
   const theme = useSyncExternalStore(
     subscribeToTheme,
     readTheme,
-    getServerSnapshot
+    getServerSnapshot,
   );
 
   if (theme === null) {

@@ -27,7 +27,7 @@ type NavItemLinkProps = {
 };
 
 const navLinkStyles = tv({
-  base: "focus-ring font-medium transition-colors",
+  base: "font-medium focus-ring transition-colors",
   compoundVariants: [
     {
       className: "text-text-muted hover:text-text-primary",

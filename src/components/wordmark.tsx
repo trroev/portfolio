@@ -4,7 +4,7 @@ export function Wordmark() {
   return (
     <a
       aria-label="trroev development — home"
-      className="focus-ring inline-flex items-baseline rounded-sm font-display text-lg font-semibold tracking-tight"
+      className="inline-flex items-baseline rounded-sm font-display text-lg font-semibold tracking-tight focus-ring"
       href={pageHref("home")}
     >
       trroev
