@@ -47,9 +47,6 @@ export default defineConfig({
   site: siteConfig.url,
   trailingSlash: "never",
   vite: {
-    css: {
-      postcss: {},
-    },
     plugins: [tailwindcss()],
   },
 });
