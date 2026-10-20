@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef } from "react";
 import { tv, type VariantProps } from "~/lib/tv";
 
 export const buttonStyles = tv({
-  base: "focus-ring inline-flex items-center justify-center rounded-md transition-colors",
+  base: "inline-flex items-center justify-center rounded-md focus-ring transition-colors",
   defaultVariants: {
     variant: "primary",
   },
@@ -10,9 +10,9 @@ export const buttonStyles = tv({
     variant: {
       icon: "size-9 text-text-muted hover:bg-surface hover:text-text-primary",
       primary:
-        "bg-accent px-5 py-2.5 font-medium text-accent-foreground text-sm hover:bg-accent-hover",
+        "bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground hover:bg-accent-hover",
       secondary:
-        "border border-border px-5 py-2.5 font-medium text-sm text-text-primary hover:bg-surface",
+        "border border-border px-5 py-2.5 text-sm font-medium text-text-primary hover:bg-surface",
     },
   },
 });

@@ -1,0 +1,34 @@
+---
+import BlockStack from "~/components/block-stack.astro";
+import CtaBand from "~/components/blocks/cta-band.astro";
+import PageIntro from "~/components/blocks/page-intro.astro";
+import ProjectShowcase from "~/components/blocks/project-showcase.astro";
+import BaseLayout from "~/layouts/base-layout.astro";
+---
+
+<BaseLayout
+  description="A curated set of projects I've worked on or designed and build."
+  title="Portfolio"
+>
+  <BlockStack>
+    <PageIntro
+      ctas={[
+        { kind: "page", label: "Get in touch", page: "contact" },
+        {
+          file: "/files/Trevor_Mathiak_Resume.docx",
+          kind: "download",
+          label: "Resume",
+        },
+      ]}
+      eyebrow="Portfolio"
+      heading="Selected Work"
+      subheading="A curated set of projects I've worked on or designed and built."
+    />
+    <ProjectShowcase />
+    <CtaBand
+      ctas={[{ kind: "page", label: "Get in touch", page: "contact" }]}
+      heading="Looking for a developer?"
+      subheading="I'm open to new opportunities. Reach out and I'll get back to you."
+    />
+  </BlockStack>
+</BaseLayout>

@@ -8,13 +8,10 @@ The website for **trroev development** — Trevor Mathiak's personal developer b
 
 ## Stack
 
-- [Next.js 16](https://nextjs.org/) (App Router)
-- [React 19](https://react.dev/)
+- [Astro 7](https://astro.build/), statically generated, with [React 19](https://react.dev/) islands for the header and the contact form
 - [Tailwind CSS 4](https://tailwindcss.com/)
-- [Payload CMS 3](https://payloadcms.com/) (in-app admin at `/admin`)
-- [MongoDB Atlas](https://www.mongodb.com/atlas) datastore via the Mongoose adapter
-- [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) for media uploads
-- [Biome](https://biomejs.dev/) via [Ultracite](https://www.ultracite.ai/) for linting & formatting
+- [Resend](https://resend.com) for the contact form, behind one on-demand route (`/contact/send`)
+- [Biome](https://biomejs.dev/) via [Ultracite](https://www.ultracite.ai/) for linting, [Prettier](https://prettier.io/) for formatting
 - [pnpm](https://pnpm.io/) package manager
 - Deployed on [Vercel](https://vercel.com/)
 
@@ -31,27 +28,21 @@ pnpm install
 pnpm dev
 ```
 
-The site runs at [http://localhost:3000](http://localhost:3000) and the CMS admin
-panel at [http://localhost:3000/admin](http://localhost:3000/admin).
+The site runs at [http://localhost:4321](http://localhost:4321).
 
 ## Environment variables
 
-Create a `.env` file in the project root with the following. Values are also read
-from Vercel in preview/production — pull them locally with `vercel env pull`.
+Only the contact form needs environment variables. Create a `.env` file in the
+project root with the following. Values are also read from Vercel in
+preview/production — pull them locally with `vercel env pull`.
 
-| Variable                | Required | Description                                                                                                  |
-| ----------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
-| `PAYLOAD_SECRET`        | yes      | Long random string used to sign/encrypt Payload tokens. Generate with `openssl rand -hex 32`.                |
-| `DATABASE_URI`          | yes      | MongoDB Atlas connection string (`mongodb+srv://…`). The Payload datastore.                                  |
-| `BLOB_READ_WRITE_TOKEN` | yes      | Vercel Blob read/write token for media uploads. Auto-provisioned when a Blob store is linked to the project. |
-| `RESEND_API_KEY`        | yes      | [Resend](https://resend.com) API key used by the contact form to deliver messages.                          |
-| `CONTACT_TO_EMAIL`      | yes      | Inbox that contact-form submissions are delivered to.                                                        |
+| Variable           | Required | Description                                                                        |
+| ------------------ | -------- | ---------------------------------------------------------------------------------- |
+| `RESEND_API_KEY`   | yes      | [Resend](https://resend.com) API key used by the contact form to deliver messages. |
+| `CONTACT_TO_EMAIL` | yes      | Inbox that contact-form submissions are delivered to.                              |
 
 ```sh
 # .env
-PAYLOAD_SECRET=your-generated-secret
-DATABASE_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/portfolio?retryWrites=true&w=majority
-BLOB_READ_WRITE_TOKEN=vercel_blob_rw_xxxxxxxx
 RESEND_API_KEY=re_xxxxxxxx
 CONTACT_TO_EMAIL=you@example.com
 ```
@@ -59,56 +50,30 @@ CONTACT_TO_EMAIL=you@example.com
 The contact form sends from `contact@trevormathiak.dev`; that domain must be
 verified in Resend for delivery to succeed.
 
-## CMS
+## Content
 
-Content is managed in [Payload](https://payloadcms.com/), mounted inside the Next.js
-app. There is a single **Admin** login and no public registration — the first admin
-is created via `/admin` on first run, and creating further admins requires being
-logged in.
+All content lives in the repository; changing it is a commit and a deploy (see
+[ADR 0004](docs/adr/0004-static-astro-content-in-repo.md)).
 
-- Admin panel: `/admin`
-- REST API: `/api`
-- GraphQL: `/api/graphql` (playground at `/api/graphql-playground`)
-
-### Content model
-
-Every public route is a document in the **Pages** collection, composed from
-reusable blocks and rendered by a single dynamic slug route (`src/app/(frontend)/[slug]`);
-the `home` page backs the root route. Pages support drafts and publishing, and
-publishing revalidates the affected path. The
-[SEO plugin](https://payloadcms.com/docs/plugins/seo) adds an editable metadata tab
-to each Page, falling back to the site defaults in `src/config/site.ts`.
-
-**Collections**
-
-| Collection     | Purpose                                                       |
-| -------------- | ------------------------------------------------------------- |
-| `Pages`        | Block-built pages; one document per public route             |
-| `Projects`     | Portfolio projects surfaced by the project-showcase block    |
-| `Technologies` | Tech tags referenced by projects                             |
-| `Media`        | Uploaded images (stored in Vercel Blob)                      |
-| `Admins`       | Admin users for the CMS                                       |
-
-**Globals**
-
-| Global       | Purpose                                                        |
-| ------------ | ------------------------------------------------------------- |
-| `Navigation` | Header nav items and CTA — links are relationships to Pages   |
-| `Footer`     | Footer links and social links                                 |
-
-**Blocks** — the layout building blocks a Page is composed from: `hero`,
-`pageIntro`, `featureList`, `projectShowcase` (with a featured-only mode), `story`
-(rich text + optional portrait), `ctaBand`, and `contactForm`.
+- **Pages** — one route file per page in `src/pages`, composed from the block
+  components in `src/components/blocks` (`hero`, `page-intro`, `feature-list`,
+  `project-showcase`, `story`, `cta-band`, `contact-form`). Each page sets its own
+  SEO title and description, falling back to the defaults in `src/config/site.ts`.
+- **Projects** — one YAML file per project in `src/content/projects`, next to its
+  screenshot, validated by the schema in `src/content.config.ts`. `order` sets the
+  curated order.
+- **Technologies** — `src/content/technologies.json`; project `tech` entries must
+  match a name here or the build fails.
+- **Site chrome** — header nav, footer links and social links in
+  `src/config/site-chrome.ts`, typed against the known pages in
+  `src/config/pages.ts`.
 
 ## Scripts
 
-| Command          | Description                          |
-| ---------------- | ------------------------------------ |
-| `pnpm dev`       | Start the development server         |
-| `pnpm build`     | Build for production (`next build`)  |
-| `pnpm start`     | Serve the production build           |
-| `pnpm lint`      | Lint with Biome (via Ultracite)      |
-| `pnpm format`    | Format & auto-fix with Ultracite     |
-| `pnpm typecheck` | Type-check with the TypeScript compiler |
-| `pnpm generate:types`     | Regenerate `src/payload-types.ts` from the Payload config |
-| `pnpm generate:importmap` | Regenerate the admin panel import map                     |
+| Command          | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| `pnpm dev`       | Start the development server                      |
+| `pnpm build`     | Build for production (`astro build`)              |
+| `pnpm lint`      | Lint with Biome (Ultracite preset, formatter off) |
+| `pnpm format`    | Format every file with Prettier                   |
+| `pnpm typecheck` | Type-check with `astro check`                     |

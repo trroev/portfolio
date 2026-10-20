@@ -1,16 +1,16 @@
-import Link from "next/link";
+import { pageHref } from "~/config/pages";
 
 export function Wordmark() {
   return (
-    <Link
+    <a
       aria-label="trroev development — home"
-      className="focus-ring inline-flex items-baseline rounded-sm font-display font-semibold text-lg tracking-tight"
-      href="/"
+      className="inline-flex items-baseline rounded-sm font-display text-lg font-semibold tracking-tight focus-ring"
+      href={pageHref("home")}
     >
       trroev
       <span aria-hidden="true" className="text-accent">
         .
       </span>
-    </Link>
+    </a>
   );
 }

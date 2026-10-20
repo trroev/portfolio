@@ -1,0 +1,43 @@
+---
+import { CtaLink } from "~/components/cta-link";
+import Prose from "~/components/prose.astro";
+import type { Lockup } from "~/lib/lockup";
+
+type Props = Lockup;
+
+const { eyebrow, heading, subheading, ctas = [] } = Astro.props;
+---
+
+<section class="flex flex-col items-center gap-6 py-20 text-center sm:py-28">
+  {eyebrow && (
+    <p class="text-sm font-medium tracking-[0.2em] text-text-muted uppercase">
+      {eyebrow}
+    </p>
+  )}
+  <h1 class="font-display text-4xl font-semibold text-balance sm:text-display">
+    {heading}
+    <span class="text-accent">.</span>
+  </h1>
+  {subheading && (
+    <p class="max-w-xl text-lg text-balance text-text-muted">{subheading}</p>
+  )}
+  {Astro.slots.has("default") && (
+    <Prose class="max-w-xl text-center">
+      <slot />
+    </Prose>
+  )}
+  {ctas.length > 0 && (
+    <div class="mt-2 flex flex-wrap items-center justify-center gap-3">
+      {ctas.map((cta, index) =>
+        index === 0 ? (
+          <CtaLink cta={cta} />
+        ) : (
+          <CtaLink
+            cta={{ ...cta, label: `${cta.label} →` }}
+            variant="secondary"
+          />
+        ),
+      )}
+    </div>
+  )}
+</section>

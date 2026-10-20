@@ -19,13 +19,13 @@ Seven commits landed between audits. They resolved most prior findings:
 
 The codebase remains in excellent shape. **Zero instances** of `any`, `interface`, `enum`, `T[]`, `React.FC`, `@ts-ignore`, non-null assertions, or bare generics. One deliberate, well-documented double cast. Discriminated unions, `unknown`-with-guards, and the feature/shared/app layering all match the skill — and the layering is now lint-enforced.
 
-| # | Finding | Severity | Status |
-|---|---|---|---|
-| 1 | Exported React components/pages lack explicit return types | Hard rule (or needs documented exemption) | 25 components — carried over, grew with new files |
-| 2 | `sharp as unknown as SharpDependency` double cast | Justified deviation | Accept — documented, references issue #22 |
-| 3 | Config-object constants use camelCase | Default deviation | Carried over, smaller — document the convention |
-| 4 | No test suite | Observation | Carried over |
-| 5 | ts-pattern | Assessed — **not warranted yet** | See §4 |
+| #   | Finding                                                    | Severity                                  | Status                                            |
+| --- | ---------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------- |
+| 1   | Exported React components/pages lack explicit return types | Hard rule (or needs documented exemption) | 25 components — carried over, grew with new files |
+| 2   | `sharp as unknown as SharpDependency` double cast          | Justified deviation                       | Accept — documented, references issue #22         |
+| 3   | Config-object constants use camelCase                      | Default deviation                         | Carried over, smaller — document the convention   |
+| 4   | No test suite                                              | Observation                               | Carried over                                      |
+| 5   | ts-pattern                                                 | Assessed — **not warranted yet**          | See §4                                            |
 
 ## 1. Hard-rule violations
 
@@ -65,7 +65,7 @@ The skill prefers `match(...).exhaustive()` for **non-trivial value-returning co
 
 **Verdict: don't install ts-pattern yet.** There is no site where it would beat the current code. **Install it when the first genuine trigger appears**, which for this codebase would look like:
 
-1. `FormState` (or a similar union) growing a 4th+ variant rendered as *parallel* alternatives (e.g. adding `{ kind: "submitting" }` with its own tree);
+1. `FormState` (or a similar union) growing a 4th+ variant rendered as _parallel_ alternatives (e.g. adding `{ kind: "submitting" }` with its own tree);
 2. a status→label/style mapping over a 3+-member union (e.g. if projects gain a `status: 'live' | 'archived' | 'wip'` badge);
 3. any value-returning `switch` that would otherwise be written.
 
@@ -96,4 +96,4 @@ Until then the dependency would be dead weight. When it is added, prefer it via 
 2. **refactor(lib): extract shared `resolveMedia` helper** — dedupe `resolveScreenshot`/`resolvePortrait` (§7).
 3. **feat(testing): stand up a test runner and cover the contact flow** — schema, honeypot, route handler, form states (§7). The only session-sized ticket.
 
-*(If the ticket-1 decision is to enforce component return types instead of exempting them: add **chore(types): add explicit return types to 25 exported components**.)*
+_(If the ticket-1 decision is to enforce component return types instead of exempting them: add **chore(types): add explicit return types to 25 exported components**.)_

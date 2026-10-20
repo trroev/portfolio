@@ -1,0 +1,65 @@
+---
+import { Picture } from "astro:assets";
+import { RiExternalLinkLine, RiGithubFill } from "@remixicon/react";
+import type { Project } from "~/lib/projects";
+import { tv } from "~/lib/tv";
+
+type Props = {
+  project: Project;
+};
+
+const { project } = Astro.props;
+
+const projectLink = tv({
+  base: "inline-flex items-center gap-1.5 rounded-sm text-sm font-medium text-accent focus-ring transition-colors hover:underline",
+});
+---
+
+<article class="flex flex-col overflow-hidden rounded-lg border border-border bg-surface transition-colors hover:border-accent">
+  <div class="relative aspect-video w-full overflow-hidden bg-background">
+    <Picture
+      alt={project.alt}
+      class="absolute inset-0 size-full object-cover"
+      fallbackFormat="webp"
+      formats={["avif", "webp"]}
+      sizes="(min-width: 1024px) 476px, (min-width: 640px) 50vw, 100vw"
+      src={project.screenshot}
+      widths={[480, 640, 960, 1280, 1600]}
+    />
+  </div>
+  <div class="flex flex-1 flex-col gap-3 p-5">
+    <h3 class="font-display text-xl font-semibold">{project.title}</h3>
+    <p class="text-sm leading-relaxed text-text-muted">{project.description}</p>
+    <ul class="mt-1 flex flex-wrap gap-2">
+      {project.tech.map((item) => (
+        <li class="rounded-full border border-border px-2.5 py-0.5 text-xs text-text-muted">
+          {item.name}
+        </li>
+      ))}
+    </ul>
+    <div class="mt-auto flex flex-wrap items-center gap-4 pt-2">
+      {project.liveUrl && (
+        <a
+          class={projectLink()}
+          href={project.liveUrl}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Live site
+          <RiExternalLinkLine aria-hidden="true" size={16} />
+        </a>
+      )}
+      {project.repoUrl && (
+        <a
+          class={projectLink()}
+          href={project.repoUrl}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Code
+          <RiGithubFill aria-hidden="true" size={16} />
+        </a>
+      )}
+    </div>
+  </div>
+</article>

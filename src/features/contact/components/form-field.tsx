@@ -11,7 +11,7 @@ export function FormField({ label, htmlFor, error, children }: FormFieldProps) {
   return (
     <div className="flex flex-col gap-1.5">
       <label
-        className="font-medium text-sm text-text-primary"
+        className="text-sm font-medium text-text-primary"
         htmlFor={htmlFor}
       >
         {label}
@@ -19,7 +19,7 @@ export function FormField({ label, htmlFor, error, children }: FormFieldProps) {
       {children}
       {error ? (
         <p
-          className="text-destructive text-sm"
+          className="text-sm text-destructive"
           id={`${htmlFor}-error`}
           role="alert"
         >

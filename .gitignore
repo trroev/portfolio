@@ -8,12 +8,6 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-next-env.d.ts
-*.tsbuildinfo
-
 # production
 /build
 
@@ -34,3 +28,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# astro
+/dist/
+.astro/

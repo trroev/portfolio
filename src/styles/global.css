@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+@utility focus-ring {
+  @apply outline-none;
+
+  &:focus-visible {
+    @apply ring-2 ring-accent ring-offset-2 ring-offset-background;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--semantic-text-primary);
+  letter-spacing: 0.01em;
+  background-color: var(--semantic-background);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: var(--text-heading-xl);
+    line-height: var(--text-heading-xl--line-height);
+  }
+
+  h2 {
+    font-size: var(--text-heading-lg);
+    line-height: var(--text-heading-lg--line-height);
+  }
+
+  h3 {
+    font-size: var(--text-heading-md);
+    line-height: var(--text-heading-md--line-height);
+  }
+
+  ::selection {
+    background-color: color-mix(
+      in oklab,
+      var(--semantic-accent) 28%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

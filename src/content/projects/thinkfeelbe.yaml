@@ -1,0 +1,15 @@
+title: "Think.Feel.Be. Therapy"
+description: "An online therapy practice site I built end-to-end – affirming, values-based care for LGBTQIA+ clients – with Payload CMS"
+tech:
+  - "Next.js"
+  - "TypeScript"
+  - "Payload CMS"
+  - "Radix UI"
+  - "Tailwind CSS"
+  - "Vercel"
+  - "GitHub Actions"
+liveUrl: "https://www.thinkfeelbetherapy.com"
+repoUrl: "https://github.com/trroev/think-feel-be-therapy"
+screenshot: ./thinkfeelbe.png
+alt: "Think.Feel.Be. Therapy"
+order: 15

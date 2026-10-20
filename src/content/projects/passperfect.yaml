@@ -1,0 +1,15 @@
+title: "PassPerfect"
+description: "E-Commerce site for an exam-prep platform for financial-licensing exams (SIE, Series 7, insurance CE), part of the Cerifi education group."
+tech:
+  - "Next.js"
+  - "TypeScript"
+  - "Builder.io"
+  - "Storybook"
+  - "NextAuth"
+  - "Stripe"
+  - "Figma"
+  - "Radix UI"
+liveUrl: "https://www.passperfect.com"
+screenshot: ./passperfect.png
+alt: "PassPerfect"
+order: 50

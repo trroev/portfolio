@@ -1,0 +1,14 @@
+title: "Hull Lift Truck"
+description: "Site for a material-handling dealer selling, renting, and servicing forklifts across Indiana and Michigan, built on a custom CMS."
+tech:
+  - "Next.js"
+  - "TypeScript"
+  - "Payload CMS"
+  - "Storybook"
+  - "Figma"
+  - "Tailwind CSS"
+  - "Radix UI"
+liveUrl: "https://www.hulllifttruck.com"
+screenshot: ./hull.png
+alt: "Hull Lift Truck"
+order: 40

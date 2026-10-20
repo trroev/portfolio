@@ -1,8 +1,7 @@
 import type { ContactFormInput } from "../schema";
 
 type SendMessageResult =
-  | { status: "success" }
-  | { status: "error"; message: string };
+  { status: "success" } | { status: "error"; message: string };
 
 const GENERIC_ERROR =
   "Something went wrong sending your message. Please try again.";
@@ -23,7 +22,7 @@ const RATE_LIMIT_ERROR =
   "You've sent a few messages in a row — please wait a minute and try again.";
 
 export async function sendMessage(
-  input: ContactFormInput
+  input: ContactFormInput,
 ): Promise<SendMessageResult> {
   try {
     const response = await fetch("/contact/send", {

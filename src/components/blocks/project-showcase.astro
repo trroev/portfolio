@@ -1,0 +1,49 @@
+---
+import { buttonStyles } from "~/components/button";
+import ProjectCard from "~/components/project-card.astro";
+import { pageHref } from "~/config/pages";
+import { getProjects } from "~/lib/projects";
+
+type Props = {
+  heading?: string;
+  intro?: string;
+  featuredOnly?: boolean;
+  ctaLabel?: string;
+};
+
+const { heading, intro, featuredOnly, ctaLabel } = Astro.props;
+
+const projects = await getProjects({ featuredOnly });
+---
+
+<section class="flex flex-col gap-6">
+  {(heading || intro || ctaLabel) && (
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+      <div class="flex flex-col gap-2">
+        {heading && (
+          <h2 class="font-display text-2xl font-semibold sm:text-3xl">
+            {heading}
+          </h2>
+        )}
+        {intro && <p class="max-w-2xl text-text-muted">{intro}</p>}
+      </div>
+      {ctaLabel && (
+        <a
+          class={buttonStyles({ variant: "secondary" })}
+          href={pageHref("portfolio")}
+        >
+          {ctaLabel} →
+        </a>
+      )}
+    </div>
+  )}
+  {projects.length > 0 ? (
+    <div class="grid gap-6 sm:grid-cols-2">
+      {projects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  ) : (
+    <p class="text-text-muted">A curated selection of my work is on its way.</p>
+  )}
+</section>

@@ -1,0 +1,90 @@
+[
+  {
+    "name": "TypeScript",
+    "category": "language"
+  },
+  {
+    "name": "Base UI",
+    "category": "framework"
+  },
+  {
+    "name": "Next.js",
+    "category": "framework"
+  },
+  {
+    "name": "Radix UI",
+    "category": "framework"
+  },
+  {
+    "name": "SCSS",
+    "category": "framework"
+  },
+  {
+    "name": "Tailwind CSS",
+    "category": "framework"
+  },
+  {
+    "name": "TanStack Query",
+    "category": "framework"
+  },
+  {
+    "name": "Builder.io",
+    "category": "data"
+  },
+  {
+    "name": "Payload CMS",
+    "category": "data"
+  },
+  {
+    "name": "Supabase",
+    "category": "data"
+  },
+  {
+    "name": "amCharts",
+    "category": "tooling"
+  },
+  {
+    "name": "Better Auth",
+    "category": "tooling"
+  },
+  {
+    "name": "NextAuth",
+    "category": "tooling"
+  },
+  {
+    "name": "Storybook",
+    "category": "tooling"
+  },
+  {
+    "name": "Stripe",
+    "category": "tooling"
+  },
+  {
+    "name": "AWS",
+    "category": "infra"
+  },
+  {
+    "name": "Docker",
+    "category": "infra"
+  },
+  {
+    "name": "GitHub Actions",
+    "category": "infra"
+  },
+  {
+    "name": "GitLab CI",
+    "category": "infra"
+  },
+  {
+    "name": "Terraform",
+    "category": "infra"
+  },
+  {
+    "name": "Vercel",
+    "category": "infra"
+  },
+  {
+    "name": "Figma",
+    "category": "design"
+  }
+]

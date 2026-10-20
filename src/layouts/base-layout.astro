@@ -1,0 +1,48 @@
+---
+import { Font } from "astro:assets";
+import Analytics from "@vercel/analytics/astro";
+import Seo, { type SeoProps } from "~/components/seo.astro";
+import SiteFooter from "~/components/site-footer.astro";
+import { SiteHeader } from "~/components/site-header";
+import ThemeScript from "~/components/theme-script.astro";
+import { siteChrome } from "~/config/site-chrome";
+import "~/styles/global.css";
+
+type Props = SeoProps;
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <ThemeScript />
+    <Seo description={description} image={image} title={title} />
+    <link href="/site.webmanifest" rel="manifest" />
+    <link href="/favicon.ico" rel="icon" sizes="32x32" type="image/x-icon" />
+    <link href="/icon.svg" rel="icon" sizes="any" type="image/svg+xml" />
+    <link
+      href="/apple-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      type="image/png"
+    />
+    <Font cssVariable="--font-geist" preload />
+    <Font cssVariable="--font-space-grotesk" preload />
+  </head>
+  <body class="flex min-h-screen flex-col antialiased">
+    <SiteHeader
+      currentPath={Astro.url.pathname}
+      navCta={siteChrome.navCta}
+      navItems={siteChrome.navItems}
+      client:load
+    />
+    <main class="flex flex-1 flex-col">
+      <slot />
+    </main>
+    <SiteFooter />
+    <Analytics />
+  </body>
+</html>

@@ -1,4 +1,4 @@
-import "server-only";
+import { CONTACT_TO_EMAIL, RESEND_API_KEY } from "astro:env/server";
 import { Resend } from "resend";
 import type { ContactInput } from "../schema";
 
@@ -9,20 +9,17 @@ export async function sendContactEmail({
   email,
   message,
 }: ContactInput): Promise<void> {
-  const apiKey = process.env.RESEND_API_KEY;
-  const toAddress = process.env.CONTACT_TO_EMAIL;
-
-  if (!(apiKey && toAddress)) {
+  if (!(RESEND_API_KEY && CONTACT_TO_EMAIL)) {
     throw new Error("Contact email is not configured.");
   }
 
-  const resend = new Resend(apiKey);
+  const resend = new Resend(RESEND_API_KEY);
   const { error } = await resend.emails.send({
     from: FROM_ADDRESS,
     replyTo: email,
     subject: `New message from ${name}`,
     text: `${message}\n\n— ${name} <${email}>`,
-    to: toAddress,
+    to: CONTACT_TO_EMAIL,
   });
 
   if (error) {

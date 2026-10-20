@@ -1,0 +1,17 @@
+title: "Mise"
+description: "A personal recipe platform I built for sharing tested recipes and techniques from a Michelin-trained kitchen, with a custom CMS and full-text search."
+tech:
+  - "Next.js"
+  - "TypeScript"
+  - "Payload CMS"
+  - "Better Auth"
+  - "TanStack Query"
+  - "Tailwind CSS"
+  - "Base UI"
+  - "Vercel"
+  - "GitHub Actions"
+liveUrl: "https://mise-wine.vercel.app"
+repoUrl: "https://github.com/trroev/mise"
+screenshot: ./mise.png
+alt: "Mise recipe app"
+order: 30

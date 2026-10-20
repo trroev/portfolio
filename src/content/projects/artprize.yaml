@@ -1,0 +1,16 @@
+title: "ArtPrize"
+description: "I was tech lead for the ArtPrize participant platform – artist/venue registration, payments, and public voting (account-gated) – and optimized performance on the public marketing site."
+tech:
+  - "Next.js"
+  - "TypeScript"
+  - "Supabase"
+  - "Stripe"
+  - "Tailwind CSS"
+  - "Storybook"
+  - "Figma"
+  - "GitHub Actions"
+  - "Vercel"
+liveUrl: "https://www.artprize.org/"
+screenshot: ./artprize.png
+alt: "ArtPrize"
+order: 20

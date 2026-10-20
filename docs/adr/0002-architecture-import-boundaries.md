@@ -1,5 +1,7 @@
 # Import boundaries enforced by Biome, with a distinct cms layer
 
+**Superseded by [0005](./0005-retire-enforced-import-layers.md).**
+
 Source code follows the bulletproof-react unidirectional dependency flow — **shared → features → app** — plus a fourth layer for Payload configuration. The rules are enforced mechanically by Biome `noRestrictedImports` overrides in `biome.jsonc` (two depth-aware zones per feature plus zones for the shared and cms layers), not by review discipline. A pre-commit hook and a GitHub Actions workflow run lint and typecheck so a violation can't land.
 
 The zones block both alias imports (`~/features/other-feature/...`) and relative escapes: feature root files may not import `../**` (anything above the feature), files one level deeper may not import `../../**`, and shared/cms files may not use `../` at all. Intra-feature relative imports (`./sibling`, `../api/x` from a subdirectory) stay legal. Consequence: feature subdirectories may only nest one level deep — a second level would need a third zone per feature.
