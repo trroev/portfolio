@@ -2,5 +2,4 @@ pnpm-lock.yaml
 .astro/
 .vercel/
 dist/
-CNAME
 public/
