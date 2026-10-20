@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import { RiExternalLinkLine, RiGithubFill } from "@remixicon/react";
 import type { Project } from "~/lib/projects";
 import { tv } from "~/lib/tv";
@@ -17,9 +17,11 @@ const projectLink = tv({
 
 <article class="flex flex-col overflow-hidden rounded-lg border border-border bg-surface transition-colors hover:border-accent">
   <div class="relative aspect-video w-full overflow-hidden bg-background">
-    <Image
+    <Picture
       alt={project.alt}
       class="absolute inset-0 size-full object-cover"
+      fallbackFormat="webp"
+      formats={["avif", "webp"]}
       sizes="(min-width: 1024px) 476px, (min-width: 640px) 50vw, 100vw"
       src={project.screenshot}
       widths={[480, 640, 960, 1280, 1600]}
